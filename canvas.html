@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Criar Quadrado</title>
+
+    <script src="app.js"></script>
+  </head>
+
+  <body style="background-color: #080808">
+    <h1 style="color: white">Criar Button</h1>
+    <button id="criar-button">Criar Button</button>
+    <br /><br />
+
+    <div id="quadrado"></div>
+
+    <!-- Cria a array que armazena os objetos -->
+    <script>
+      const arrayDeObjetos = [];
+      const criarButtonBtn = document.getElementById("criar-button");
+
+      // Adicione um ouvinte de evento ao botão
+      criarButtonBtn.addEventListener("click", function () {
+        // Crie uma instância da classe quando o botão for clicado
+        let objetoASerCriado = new Button();
+        arrayDeObjetos.push(objetoASerCriado);
+
+      });
+    </script>
+
+    <script>
+      // Crie objetos da classe e suas <div> correspondentes
+      const objeto1 = new Button();
+      objeto1.setDivConteudo("Conteúdo do objeto 1 sdds");
+      objeto1.alterarCorDeFundo("#92FF03"); // Altera a cor de fundo para vermelho
+      objeto1.alterarAltura(100); // Altera a altura para 100 pixels
+      objeto1.alterarLargura(150); // Altera a largura para 150 pixels
+
+    </script>
+  </body>
+</html>
