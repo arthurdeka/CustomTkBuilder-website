@@ -1,0 +1,19 @@
+/* Import de fontes customizadas */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* definição de estilo padrão */
+@layer components {
+    .btn-primario {
+      @apply inline-block px-6 py-2 font-bold bg-white border-2 rounded text-corsecundaria font-inter border-corsecundaria active:text-corsecundaria hover:bg-transparent hover:text-corsecundaria focus:outline-none focus:ring;
+    }
+    .textarea-primario {
+      @apply inline-block px-6 py-2 bg-white border-t-2 border-b-4 border-l-2 border-r-4 rounded text-corsecundaria font-inter border-corsecundaria active:text-corsecundaria hover:text-corsecundaria focus:outline-none focus:opacity-50;
+    }
+    .input-primario {
+      @apply inline-block h-8 px-2 py-1 mb-2 text-sm bg-white border-t border-b-2 border-l border-r-2 rounded-md text-corsecundaria font-inter border-corsecundaria;
+    }
+  }
