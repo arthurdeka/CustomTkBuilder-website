@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Canvas from "./canvas/canvas";
 import { SideMenu } from "./components/SideMenu";
 import { CanvasProvider } from "./canvas/CanvasContext";
+import { Properties } from "./components/Properties";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
 
           <SideMenu />
           <Canvas />
-
+          <Properties />
+          
         </CanvasProvider>
       </div>
 
