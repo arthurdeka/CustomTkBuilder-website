@@ -1,15 +1,15 @@
 import React from "react";
 import Draggable from "react-draggable";
 
-function Button({ conteudo, corDeFundo }) {
+function Button({ conteudo="Button", corDeFundo="#F0F0F0" }) {
   return (
-    <Draggable>
+    <Draggable bounds="parent">
       <div
         style={{
           height: "30px",
           width: "95px",
           backgroundColor: corDeFundo,
-          color: "white",
+          color: "black",
           fontFamily:
             "Segoe UI, Tahoma, Geneva, Verdana, sans-serif",
           display: "flex",

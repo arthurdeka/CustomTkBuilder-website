@@ -1,23 +1,20 @@
 import "./canvas.css";
+import React, { useContext, Fragment } from "react";
+import { CanvasContext } from './CanvasContext';
 
-import React, { useState } from "react";
-import Button from "./button.jsx";
+import Button from "./button"; // Importe o componente Button
+
 
 function Canvas() {
-  const [objetos, setObjetos] = useState([]); // Estado para armazenar os objetos
-
-  // Função para criar um novo objeto e adicioná-lo ao estado
-  const criarNovoObjeto = () => {
-    const novoObjeto = <Button conteudo="Button1" corDeFundo="#393D49" />;
-    setObjetos([...objetos, novoObjeto]);
-  };
+  // importa a lista de objetosCanvas do contexto
+  const { objetosCanvas } = useContext(CanvasContext);
 
   return (
-    <div className="pt-8 mt-8">
-      <button onClick={criarNovoObjeto}>Criar Button</button>
+    <div id="canvas-env">
       <div id="canvas">
-        {objetos.map((objeto, index) => (
-          <div key={index}>{objeto}</div>
+        {/* // renderiza os objetos armazenados na lista objetosCanvas  */}
+        {objetosCanvas.map((objeto, index) => (
+          <Fragment key={index}>{objeto}</Fragment>
         ))}
       </div>
     </div>

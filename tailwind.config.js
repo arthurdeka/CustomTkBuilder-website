@@ -21,10 +21,10 @@ module.exports = {
       },
       colors: {
         /* cor principal do projeto */
-        corprimaria: "#264653",
+        corprimaria: "#2A9D8F",
 
         /* mais escura que a primária */
-        corsecundaria: "#274cb4",
+        corsecundaria: "#264653",
 
         /* mais clara que a primária */
         corterciaria: "#305edf",

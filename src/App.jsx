@@ -1,17 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Header from './components/Header'
-import Canvas from './canvas/canvas'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import Header from "./components/Header";
+import Canvas from "./canvas/canvas";
+import { SideMenu } from "./components/SideMenu";
+import { CanvasProvider } from "./canvas/CanvasContext";
 
 function App() {
   return (
-    <div className='App'>
-      
-      <Header/>
-      <Canvas/>
+    <div className="App">
+
+      <Header />
+      <div className="flex">
+        <CanvasProvider > {/* Envolver o aplicativo com o CanvasProvider */}
+
+          <SideMenu />
+          <Canvas />
+
+        </CanvasProvider>
+      </div>
+
     </div>
-  )
+  );
 }
 
-export default App
+
+export default App;

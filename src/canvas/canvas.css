@@ -1,9 +1,14 @@
+#canvas-env {
+    height:90vh;
+    width: 100%;
+}
+
 #canvas {
-    margin-top: 40px;
     padding-top: 40px;
+    position: relative;
 
-    width: 100vw;
-    height: 100vw;
+    width: 600px;
+    height: 600px;
 
-    background-color: beige;
+    background-color: rgb(187, 187, 170);
 }
