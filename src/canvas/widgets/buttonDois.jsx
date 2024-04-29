@@ -1,16 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext,  useState } from "react";
 import Draggable from "react-draggable";
 import { CanvasContext } from '../CanvasContext';
 
-function ButtonDois({ conteudo="Button Dois", corDeFundo="#FF5733" }) {
-  // importa a função setSelectedButton do contexto
+function ButtonDois({ conteudo="Button" }) {
   const { setSelectedButton } = useContext(CanvasContext);
 
-  const buttonStyle = {
+  
+
+  const [buttonStyle, setButtonStyle] = useState({
     height: "30px",
     width: "95px",
-    backgroundColor: corDeFundo,
-    color: "white",
+    backgroundColor: "#FF5733",
+    color: "black",
     fontFamily: "Segoe UI, Tahoma, Geneva, Verdana, sans-serif",
     display: "flex",
     alignItems: "center",
@@ -22,12 +23,16 @@ function ButtonDois({ conteudo="Button Dois", corDeFundo="#FF5733" }) {
     borderRightColor: "#000000",
     borderBottomColor: "#000000",
     borderRadius: "5px",
+  });
+
+  const handleClick = () => {
+    setSelectedButton({ style: buttonStyle, setStyle: setButtonStyle });
   };
 
   return (
     <Draggable bounds="parent">
       <div
-        onClick={() => setSelectedButton(buttonStyle)}
+        onClick={handleClick}
         style={buttonStyle}
       >
         {conteudo}
