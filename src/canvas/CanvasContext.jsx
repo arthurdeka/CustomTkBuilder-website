@@ -14,6 +14,16 @@ export function CanvasProvider({ children }) {
   // Estado para armazenar o botão selecionado. Inicialmente, é nulo
   const [selectedButton, setSelectedButton] = useState(null);
 
+  // Estado para estilos
+  // tamanho
+  const [selectedWidgetHeight, setSelectedWidgetHeight] = useState(null); 
+  const [selectedWidgetWidth, setSelectedWidgetWidth] = useState(null); 
+  // estilo 
+  const [selectedWidgetBorder, setSelectedWidgetBorder] = useState(null); 
+  const [selectedWidgetBackgroundColor, setSelectedWidgetBackgroundColor] = useState(null); 
+  // texto
+  const [selectedWidgetFontSize, setSelectedWidgetFontSize] = useState(null);
+
   // Função para adicionar um novo objeto ao canvas
   const addObjeto = (objeto) => {
     setObjetosCanvas((prevObjetos) => [...prevObjetos, objeto]);
@@ -21,7 +31,7 @@ export function CanvasProvider({ children }) {
 
   // Retorna o provedor do contexto CanvasContext, que fornece os valores para os componentes filhos
   return (
-    <CanvasContext.Provider value={{ objetosCanvas, addObjeto, selectedButton, setSelectedButton }}>
+    <CanvasContext.Provider value={{ objetosCanvas, addObjeto, selectedButton, setSelectedButton, selectedWidgetHeight, setSelectedWidgetHeight, selectedWidgetWidth, setSelectedWidgetWidth, selectedWidgetFontSize, setSelectedWidgetFontSize, selectedWidgetBorder, setSelectedWidgetBorder, selectedWidgetBackgroundColor, setSelectedWidgetBackgroundColor }}>
       {children}
     </CanvasContext.Provider>
   );

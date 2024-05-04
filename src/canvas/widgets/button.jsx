@@ -9,7 +9,7 @@ import { CanvasContext } from '../CanvasContext';
 
 function Button({ conteudo="Button" }) {
   // Usando o contexto para obter a função setSelectedButton
-  const { setSelectedButton } = useContext(CanvasContext);
+  const { setSelectedButton, setSelectedWidgetHeight, setSelectedWidgetWidth, setSelectedWidgetFontSize, setSelectedWidgetBorder, setSelectedWidgetBackgroundColor } = useContext(CanvasContext);
 
   // Estado para o conteúdo do botão
   const [buttonContent, setButtonContent] = useState('Button');
@@ -21,6 +21,7 @@ function Button({ conteudo="Button" }) {
     backgroundColor: "#F0F0F0",
     color: "black",
     fontFamily: "Segoe UI, Tahoma, Geneva, Verdana, sans-serif",
+    fontSize: "14px", 
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -41,6 +42,10 @@ function Button({ conteudo="Button" }) {
       conteudo: buttonContent, 
       setConteudo: setButtonContent 
     });
+    setSelectedWidgetHeight(buttonStyle.height);
+    setSelectedWidgetWidth(buttonStyle.width);
+    setSelectedWidgetBackgroundColor(buttonStyle.backgroundColor);
+    setSelectedWidgetFontSize(buttonStyle.fontSize);
   };
 
   // Renderizando o botão
