@@ -5,7 +5,6 @@ import { CanvasContext } from '../CanvasContext';
 function ButtonDois({ conteudo="Button" }) {
   const { setSelectedButton } = useContext(CanvasContext);
 
-  
 
   const [buttonStyle, setButtonStyle] = useState({
     height: "30px",

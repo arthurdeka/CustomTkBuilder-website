@@ -16,6 +16,9 @@ function Button({ conteudo="Button" }) {
 
   // Estado para o estilo do botão
   const [buttonStyle, setButtonStyle] = useState({
+    position: 'absolute', 
+    top: '0', 
+    left: '0', 
     height: "30px",
     width: "95px",
     backgroundColor: "#F0F0F0",
