@@ -2,9 +2,22 @@ import React, { useContext, useEffect } from "react";
 import { CanvasContext } from "../canvas/CanvasContext";
 
 function Properties() {
-  const { selectedButton, setSelectedWidgetHeight, selectedWidgetHeight, setSelectedWidgetWidth ,selectedWidgetWidth, selectedWidgetFontSize, setSelectedWidgetFontSize, selectedWidgetBackgroundColor, setSelectedWidgetBackgroundColor } = useContext(CanvasContext);
+  const {
+    selectedButton,
+    setSelectedWidgetHeight,
+    selectedWidgetHeight,
+    setSelectedWidgetWidth,
+    selectedWidgetWidth,
+    selectedWidgetFontSize,
+    setSelectedWidgetFontSize,
+    selectedWidgetBackgroundColor,
+    setSelectedWidgetBackgroundColor,
+    selectedWidgetPosition,
+    setselectedWidgetPosition,
+  } = useContext(CanvasContext);
 
   const handleStyleChange = (event, propriedade) => {
+
     if (propriedade === "height") {
       setSelectedWidgetHeight(event.target.value);
     }
@@ -20,7 +33,6 @@ function Properties() {
     if (propriedade === "fontSize") {
       setSelectedWidgetFontSize(event.target.value);
     }
-
   };
 
   useEffect(() => {
@@ -33,7 +45,13 @@ function Properties() {
         fontSize: selectedWidgetFontSize,
       });
     }
-  }, [selectedWidgetHeight, selectedWidgetWidth, selectedWidgetBackgroundColor, selectedWidgetFontSize, selectedButton]);
+  }, [
+    selectedWidgetHeight,
+    selectedWidgetWidth,
+    selectedWidgetBackgroundColor,
+    selectedWidgetFontSize,
+    selectedButton,
+  ]);
 
   return (
     <div className="h-screen bg-corsecundaria w-2/12">
@@ -41,9 +59,24 @@ function Properties() {
         <h2 className="text-2xl font-inter font-semibold text-white">
           Properties
         </h2>
-        <h4 className="text-md font-inter font-semibold text-white">
-          Size:
-        </h4>
+        <h4 className="text-md font-inter font-semibold text-white">Coords:</h4>
+        <label>
+          X:
+          <input
+            type="number"
+            name="x_coord"
+            value={selectedWidgetPosition.x}
+          />
+        </label>
+        <label>
+          Y:
+          <input
+            type="number"
+            name="y_coord"
+            value={selectedWidgetPosition.y}
+          />
+        </label>
+        <h4 className="text-md font-inter font-semibold text-white">Size:</h4>
         <label>
           Height:
           <input
@@ -74,9 +107,7 @@ function Properties() {
             onChange={(event) => handleStyleChange(event, "backgroundColor")}
           />
         </label>
-        <h4 className="text-md font-inter font-semibold text-white">
-          Text:
-        </h4>
+        <h4 className="text-md font-inter font-semibold text-white">Text:</h4>
         <label>
           Font size:
           <input
@@ -86,7 +117,6 @@ function Properties() {
             onChange={(event) => handleStyleChange(event, "fontSize")}
           />
         </label>
-
       </div>
     </div>
   );

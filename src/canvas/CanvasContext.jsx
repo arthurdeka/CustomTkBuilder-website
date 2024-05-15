@@ -15,14 +15,19 @@ export function CanvasProvider({ children }) {
   const [selectedButton, setSelectedButton] = useState(null);
 
   // Estado para estilos
+  // coords
+  const [selectedWidgetPosition, setselectedWidgetPosition] = useState({ x: 0, y: 0 });
+
   // tamanho
-  const [selectedWidgetHeight, setSelectedWidgetHeight] = useState(null); 
-  const [selectedWidgetWidth, setSelectedWidgetWidth] = useState(null); 
-  // estilo 
-  const [selectedWidgetBorder, setSelectedWidgetBorder] = useState(null); 
-  const [selectedWidgetBackgroundColor, setSelectedWidgetBackgroundColor] = useState(null); 
+  const [selectedWidgetHeight, setSelectedWidgetHeight] = useState(null);
+  const [selectedWidgetWidth, setSelectedWidgetWidth] = useState(null);
+  // estilo
+  const [selectedWidgetBorder, setSelectedWidgetBorder] = useState(null);
+  const [selectedWidgetBackgroundColor, setSelectedWidgetBackgroundColor] = useState(null);
   // texto
   const [selectedWidgetFontSize, setSelectedWidgetFontSize] = useState(null);
+
+
 
   // Função para adicionar um novo objeto ao canvas
   const addObjeto = (objeto) => {
@@ -31,7 +36,30 @@ export function CanvasProvider({ children }) {
 
   // Retorna o provedor do contexto CanvasContext, que fornece os valores para os componentes filhos
   return (
-    <CanvasContext.Provider value={{ objetosCanvas, addObjeto, selectedButton, setSelectedButton, selectedWidgetHeight, setSelectedWidgetHeight, selectedWidgetWidth, setSelectedWidgetWidth, selectedWidgetFontSize, setSelectedWidgetFontSize, selectedWidgetBorder, setSelectedWidgetBorder, selectedWidgetBackgroundColor, setSelectedWidgetBackgroundColor }}>
+    <CanvasContext.Provider
+      value={{
+        objetosCanvas,
+        addObjeto,
+        selectedButton,
+        setSelectedButton,
+        selectedWidgetHeight,
+        setSelectedWidgetHeight,
+        selectedWidgetWidth,
+        setSelectedWidgetWidth,
+        selectedWidgetFontSize,
+        setSelectedWidgetFontSize,
+        selectedWidgetBorder,
+        setSelectedWidgetBorder,
+        selectedWidgetBackgroundColor,
+        setSelectedWidgetBackgroundColor,
+        selectedWidgetPosition,
+        setselectedWidgetPosition,
+        selectedWidgetX,
+        setSelectedWidgetX,
+        selectedWidgetY,
+        setSelectedWidgetY,
+      }}
+    >
       {children}
     </CanvasContext.Provider>
   );
