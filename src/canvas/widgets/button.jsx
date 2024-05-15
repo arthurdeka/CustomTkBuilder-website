@@ -17,7 +17,7 @@ function Button({ conteudo = "Button" }) {
     setSelectedWidgetBorder,
     setSelectedWidgetBackgroundColor,
     selectedWidgetPosition,
-    setselectedWidgetPosition,
+    setSelectedWidgetPosition,
   } = useContext(CanvasContext);
 
   // Estado para o conteúdo do botão
@@ -57,7 +57,7 @@ function Button({ conteudo = "Button" }) {
       conteudo: buttonContent,
       setConteudo: setButtonContent,
     });
-    setselectedWidgetPosition(buttonPosition);
+    setSelectedWidgetPosition(buttonPosition);
     setSelectedWidgetHeight(buttonStyle.height);
     setSelectedWidgetWidth(buttonStyle.width);
     setSelectedWidgetBackgroundColor(buttonStyle.backgroundColor);

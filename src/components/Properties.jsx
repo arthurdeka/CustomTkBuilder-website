@@ -13,7 +13,7 @@ function Properties() {
     selectedWidgetBackgroundColor,
     setSelectedWidgetBackgroundColor,
     selectedWidgetPosition,
-    setselectedWidgetPosition,
+    setSelectedWidgetPosition,
   } = useContext(CanvasContext);
 
   const handleStyleChange = (event, propriedade) => {

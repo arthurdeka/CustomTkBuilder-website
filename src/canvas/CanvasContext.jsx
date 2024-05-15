@@ -16,7 +16,7 @@ export function CanvasProvider({ children }) {
 
   // Estado para estilos
   // coords
-  const [selectedWidgetPosition, setselectedWidgetPosition] = useState({ x: 0, y: 0 });
+  const [selectedWidgetPosition, setSelectedWidgetPosition] = useState({ x: 0, y: 0 });
 
   // tamanho
   const [selectedWidgetHeight, setSelectedWidgetHeight] = useState(null);
@@ -26,8 +26,6 @@ export function CanvasProvider({ children }) {
   const [selectedWidgetBackgroundColor, setSelectedWidgetBackgroundColor] = useState(null);
   // texto
   const [selectedWidgetFontSize, setSelectedWidgetFontSize] = useState(null);
-
-
 
   // Função para adicionar um novo objeto ao canvas
   const addObjeto = (objeto) => {
@@ -53,11 +51,7 @@ export function CanvasProvider({ children }) {
         selectedWidgetBackgroundColor,
         setSelectedWidgetBackgroundColor,
         selectedWidgetPosition,
-        setselectedWidgetPosition,
-        selectedWidgetX,
-        setSelectedWidgetX,
-        selectedWidgetY,
-        setSelectedWidgetY,
+        setSelectedWidgetPosition,
       }}
     >
       {children}
