@@ -19,11 +19,13 @@ function Properties() {
   const handleStyleChange = (event, propriedade) => {
 
     if (propriedade === "height") {
-      setSelectedWidgetHeight(event.target.value);
+      let value = event.target.value.toString();
+      setSelectedWidgetHeight(`${value}px`);
     }
 
     if (propriedade === "width") {
-      setSelectedWidgetWidth(event.target.value);
+      let value = event.target.value.toString();
+      setSelectedWidgetWidth(`${value}px`);
     }
 
     if (propriedade === "backgroundColor") {
@@ -31,7 +33,8 @@ function Properties() {
     }
 
     if (propriedade === "fontSize") {
-      setSelectedWidgetFontSize(event.target.value);
+      let value = event.target.value.toString();
+      setSelectedWidgetFontSize(`${value}px`);
     }
   };
 
@@ -80,18 +83,18 @@ function Properties() {
         <label>
           Height:
           <input
-            type="text"
+            type="number"
             name="height"
-            value={selectedWidgetHeight}
+            value={parseInt(selectedWidgetHeight)}
             onChange={(event) => handleStyleChange(event, "height")}
           />
         </label>
         <label>
           Width:
           <input
-            type="text"
+            type="number"
             name="width"
-            value={selectedWidgetWidth}
+            value={parseInt(selectedWidgetWidth)}
             onChange={(event) => handleStyleChange(event, "width")}
           />
         </label>
@@ -111,9 +114,9 @@ function Properties() {
         <label>
           Font size:
           <input
-            type="text"
+            type="number"
             name="fontSize"
-            value={selectedWidgetFontSize}
+            value={parseInt(selectedWidgetFontSize)}
             onChange={(event) => handleStyleChange(event, "fontSize")}
           />
         </label>
