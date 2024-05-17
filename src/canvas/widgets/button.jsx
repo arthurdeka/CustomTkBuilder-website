@@ -42,10 +42,7 @@ function Button({ conteudo = "Button" }) {
     justifyContent: "center",
     textAlign: "center",
     border: "2px solid",
-    borderTopColor: "#545454",
-    borderLeftColor: "#545454",
-    borderRightColor: "#000000",
-    borderBottomColor: "#000000",
+    borderColor: "#000000",
     borderRadius: "5px",
   });
 
@@ -62,6 +59,7 @@ function Button({ conteudo = "Button" }) {
     setSelectedWidgetWidth(buttonStyle.width);
     setSelectedWidgetBackgroundColor(buttonStyle.backgroundColor);
     setSelectedWidgetFontSize(buttonStyle.fontSize);
+    setSelectedWidgetBorder(buttonStyle.border);
   };
 
   // função para atualizar as coordenadas no contexto CanvasContext

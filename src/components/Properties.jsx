@@ -10,6 +10,8 @@ function Properties() {
     selectedWidgetWidth,
     selectedWidgetFontSize,
     setSelectedWidgetFontSize,
+    selectedWidgetBorder,
+    setSelectedWidgetBorder,
     selectedWidgetBackgroundColor,
     setSelectedWidgetBackgroundColor,
     selectedWidgetPosition,
@@ -26,6 +28,11 @@ function Properties() {
     if (propriedade === "width") {
       let value = event.target.value.toString();
       setSelectedWidgetWidth(`${value}px`);
+    }
+
+    if (propriedade === "border-width") {
+      let value = event.target.value.toString();
+      setSelectedWidgetBorder(`${value}px solid`);
     }
 
     if (propriedade === "backgroundColor") {
@@ -46,6 +53,7 @@ function Properties() {
         width: selectedWidgetWidth,
         backgroundColor: selectedWidgetBackgroundColor,
         fontSize: selectedWidgetFontSize,
+        border: selectedWidgetBorder,
       });
     }
   }, [
@@ -54,14 +62,17 @@ function Properties() {
     selectedWidgetBackgroundColor,
     selectedWidgetFontSize,
     selectedButton,
+    selectedWidgetBorder,
   ]);
 
   return (
     <div className="h-screen bg-corsecundaria w-2/12">
       <div className="pl-2 pr-4 mt-8">
+
         <h2 className="text-2xl font-inter font-semibold text-white">
           Properties
         </h2>
+
         <h4 className="text-md font-inter font-semibold text-white">Coords:</h4>
         <label>
           X:
@@ -79,6 +90,7 @@ function Properties() {
             value={selectedWidgetPosition.y}
           />
         </label>
+
         <h4 className="text-md font-inter font-semibold text-white">Size:</h4>
         <label>
           Height:
@@ -98,6 +110,7 @@ function Properties() {
             onChange={(event) => handleStyleChange(event, "width")}
           />
         </label>
+
         <h4 className="text-md font-inter font-semibold text-white">
           Content:
         </h4>
@@ -110,6 +123,16 @@ function Properties() {
             onChange={(event) => handleStyleChange(event, "backgroundColor")}
           />
         </label>
+        <label>
+          Border width:
+          <input
+            type="number"
+            name="border-width"
+            value={parseInt(selectedWidgetBorder)}
+            onChange={(event) => handleStyleChange(event, "border-width")}
+          />
+        </label>
+
         <h4 className="text-md font-inter font-semibold text-white">Text:</h4>
         <label>
           Font size:

@@ -17,7 +17,6 @@ export function CanvasProvider({ children }) {
   // Estado para estilos
   // coords
   const [selectedWidgetPosition, setSelectedWidgetPosition] = useState({ x: 0, y: 0 });
-
   // tamanho
   const [selectedWidgetHeight, setSelectedWidgetHeight] = useState(null);
   const [selectedWidgetWidth, setSelectedWidgetWidth] = useState(null);
