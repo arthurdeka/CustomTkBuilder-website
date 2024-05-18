@@ -19,7 +19,6 @@ function Properties() {
   } = useContext(CanvasContext);
 
   const handleStyleChange = (event, propriedade) => {
-
     if (propriedade === "height") {
       let value = event.target.value.toString();
       setSelectedWidgetHeight(`${value}px`);
@@ -66,83 +65,139 @@ function Properties() {
   ]);
 
   return (
-    <div className="h-screen bg-corsecundaria w-2/12">
-      <div className="pl-2 pr-4 mt-8">
-
-        <h2 className="text-2xl font-inter font-semibold text-white">
+    <div className="h-screen bg-slate-800 w-3/12">
+      <div className="p-4 pl-6 mt-8">
+        <h2 className="text-3xl font-inter text-center text-corprimaria">
           Properties
         </h2>
+        <br />
 
-        <h4 className="text-md font-inter font-semibold text-white">Coords:</h4>
-        <label>
-          X:
+        <h4 className="text-md font-inter font-semibold mb-2 text-center text-corprimaria">
+          Coords:
+        </h4>
+        <div className="flex flex-row items-end">
+          <label className="text-corsecundaria text-lg font-inter font-bold pr-2">
+            X:
+          </label>
           <input
+            className="rounded-sm py-1 w-full pl-2 text-md bg-gray-300"
             type="number"
             name="x_coord"
             value={selectedWidgetPosition.x}
+            disabled
           />
-        </label>
-        <label>
-          Y:
+          <label className="text-corsecundaria pl-2 font-inter pr-2">Px</label>
+          <br />
+        </div>
+
+        <div className="p-1" />
+
+        <div className="flex flex-row items-end">
+          <label className="text-corsecundaria text-lg font-inter font-bold pr-2">
+            Y:
+          </label>
           <input
+            className="rounded-sm py-1 w-full pl-2 text-md bg-gray-300"
             type="number"
             name="y_coord"
             value={selectedWidgetPosition.y}
+            disabled
           />
-        </label>
+          <label className="text-corsecundaria pl-2 font-inter pr-2">Px</label>
+          <br />
+        </div>
 
-        <h4 className="text-md font-inter font-semibold text-white">Size:</h4>
-        <label>
-          Height:
+        <div className="border-b border-corsecundaria my-6 mt-10" />
+
+        <h4 className="text-md font-inter font-semibold mb-2 text-center text-corprimaria">
+          Size:
+        </h4>
+        <div className="flex flex-row items-end">
+          <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+            Height:
+          </label>
           <input
+            className="rounded-sm py-1 w-full pl-2 text-md"
             type="number"
             name="height"
             value={parseInt(selectedWidgetHeight)}
             onChange={(event) => handleStyleChange(event, "height")}
           />
-        </label>
-        <label>
-          Width:
+          <label className="text-corsecundaria pl-2 font-inter pr-2">Px</label>
+          <br />
+        </div>
+
+        <div className="p-1" />
+
+        <div className="flex flex-row items-end">
+          <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+            Width:
+          </label>
           <input
+            className="rounded-sm py-1 w-full pl-2 text-md"
             type="number"
             name="width"
             value={parseInt(selectedWidgetWidth)}
             onChange={(event) => handleStyleChange(event, "width")}
           />
-        </label>
+          <label className="text-corsecundaria pl-2 font-inter pr-2">Px</label>
+          <br />
+        </div>
 
-        <h4 className="text-md font-inter font-semibold text-white">
+        <div className="border-b border-corsecundaria my-6 mt-10" />
+
+        <h4 className="text-md font-inter font-semibold mb-2 text-center text-corprimaria">
           Content:
         </h4>
-        <label>
-          Background Color:
+        <div className="flex flex-col">
+          <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+            Background Color:
+          </label>
           <input
+            className="w-full my-2"
             type="color"
             name="backgroundColor"
             value={selectedWidgetBackgroundColor}
             onChange={(event) => handleStyleChange(event, "backgroundColor")}
           />
-        </label>
-        <label>
-          Border width:
+          <div className="py-1" />
+        </div>
+
+        <div className="flex flew-row items-end">
+          <label className="text-corsecundaria text-md font-inter font-semibold pr-2 whitespace-nowrap">
+            Border width:
+          </label>
           <input
+            className="rounded-sm py-1 w-full pl-2 text-md"
             type="number"
             name="border-width"
             value={parseInt(selectedWidgetBorder)}
             onChange={(event) => handleStyleChange(event, "border-width")}
           />
-        </label>
+          <label className="text-corsecundaria pl-2 font-inter pr-2">Px</label>
+          <br />
+        </div>
 
-        <h4 className="text-md font-inter font-semibold text-white">Text:</h4>
-        <label>
-          Font size:
+        <div className="border-b border-corsecundaria my-6 mt-10" />
+
+        <h4 className="text-md font-inter font-semibold mb-2 text-center text-corprimaria">
+          Text:
+        </h4>
+        <div className="flex flex-row items-end">
+          <label className="text-corsecundaria text-md font-inter font-semibold pr-2 whitespace-nowrap">
+            Font size:
+          </label>
           <input
+            className="rounded-sm py-1 w-full pl-2 text-md"
             type="number"
             name="fontSize"
             value={parseInt(selectedWidgetFontSize)}
             onChange={(event) => handleStyleChange(event, "fontSize")}
           />
-        </label>
+          <label className="text-corsecundaria pl-2 font-inter pr-2">Px</label>
+          <br />
+        </div>
+
       </div>
     </div>
   );

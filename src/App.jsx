@@ -9,7 +9,7 @@ import { Properties } from "./components/Properties";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-gray-900">
 
       <Header />
       <div className="flex">
