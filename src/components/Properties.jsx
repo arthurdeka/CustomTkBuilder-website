@@ -12,6 +12,8 @@ function Properties() {
     setSelectedWidgetFontSize,
     selectedWidgetBorder,
     setSelectedWidgetBorder,
+    selectedWidgetBorderColor,
+    setSelectedWidgetBorderColor,
     selectedWidgetBackgroundColor,
     setSelectedWidgetBackgroundColor,
     selectedWidgetPosition,
@@ -19,6 +21,7 @@ function Properties() {
   } = useContext(CanvasContext);
 
   const handleStyleChange = (event, propriedade) => {
+
     if (propriedade === "height") {
       let value = event.target.value.toString();
       setSelectedWidgetHeight(`${value}px`);
@@ -32,6 +35,10 @@ function Properties() {
     if (propriedade === "border-width") {
       let value = event.target.value.toString();
       setSelectedWidgetBorder(`${value}px solid`);
+    }
+
+    if (propriedade === "borderColor") {
+      setSelectedWidgetBorderColor(event.target.value);
     }
 
     if (propriedade === "backgroundColor") {
@@ -53,6 +60,7 @@ function Properties() {
         backgroundColor: selectedWidgetBackgroundColor,
         fontSize: selectedWidgetFontSize,
         border: selectedWidgetBorder,
+        borderColor: selectedWidgetBorderColor,
       });
     }
   }, [
@@ -62,6 +70,7 @@ function Properties() {
     selectedWidgetFontSize,
     selectedButton,
     selectedWidgetBorder,
+    selectedWidgetBorderColor,
   ]);
 
   return (
@@ -163,7 +172,7 @@ function Properties() {
           <div className="py-1" />
         </div>
 
-        <div className="flex flew-row items-end">
+        <div className="flex flew-row items-end pt-4">
           <label className="text-corsecundaria text-md font-inter font-semibold pr-2 whitespace-nowrap">
             Border width:
           </label>
@@ -176,6 +185,20 @@ function Properties() {
           />
           <label className="text-corsecundaria pl-2 font-inter pr-2">Px</label>
           <br />
+        </div>
+
+        <div className="flex flex-col pt-6">
+          <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+            Border Color:
+          </label>
+          <input
+            className="w-full my-2"
+            type="color"
+            name="borderColor"
+            value={selectedWidgetBorderColor}
+            onChange={(event) => handleStyleChange(event, "borderColor")}
+          />
+          <div className="py-1" />
         </div>
 
         <div className="border-b border-corsecundaria my-6 mt-10" />

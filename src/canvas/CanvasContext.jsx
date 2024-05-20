@@ -22,6 +22,7 @@ export function CanvasProvider({ children }) {
   const [selectedWidgetWidth, setSelectedWidgetWidth] = useState(null);
   // estilo
   const [selectedWidgetBorder, setSelectedWidgetBorder] = useState(null);
+  const [selectedWidgetBorderColor, setSelectedWidgetBorderColor] = useState(null);
   const [selectedWidgetBackgroundColor, setSelectedWidgetBackgroundColor] = useState(null);
   // texto
   const [selectedWidgetFontSize, setSelectedWidgetFontSize] = useState(null);
@@ -47,6 +48,8 @@ export function CanvasProvider({ children }) {
         setSelectedWidgetFontSize,
         selectedWidgetBorder,
         setSelectedWidgetBorder,
+        selectedWidgetBorderColor,
+        setSelectedWidgetBorderColor,
         selectedWidgetBackgroundColor,
         setSelectedWidgetBackgroundColor,
         selectedWidgetPosition,
