@@ -3,7 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import Header from "./components/Header";
 import Canvas from "./canvas/canvas";
-import { SideMenu } from "./components/SideMenu";
+import { Sidemenu } from "./components/Sidemenu";
 import { CanvasProvider } from "./canvas/CanvasContext";
 import { Properties } from "./components/Properties";
 
@@ -15,7 +15,7 @@ function App() {
       <div className="flex">
         <CanvasProvider > {/* Envolver o aplicativo com o CanvasProvider */}
 
-          <SideMenu />
+          <Sidemenu />
           <Canvas />
           <Properties />
           

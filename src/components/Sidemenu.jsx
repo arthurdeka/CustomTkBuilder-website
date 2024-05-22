@@ -3,7 +3,7 @@ import { CanvasContext } from "../canvas/CanvasContext";
 import Button from "../canvas/widgets/button";
 import ButtonDois from "../canvas/widgets/buttonDois";
 
-function SideMenu() {
+function Sidemenu() {
   const { objetosCanvas, addObjeto } = useContext(CanvasContext);
 
   // função para adicionar um objeto à lista de objetos
@@ -26,4 +26,4 @@ function SideMenu() {
   );
 }
 
-export { SideMenu };
+export { Sidemenu };
