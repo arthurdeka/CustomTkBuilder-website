@@ -3,30 +3,40 @@
  * Este componente renderiza um botão que pode ser arrastado dentro de seu componente pai
  * E pode ser modificado pela sidebar Properties
  */
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Draggable from "react-draggable";
 import { CanvasContext } from "../CanvasContext";
 
-function Button({ conteudo = "Button" }) {
+function Button({ id }) {
   // Usando o contexto para obter a função setSelectedButton
   const {
     setSelectedButton,
+    selectedWidgetID,
+    setSelectedWidgetID,
+    selectedWidgetContent,
+    setSelectedWidgetContent,
     setSelectedWidgetHeight,
     setSelectedWidgetWidth,
     setSelectedWidgetFontSize,
     setSelectedWidgetBorder,
     setSelectedWidgetBorderColor,
     setSelectedWidgetBackgroundColor,
-    selectedWidgetPosition,
     setSelectedWidgetPosition,
   } = useContext(CanvasContext);
 
+  // Atualizando o conteúdo do botão quando o ID do botão selecionado tem match com o ID deste botão
+  useEffect(() => {
+    if (selectedWidgetID === id) {
+      setButtonContent(selectedWidgetContent);
+    }
+  }, [selectedWidgetContent]);
+
   // Estado para o conteúdo do botão
-  const [buttonContent, setButtonContent] = useState("Button");
+  const [buttonContent, setButtonContent] = useState("Button" + id);
 
   // Estado para a posição do botão
   const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
-  
+
   // Estado para o estilo do botão
   const [buttonStyle, setButtonStyle] = useState({
     position: "absolute",
@@ -55,6 +65,8 @@ function Button({ conteudo = "Button" }) {
       conteudo: buttonContent,
       setConteudo: setButtonContent,
     });
+    setSelectedWidgetID(id);
+    setSelectedWidgetContent(buttonContent);
     setSelectedWidgetPosition(buttonPosition);
     setSelectedWidgetHeight(buttonStyle.height);
     setSelectedWidgetWidth(buttonStyle.width);
@@ -67,7 +79,12 @@ function Button({ conteudo = "Button" }) {
   // função para atualizar as coordenadas no contexto CanvasContext
   const updateButtonPosition = (e, data) => {
     setButtonPosition({ x: data.x, y: data.y });
-  }
+  };
+
+  // Função para logar o ID do botão
+  const logId = () => {
+    console.log(`O ID deste botão é ${id}`);
+  };
 
   // Renderizando o botão
   return (
@@ -76,7 +93,13 @@ function Button({ conteudo = "Button" }) {
       position={buttonPosition}
       onStop={updateButtonPosition}
     >
-      <div onClick={setAsSelectedButton} style={buttonStyle}>
+      <div
+        onClick={() => {
+          setAsSelectedButton();
+          logId();
+        }}
+        style={buttonStyle}
+      >
         {buttonContent}
       </div>
     </Draggable>

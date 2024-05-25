@@ -9,9 +9,15 @@ export const CanvasContext = React.createContext();
 // Função que fornece os valores para o CanvasContext
 export function CanvasProvider({ children }) {
   // Estado para armazenar os objetos no canvas. Inicialmente, contém um Button
-  const [objetosCanvas, setObjetosCanvas] = React.useState([<Button />]);
+  const [objetosCanvas, setObjetosCanvas] = useState([]);
 
-  // Estado para armazenar o botão selecionado. Inicialmente, é nulo
+  // Estado para armazenar o ID do widget selecionado
+  const [selectedWidgetID, setSelectedWidgetID] = useState(null);
+
+  // Estado para armazenar o próximo ID disponível
+  const [nextId, setNextId] = useState(1);
+
+  // Estado para armazenar o estilo do widget selecionado. Inicialmente, é nulo
   const [selectedButton, setSelectedButton] = useState(null);
 
   // Estado para estilos
@@ -25,12 +31,16 @@ export function CanvasProvider({ children }) {
   const [selectedWidgetBorderColor, setSelectedWidgetBorderColor] = useState(null);
   const [selectedWidgetBackgroundColor, setSelectedWidgetBackgroundColor] = useState(null);
   // texto
+  const [selectedWidgetContent, setSelectedWidgetContent] = useState(null);
   const [selectedWidgetFontSize, setSelectedWidgetFontSize] = useState(null);
 
   // Função para adicionar um novo objeto ao canvas
   const addObjeto = (objeto) => {
-    setObjetosCanvas((prevObjetos) => [...prevObjetos, objeto]);
+    const newObject = React.cloneElement(objeto, { id: nextId });
+    setObjetosCanvas((prevObjetos) => [...prevObjetos, newObject]);
+    setNextId(nextId + 1);
   };
+
 
   // Retorna o provedor do contexto CanvasContext, que fornece os valores para os componentes filhos
   return (
@@ -38,6 +48,10 @@ export function CanvasProvider({ children }) {
       value={{
         objetosCanvas,
         addObjeto,
+        selectedWidgetID,
+        setSelectedWidgetID,
+        selectedWidgetContent,
+        setSelectedWidgetContent,
         selectedButton,
         setSelectedButton,
         selectedWidgetHeight,

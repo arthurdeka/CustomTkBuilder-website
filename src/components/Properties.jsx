@@ -3,11 +3,14 @@ import { CanvasContext } from "../canvas/CanvasContext";
 
 function Properties() {
   const {
+    selectedWidgetContent,
+    setSelectedWidgetContent,
     selectedButton,
-    setSelectedWidgetHeight,
+    setSelectedButton,
     selectedWidgetHeight,
-    setSelectedWidgetWidth,
+    setSelectedWidgetHeight,
     selectedWidgetWidth,
+    setSelectedWidgetWidth,
     selectedWidgetFontSize,
     setSelectedWidgetFontSize,
     selectedWidgetBorder,
@@ -21,6 +24,10 @@ function Properties() {
   } = useContext(CanvasContext);
 
   const handleStyleChange = (event, propriedade) => {
+
+    if (propriedade === "content") {
+      setSelectedWidgetContent(event.target.value);
+    }
 
     if (propriedade === "height") {
       let value = event.target.value.toString();
@@ -206,6 +213,20 @@ function Properties() {
         <h4 className="text-md font-inter font-semibold mb-2 text-center text-corprimaria">
           Text:
         </h4>
+        <div className="flex flex-row items-end pb-4">
+          <label className="text-corsecundaria text-md font-inter font-semibold pr-2 whitespace-nowrap">
+            Text content:
+          </label>
+          <input
+            className="rounded-sm py-1 w-full pl-2 text-md"
+            type="text"
+            name="fontSize"
+            value={selectedWidgetContent}
+            onChange={(event) => handleStyleChange(event, "content")}
+          />
+          <br />
+        </div>
+
         <div className="flex flex-row items-end">
           <label className="text-corsecundaria text-md font-inter font-semibold pr-2 whitespace-nowrap">
             Font size:
@@ -220,6 +241,7 @@ function Properties() {
           <label className="text-corsecundaria pl-2 font-inter pr-2">Px</label>
           <br />
         </div>
+
 
       </div>
     </div>
