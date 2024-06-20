@@ -12,7 +12,7 @@ const StyledButton = styled.div`
   width: ${props => props.width};
   background-color: ${props => props.backgroundColor};
   color: black;
-  font-family: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: ${props => props.fontSize};
   display: flex;
   align-items: center;
@@ -27,6 +27,8 @@ const StyledButton = styled.div`
 `;
 
 function ButtonDois({ id }) {
+  
+  // Usando o contexto para obter as funções e estados necessários
   const {
     selectedWidgetID,
     setSelectedWidgetID,
