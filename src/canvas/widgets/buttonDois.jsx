@@ -1,15 +1,32 @@
-/**
- * Componente Button
- * Este componente renderiza um botão que pode ser arrastado dentro de seu componente pai
- * E pode ser modificado pela sidebar Properties
- */
 import React, { useContext, useEffect, useState } from "react";
 import Draggable from "react-draggable";
 import { CanvasContext } from "../CanvasContext";
 import styled from 'styled-components';
 
-function Button({ id }) {
-  // Usando o contexto para obter a função setSelectedButton
+// Estilizando o botão usando styled-components
+const StyledButton = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: ${props => props.height};
+  width: ${props => props.width};
+  background-color: ${props => props.backgroundColor};
+  color: black;
+  font-family: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
+  font-size: ${props => props.fontSize};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: ${props => props.border};
+  border-color: ${props => props.borderColor};
+  border-radius: 5px;
+  &:hover {
+    background-color: ${props => props.hoverBackgroundColor};
+  }
+`;
+
+function ButtonDois({ id }) {
   const {
     selectedWidgetID,
     setSelectedWidgetID,
@@ -31,7 +48,21 @@ function Button({ id }) {
     setSelectedWidgetBackgroundColor,
     selectedWidgetPosition,
     setSelectedWidgetPosition,
+    selectedWidgetHoverBackgroundColor,
+    setSelectedWidgetHoverBackgroundColor,
   } = useContext(CanvasContext);
+
+  // Estados para propriedades do botão
+  const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
+  const [buttonHeight, setButtonHeight] = useState("30px");
+  const [buttonWidth, setButtonWidth] = useState("95px");
+  const [buttonBorder, setButtonBorder] = useState("2px solid");
+  const [buttonBorderColor, setButtonBorderColor] = useState("#000000");
+  const [buttonBackgroundColor, setButtonBackgroundColor] = useState("#F0F0F0");
+  const [buttonContent, setButtonContent] = useState("Button" + id);
+  const [buttonFontSize, setButtonFontSize] = useState("14px");
+  const [buttonHoverBackgroundColor, setButtonHoverBackgroundColor] = useState("#6e6e6e");
+
 
   // Atualizando o conteúdo do botão quando o ID do botão selecionado tem match com o ID deste botão
   useEffect(() => {
@@ -43,60 +74,22 @@ function Button({ id }) {
       setButtonBorderColor(selectedWidgetBorderColor);
       setButtonBackgroundColor(selectedWidgetBackgroundColor);
       setButtonFontSize(selectedWidgetFontSize);
-
+      setButtonHoverBackgroundColor(selectedWidgetHoverBackgroundColor)
     }
-  }, [selectedWidgetContent]);
-
-  // Estado para estilos
-  // coords
-  const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
-  // tamanho
-  const [buttonHeight, setButtonHeight] = useState("30px");
-  const [buttonWidth, setButtonWidth] = useState("95px");
-  // estilo
-  const [buttonBorder, setButtonBorder] = useState("2px solid");
-  const [buttonBorderColor, setButtonBorderColor] = useState("#000000");
-  const [buttonBackgroundColor, setButtonBackgroundColor] = useState("#F0F0F0");
-  // texto
-  const [buttonContent, setButtonContent] = useState("Button" + id);
-  const [buttonFontSize, setButtonFontSize] = useState("14px");
-
-  // Estado para o estilo do botão
-  const [buttonStyle, setButtonStyle] = useState({
-    position: "absolute",
-    top: "0",
-    left: "0",
-    height: `${buttonHeight}`,
-    width: `${buttonWidth}`,
-    backgroundColor: `${buttonBackgroundColor}`,
-    color: "black",
-    fontFamily: "Segoe UI, Tahoma, Geneva, Verdana, sans-serif",
-    fontSize: `${buttonFontSize}`,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-    border: `${buttonBorder}`,
-    borderColor: `${buttonBorderColor}`,
-    borderRadius: "5px",
-  });
+  }, [selectedWidgetID, selectedWidgetContent, selectedWidgetHeight, selectedWidgetWidth, selectedWidgetBorder, selectedWidgetBorderColor, selectedWidgetBackgroundColor, selectedWidgetFontSize, selectedWidgetHoverBackgroundColor]);
 
   // Função para definir este botão como o botão selecionado
   const setAsSelectedButton = () => {
-    console.log(`O ID deste botão é ${id}`);
-    setSelectedButton({
-      style: buttonStyle,
-      setStyle: setButtonStyle,
-    });
     setSelectedWidgetID(id);
     setSelectedWidgetContent(buttonContent);
     setSelectedWidgetPosition(buttonPosition);
-    setSelectedWidgetHeight(buttonStyle.height);
-    setSelectedWidgetWidth(buttonStyle.width);
-    setSelectedWidgetBackgroundColor(buttonStyle.backgroundColor);
-    setSelectedWidgetFontSize(buttonStyle.fontSize);
-    setSelectedWidgetBorder(buttonStyle.border);
-    setSelectedWidgetBorderColor(buttonStyle.borderColor);
+    setSelectedWidgetHeight(buttonHeight);
+    setSelectedWidgetWidth(buttonWidth);
+    setSelectedWidgetBackgroundColor(buttonBackgroundColor);
+    setSelectedWidgetFontSize(buttonFontSize);
+    setSelectedWidgetBorder(buttonBorder);
+    setSelectedWidgetBorderColor(buttonBorderColor);
+    setSelectedWidgetHoverBackgroundColor(buttonHoverBackgroundColor);
   };
 
   // função para atualizar as coordenadas no contexto CanvasContext
@@ -106,19 +99,21 @@ function Button({ id }) {
 
   // Renderizando o botão
   return (
-    <Draggable
-      bounds="parent"
-      position={buttonPosition}
-      onStop={updateButtonPosition}
-    >
-      <div
+    <Draggable bounds="parent" position={buttonPosition} onStop={updateButtonPosition}>
+      <StyledButton
         onClick={setAsSelectedButton}
-        style={buttonStyle}
+        height={buttonHeight}
+        width={buttonWidth}
+        backgroundColor={buttonBackgroundColor}
+        fontSize={buttonFontSize}
+        border={buttonBorder}
+        borderColor={buttonBorderColor}
+        hoverBackgroundColor={buttonHoverBackgroundColor}
       >
         {buttonContent}
-      </div>
+      </StyledButton>
     </Draggable>
   );
 }
 
-export default Button;
+export default ButtonDois;

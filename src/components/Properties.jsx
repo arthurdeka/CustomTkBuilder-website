@@ -21,10 +21,11 @@ function Properties() {
     setSelectedWidgetBackgroundColor,
     selectedWidgetPosition,
     setSelectedWidgetPosition,
+    selectedWidgetHoverBackgroundColor,
+    setSelectedWidgetHoverBackgroundColor,
   } = useContext(CanvasContext);
 
   const handleStyleChange = (event, propriedade) => {
-
     if (propriedade === "content") {
       setSelectedWidgetContent(event.target.value);
     }
@@ -56,29 +57,11 @@ function Properties() {
       let value = event.target.value.toString();
       setSelectedWidgetFontSize(`${value}px`);
     }
-  };
 
-  useEffect(() => {
-    if (selectedButton) {
-      selectedButton.setStyle({
-        ...selectedButton.style,
-        height: selectedWidgetHeight,
-        width: selectedWidgetWidth,
-        backgroundColor: selectedWidgetBackgroundColor,
-        fontSize: selectedWidgetFontSize,
-        border: selectedWidgetBorder,
-        borderColor: selectedWidgetBorderColor,
-      });
+    if (propriedade === "hoverBackgroundColor") {
+      setSelectedWidgetHoverBackgroundColor(event.target.value);
     }
-  }, [
-    selectedWidgetHeight,
-    selectedWidgetWidth,
-    selectedWidgetBackgroundColor,
-    selectedWidgetFontSize,
-    selectedButton,
-    selectedWidgetBorder,
-    selectedWidgetBorderColor,
-  ]);
+  };
 
   return (
     <div className="h-screen bg-slate-800 w-3/12">
@@ -242,7 +225,26 @@ function Properties() {
           <br />
         </div>
 
+        <div className="border-b border-corsecundaria my-6 mt-10" />
 
+        <h4 className="text-md font-inter font-semibold mb-2 text-center text-corprimaria">
+          Hover:
+        </h4>
+        <div className="flex flex-col pt-6">
+          <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+            Hover - Background Color:
+          </label>
+          <input
+            className="rounded-sm py-1 w-full pl-2 text-md bg-gray-300"
+            type="color"
+            name="hoverBackgroundColor"
+            value={selectedWidgetHoverBackgroundColor}
+            onChange={(event) =>
+              handleStyleChange(event, "hoverBackgroundColor")
+            }
+          />
+          <div className="py-1" />
+        </div>
       </div>
     </div>
   );
