@@ -34,6 +34,7 @@ export function CanvasProvider({ children }) {
   const [selectedWidgetContent, setSelectedWidgetContent] = useState(null);
   const [selectedWidgetFontSize, setSelectedWidgetFontSize] = useState(null);
   //hover
+  const [selectedWidgetHoverBorderColor, setSelectedWidgetHoverBorderColor] = useState(null);
   const [selectedWidgetHoverBackgroundColor, setSelectedWidgetHoverBackgroundColor] = useState(null);
 
   // Função para adicionar um novo objeto ao canvas
@@ -72,6 +73,8 @@ export function CanvasProvider({ children }) {
         setSelectedWidgetPosition,
         selectedWidgetHoverBackgroundColor,
         setSelectedWidgetHoverBackgroundColor,
+        selectedWidgetHoverBorderColor,
+        setSelectedWidgetHoverBorderColor,
       }}
     >
       {children}

@@ -23,6 +23,8 @@ function Properties() {
     setSelectedWidgetPosition,
     selectedWidgetHoverBackgroundColor,
     setSelectedWidgetHoverBackgroundColor,
+    selectedWidgetHoverBorderColor,
+    setSelectedWidgetHoverBorderColor,
   } = useContext(CanvasContext);
 
   const handleStyleChange = (event, propriedade) => {
@@ -60,6 +62,10 @@ function Properties() {
 
     if (propriedade === "hoverBackgroundColor") {
       setSelectedWidgetHoverBackgroundColor(event.target.value);
+    }
+
+    if (propriedade === "hoverBorderColor") {
+      setSelectedWidgetHoverBorderColor(event.target.value);
     }
   };
 
@@ -245,6 +251,22 @@ function Properties() {
           />
           <div className="py-1" />
         </div>
+        <div className="flex flex-col pt-6">
+          <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+            Hover - Border Color:
+          </label>
+          <input
+            className="rounded-sm py-1 w-full pl-2 text-md bg-gray-300"
+            type="color"
+            name="hoverBorderColor"
+            value={selectedWidgetHoverBorderColor}
+            onChange={(event) =>
+              handleStyleChange(event, "hoverBorderColor")
+            }
+          />
+          <div className="py-1" />
+        </div>
+
       </div>
     </div>
   );
