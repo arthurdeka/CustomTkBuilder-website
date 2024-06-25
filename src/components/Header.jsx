@@ -2,7 +2,7 @@ import React from "react";
 
 function Header() {
   return (
-    <header className="sticky px-6 top-0 left-0 z-50 flex flex-col text-corprimaria text-left w-full border-b-2 border-cyan-700  bg-gray-900">
+    <header className="px-6 flex flex-col text-corprimaria text-left w-full border-b-2 border-cyan-700 bg-gray-900">
       <a href="/" link="/">
         <h1 className="pt-2 text-2xl font-bold font-inter">
           Tkinter GUI Generator

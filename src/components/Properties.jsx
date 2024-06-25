@@ -70,8 +70,8 @@ function Properties() {
   };
 
   return (
-    <div className="h-screen bg-slate-800 w-3/12">
-      <div className="p-4 pl-6 mt-8">
+    <div className="bg-slate-800 w-3/12  max-h-svh overflow-scroll">
+      <div className="p-4 pb-20 pl-6 max-h-100 mt-8">
         <h2 className="text-3xl font-inter text-center text-corprimaria">
           Properties
         </h2>
@@ -260,13 +260,10 @@ function Properties() {
             type="color"
             name="hoverBorderColor"
             value={selectedWidgetHoverBorderColor}
-            onChange={(event) =>
-              handleStyleChange(event, "hoverBorderColor")
-            }
+            onChange={(event) => handleStyleChange(event, "hoverBorderColor")}
           />
           <div className="py-1" />
         </div>
-
       </div>
     </div>
   );

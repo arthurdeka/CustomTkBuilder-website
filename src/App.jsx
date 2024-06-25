@@ -9,15 +9,15 @@ import { Properties } from "./components/Properties";
 
 function App() {
   return (
-    <div className="App bg-gray-900">
+    <div className="App bg-gray-900 max-h-screen overflow-hidden ">
 
       <Header />
-      <div className="flex">
+      <div className="flex flex-row items-start">
         <CanvasProvider > {/* Envolver o aplicativo com o CanvasProvider */}
 
           <Sidemenu />
           <Canvas />
-          <Properties />
+          <Properties className="" />
           
         </CanvasProvider>
       </div>
