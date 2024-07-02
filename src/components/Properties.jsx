@@ -27,9 +27,10 @@ function Properties() {
     setSelectedWidgetHoverBorderColor,
   } = useContext(CanvasContext);
 
-  //
+  // estados para checkboxes de propriedades opicionais
   const [showHoverBackgroundColor, setShowHoverBackgroundColor] =
     useState(true);
+  const [showHoverBorderColor, setShowHoverBorderColor] = useState(true);
 
   const handleStyleChange = (event, propriedade) => {
     if (propriedade === "content") {
@@ -78,7 +79,13 @@ function Properties() {
     if (showHoverBackgroundColor === false) {
       setSelectedWidgetHoverBackgroundColor(selectedWidgetBackgroundColor);
     }
-  }, [showHoverBackgroundColor]);
+
+    // caso o hover border color esteja desabilitado, a cor de hover é setada para a mesma cor que o border color
+    if (showHoverBorderColor === false) {
+      setSelectedWidgetHoverBorderColor(selectedWidgetBorderColor);
+    }
+
+  }, [showHoverBackgroundColor], [showHoverBorderColor]);
 
   return (
     <div className="bg-slate-800 w-3/12  max-h-svh overflow-scroll">
@@ -248,17 +255,13 @@ function Properties() {
         <div>
           <div className="flex flex-row items-center mb-4">
             <input
-              id="toggleHoverBackgroundColor"
               type="checkbox"
               checked={showHoverBackgroundColor}
               onChange={(e) => setShowHoverBackgroundColor(e.target.checked)}
               className="mr-2"
             />
-            <label
-              htmlFor="toggleHoverBackgroundColor"
-              className="text-md font-inter font-semibold"
-            >
-              Enable Hover
+            <label className="text-md font-inter font-semibold">
+              Enable Hover - Background Color
             </label>
           </div>
 
@@ -272,9 +275,9 @@ function Properties() {
                 className="rounded-sm py-1 w-full pl-2 text-md bg-gray-300"
                 type="color"
                 name="hoverBackgroundColor"
-                value={selectedWidgetHoverBackgroundColor} 
-                onChange={
-                  (event) => handleStyleChange(event, "hoverBackgroundColor") 
+                value={selectedWidgetHoverBackgroundColor}
+                onChange={(event) =>
+                  handleStyleChange(event, "hoverBackgroundColor")
                 }
               />
               <div className="py-1" />
@@ -282,18 +285,38 @@ function Properties() {
           )}
         </div>
 
-        <div className="flex flex-col pt-6">
-          <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
-            Hover - Border Color:
-          </label>
-          <input
-            className="rounded-sm py-1 w-full pl-2 text-md bg-gray-300"
-            type="color"
-            name="hoverBorderColor"
-            value={selectedWidgetHoverBorderColor}
-            onChange={(event) => handleStyleChange(event, "hoverBorderColor")}
-          />
-          <div className="py-1" />
+        {/* Enable Hover border color checkbox */}
+        <div>
+          <div className="flex flex-row items-center mb-4">
+            <input
+              type="checkbox"
+              checked={showHoverBorderColor}
+              onChange={(e) => setShowHoverBorderColor(e.target.checked)}
+              className="mr-2"
+            />
+            <label className="text-md font-inter font-semibold">
+              Enable Hover - Border Color
+            </label>
+          </div>
+
+          {/* somente aparece caso showHoverBorderColor seja True */}
+          {showHoverBorderColor && (
+            <div className="flex flex-col pt-6">
+              <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+                Hover - Border Color:
+              </label>
+              <input
+                className="rounded-sm py-1 w-full pl-2 text-md bg-gray-300"
+                type="color"
+                name="hoverBorderColor"
+                value={selectedWidgetHoverBorderColor}
+                onChange={(event) =>
+                  handleStyleChange(event, "hoverBorderColor")
+                }
+              />
+              <div className="py-1" />
+            </div>
+          )}
         </div>
       </div>
     </div>
