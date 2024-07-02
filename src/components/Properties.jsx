@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { CanvasContext } from "../canvas/CanvasContext";
 
 function Properties() {
@@ -26,6 +26,10 @@ function Properties() {
     selectedWidgetHoverBorderColor,
     setSelectedWidgetHoverBorderColor,
   } = useContext(CanvasContext);
+
+  //
+  const [showHoverBackgroundColor, setShowHoverBackgroundColor] =
+    useState(true);
 
   const handleStyleChange = (event, propriedade) => {
     if (propriedade === "content") {
@@ -68,6 +72,13 @@ function Properties() {
       setSelectedWidgetHoverBorderColor(event.target.value);
     }
   };
+
+  useEffect(() => {
+    // caso o hover background color esteja desabilitado, a cor de hover é setada para a mesma cor que o background color
+    if (showHoverBackgroundColor === false) {
+      setSelectedWidgetHoverBackgroundColor(selectedWidgetBackgroundColor);
+    }
+  }, [showHoverBackgroundColor]);
 
   return (
     <div className="bg-slate-800 w-3/12  max-h-svh overflow-scroll">
@@ -233,24 +244,44 @@ function Properties() {
 
         <div className="border-b border-corsecundaria my-6 mt-10" />
 
-        <h4 className="text-md font-inter font-semibold mb-2 text-center text-corprimaria">
-          Hover:
-        </h4>
-        <div className="flex flex-col pt-6">
-          <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
-            Hover - Background Color:
-          </label>
-          <input
-            className="rounded-sm py-1 w-full pl-2 text-md bg-gray-300"
-            type="color"
-            name="hoverBackgroundColor"
-            value={selectedWidgetHoverBackgroundColor}
-            onChange={(event) =>
-              handleStyleChange(event, "hoverBackgroundColor")
-            }
-          />
-          <div className="py-1" />
+        {/* Enable Hover Background color checkbox */}
+        <div>
+          <div className="flex flex-row items-center mb-4">
+            <input
+              id="toggleHoverBackgroundColor"
+              type="checkbox"
+              checked={showHoverBackgroundColor}
+              onChange={(e) => setShowHoverBackgroundColor(e.target.checked)}
+              className="mr-2"
+            />
+            <label
+              htmlFor="toggleHoverBackgroundColor"
+              className="text-md font-inter font-semibold"
+            >
+              Enable Hover
+            </label>
+          </div>
+
+          {/* somente aparece caso showHoverBackgroundColor seja True */}
+          {showHoverBackgroundColor && (
+            <div className="flex flex-col">
+              <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+                Hover - Background Color:
+              </label>
+              <input
+                className="rounded-sm py-1 w-full pl-2 text-md bg-gray-300"
+                type="color"
+                name="hoverBackgroundColor"
+                value={selectedWidgetHoverBackgroundColor} 
+                onChange={
+                  (event) => handleStyleChange(event, "hoverBackgroundColor") 
+                }
+              />
+              <div className="py-1" />
+            </div>
+          )}
         </div>
+
         <div className="flex flex-col pt-6">
           <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
             Hover - Border Color:
