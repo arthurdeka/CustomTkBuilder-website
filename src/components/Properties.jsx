@@ -26,7 +26,9 @@ function Properties() {
     isActiveSelectedWidgetHoverBackgroundColor,
     setIsActiveSelectedWidgetHoverBackgroundColor,
     isActiveSelectedWidgetHoverBorderColor,
-    setIsActiveSelectedWidgetHoverBorderColor
+    setIsActiveSelectedWidgetHoverBorderColor,
+    selectedWidgetFontColor,
+    setSelectedWidgetFontColor,
   } = useContext(CanvasContext);
 
   const handleStyleChange = (event, propriedade) => {
@@ -62,6 +64,10 @@ function Properties() {
       setSelectedWidgetFontSize(`${value}px`);
     }
 
+    if (propriedade === "fontColor") {
+      setSelectedWidgetFontColor(event.target.value);
+    }
+
     if (propriedade === "hoverBackgroundColor") {
       setSelectedWidgetHoverBackgroundColor(event.target.value);
     }
@@ -75,13 +81,13 @@ function Properties() {
     // caso o hover background color esteja desabilitado, a cor de hover é setada para none
     if (isActiveSelectedWidgetHoverBackgroundColor === false) {
       setSelectedWidgetHoverBackgroundColor('none');
-      console.log("isActiveSelectedWidgetHoverBackgroundColor");
+
     }
 
     // caso o hover border color esteja desabilitado, a cor de hover é setada para none
     if (isActiveSelectedWidgetHoverBorderColor === false) {
-      setSelectedWidgetHoverBorderColor(selectedWidgetBorderColor);
-      console.log("isActiveSelectedWidgetHoverBorderColor");
+      setSelectedWidgetHoverBorderColor('none');
+
     }
 
   }, [isActiveSelectedWidgetHoverBackgroundColor, isActiveSelectedWidgetHoverBorderColor]);
@@ -246,6 +252,20 @@ function Properties() {
           />
           <label className="text-corsecundaria pl-2 font-inter pr-2">Px</label>
           <br />
+        </div>
+
+        <div className="flex flex-col pt-6">
+          <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+            Font Color:
+          </label>
+          <input
+            className="w-full my-2"
+            type="color"
+            name="fontColor"
+            value={selectedWidgetFontColor}
+            onChange={(event) => handleStyleChange(event, "fontColor")}
+          />
+          <div className="py-1" />
         </div>
 
         <div className="border-b border-corsecundaria my-6 mt-10" />

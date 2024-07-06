@@ -28,6 +28,7 @@ export function CanvasProvider({ children }) {
   // texto
   const [selectedWidgetContent, setSelectedWidgetContent] = useState(null);
   const [selectedWidgetFontSize, setSelectedWidgetFontSize] = useState(null);
+  const [selectedWidgetFontColor, setSelectedWidgetFontColor] = useState(null);
   //hover
   const [selectedWidgetHoverBorderColor, setSelectedWidgetHoverBorderColor] = useState(null);
   const [selectedWidgetHoverBackgroundColor, setSelectedWidgetHoverBackgroundColor] = useState(null);
@@ -75,7 +76,9 @@ export function CanvasProvider({ children }) {
         isActiveSelectedWidgetHoverBackgroundColor,
         setIsActiveSelectedWidgetHoverBackgroundColor,
         isActiveSelectedWidgetHoverBorderColor,
-        setIsActiveSelectedWidgetHoverBorderColor
+        setIsActiveSelectedWidgetHoverBorderColor,
+        selectedWidgetFontColor,
+        setSelectedWidgetFontColor,
       }}
     >
       {children}

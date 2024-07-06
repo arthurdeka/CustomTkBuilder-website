@@ -17,7 +17,7 @@ const StyledButton = styled.div`
   height: ${props => props.height};
   width: ${props => props.width};
   background-color: ${props => props.backgroundColor};
-  color: black;
+  color: ${props => props.fontColor};
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: ${props => props.fontSize};
   display: flex;
@@ -62,18 +62,21 @@ function ButtonDois({ id }) {
     isActiveSelectedWidgetHoverBackgroundColor,
     setIsActiveSelectedWidgetHoverBackgroundColor,
     isActiveSelectedWidgetHoverBorderColor,
-    setIsActiveSelectedWidgetHoverBorderColor
+    setIsActiveSelectedWidgetHoverBorderColor,
+    selectedWidgetFontColor,
+    setSelectedWidgetFontColor,
   } = useContext(CanvasContext);
 
   // Estados para propriedades do botão
+  const [buttonContent, setButtonContent] = useState("Button" + id);
   const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
   const [buttonHeight, setButtonHeight] = useState("30px");
   const [buttonWidth, setButtonWidth] = useState("95px");
   const [buttonBorder, setButtonBorder] = useState("2px solid");
   const [buttonBorderColor, setButtonBorderColor] = useState("#000000");
   const [buttonBackgroundColor, setButtonBackgroundColor] = useState("#F0F0F0");
-  const [buttonContent, setButtonContent] = useState("Button" + id);
   const [buttonFontSize, setButtonFontSize] = useState("14px");
+  const [buttonFontColor, setButtonFontColor] = useState("#000000");
   const [buttonHoverBackgroundColor, setButtonHoverBackgroundColor] = useState("#79A0FF");
   const [buttonHoverBorderColor, setButtonHoverBorderColor] = useState("#004AFF");
 
@@ -93,11 +96,12 @@ function ButtonDois({ id }) {
       setButtonFontSize(selectedWidgetFontSize);
       setButtonHoverBackgroundColor(selectedWidgetHoverBackgroundColor)
       setButtonHoverBorderColor(selectedWidgetHoverBorderColor)
+      setButtonFontColor(selectedWidgetFontColor);
       // valores de checkbox de opções opcionais
       setIsActiveHoverBackgroundColor(isActiveSelectedWidgetHoverBackgroundColor)
       setIsActiveHoverBorderColor(isActiveSelectedWidgetHoverBorderColor)
     }
-  }, [selectedWidgetID, selectedWidgetContent, selectedWidgetHeight, selectedWidgetWidth, selectedWidgetBorder, selectedWidgetBorderColor, selectedWidgetBackgroundColor, selectedWidgetFontSize, selectedWidgetHoverBackgroundColor, selectedWidgetHoverBorderColor, isActiveSelectedWidgetHoverBackgroundColor, isActiveSelectedWidgetHoverBorderColor]);
+  }, [selectedWidgetID, selectedWidgetContent, selectedWidgetHeight, selectedWidgetWidth, selectedWidgetBorder, selectedWidgetBorderColor, selectedWidgetBackgroundColor, selectedWidgetFontSize, selectedWidgetFontColor, selectedWidgetHoverBackgroundColor, selectedWidgetHoverBorderColor, isActiveSelectedWidgetHoverBackgroundColor, isActiveSelectedWidgetHoverBorderColor]);
 
   // Função para definir este botão como o botão selecionado
   const setAsSelectedButton = () => {
@@ -108,6 +112,7 @@ function ButtonDois({ id }) {
     setSelectedWidgetWidth(buttonWidth);
     setSelectedWidgetBackgroundColor(buttonBackgroundColor);
     setSelectedWidgetFontSize(buttonFontSize);
+    setSelectedWidgetFontColor(buttonFontColor);
     setSelectedWidgetBorder(buttonBorder);
     setSelectedWidgetBorderColor(buttonBorderColor);
     setSelectedWidgetHoverBackgroundColor(buttonHoverBackgroundColor);
@@ -131,6 +136,7 @@ function ButtonDois({ id }) {
         width={buttonWidth}
         backgroundColor={buttonBackgroundColor}
         fontSize={buttonFontSize}
+        fontColor={buttonFontColor}
         border={buttonBorder}
         borderColor={buttonBorderColor}
         hoverBackgroundColor={buttonHoverBackgroundColor}
