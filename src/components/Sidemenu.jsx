@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { CanvasContext } from "../canvas/CanvasContext";
-import Button from "../canvas/widgets/button";
 import ButtonDois from "../canvas/widgets/buttonDois";
 
 function Sidemenu() {
@@ -18,7 +17,6 @@ function Sidemenu() {
         <h2 className="text-md font-inter font-bold text-corprimaria">Tkinter</h2>
         <h2 className="text-md font-inter font-bold text-corprimaria">Widgets</h2>
 
-        <button className="bg-gray-200 mt-2 border-2 px-4 w-full rounded-md border-black" onClick={() => handleClick(<Button />)}>Button</button>
         <button className="bg-red-500 mt-2 border-2 px-4 text-white w-full rounded-md border-black" onClick={() => handleClick(<ButtonDois />)}>Button Dois</button>
       
       </div>

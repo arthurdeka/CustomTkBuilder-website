@@ -2,9 +2,6 @@ import "./canvas.css";
 import React, { useContext, Fragment } from "react";
 import { CanvasContext } from './CanvasContext';
 
-import Button from "./widgets/button"; // Importe o componente Button
-
-
 function Canvas() {
   // importa a lista de objetosCanvas do contexto
   const { objetosCanvas } = useContext(CanvasContext);

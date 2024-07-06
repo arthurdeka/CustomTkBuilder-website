@@ -1,3 +1,8 @@
+/**
+ * Componente Button
+ * Este componente renderiza um botão que pode ser arrastado dentro de seu componente pai
+ * E pode ser modificado pela sidebar Properties
+ */
 import React, { useContext, useEffect, useState } from "react";
 import Draggable from "react-draggable";
 import { CanvasContext } from "../CanvasContext";
@@ -6,6 +11,7 @@ import styled from 'styled-components';
 // Estilizando o botão usando styled-components
 const StyledButton = styled.div`
   position: absolute;
+  cursor: grab;
   top: 0;
   left: 0;
   height: ${props => props.height};
@@ -35,8 +41,6 @@ function ButtonDois({ id }) {
     setSelectedWidgetID,
     selectedWidgetContent,
     setSelectedWidgetContent,
-    selectedButton,
-    setSelectedButton,
     selectedWidgetHeight,
     setSelectedWidgetHeight,
     selectedWidgetWidth,
@@ -55,6 +59,10 @@ function ButtonDois({ id }) {
     setSelectedWidgetHoverBackgroundColor,
     selectedWidgetHoverBorderColor,
     setSelectedWidgetHoverBorderColor,
+    isActiveSelectedWidgetHoverBackgroundColor,
+    setIsActiveSelectedWidgetHoverBackgroundColor,
+    isActiveSelectedWidgetHoverBorderColor,
+    setIsActiveSelectedWidgetHoverBorderColor
   } = useContext(CanvasContext);
 
   // Estados para propriedades do botão
@@ -66,9 +74,12 @@ function ButtonDois({ id }) {
   const [buttonBackgroundColor, setButtonBackgroundColor] = useState("#F0F0F0");
   const [buttonContent, setButtonContent] = useState("Button" + id);
   const [buttonFontSize, setButtonFontSize] = useState("14px");
-  const [buttonHoverBackgroundColor, setButtonHoverBackgroundColor] = useState("#6e6e6e");
-  const [buttonHoverBorderColor, setButtonHoverBorderColor] = useState("#6e6e6e");
+  const [buttonHoverBackgroundColor, setButtonHoverBackgroundColor] = useState("#79A0FF");
+  const [buttonHoverBorderColor, setButtonHoverBorderColor] = useState("#004AFF");
 
+  // is active checkbox para opções opicionais
+  const [isActiveHoverBackgroundColor, setIsActiveHoverBackgroundColor] = useState(true);
+  const [isActiveHoverBorderColor, setIsActiveHoverBorderColor] = useState(true);
 
   // Atualizando o conteúdo do botão quando o ID do botão selecionado tem match com o ID deste botão
   useEffect(() => {
@@ -82,8 +93,11 @@ function ButtonDois({ id }) {
       setButtonFontSize(selectedWidgetFontSize);
       setButtonHoverBackgroundColor(selectedWidgetHoverBackgroundColor)
       setButtonHoverBorderColor(selectedWidgetHoverBorderColor)
+      // valores de checkbox de opções opcionais
+      setIsActiveHoverBackgroundColor(isActiveSelectedWidgetHoverBackgroundColor)
+      setIsActiveHoverBorderColor(isActiveSelectedWidgetHoverBorderColor)
     }
-  }, [selectedWidgetID, selectedWidgetContent, selectedWidgetHeight, selectedWidgetWidth, selectedWidgetBorder, selectedWidgetBorderColor, selectedWidgetBackgroundColor, selectedWidgetFontSize, selectedWidgetHoverBackgroundColor, selectedWidgetHoverBorderColor]);
+  }, [selectedWidgetID, selectedWidgetContent, selectedWidgetHeight, selectedWidgetWidth, selectedWidgetBorder, selectedWidgetBorderColor, selectedWidgetBackgroundColor, selectedWidgetFontSize, selectedWidgetHoverBackgroundColor, selectedWidgetHoverBorderColor, isActiveSelectedWidgetHoverBackgroundColor, isActiveSelectedWidgetHoverBorderColor]);
 
   // Função para definir este botão como o botão selecionado
   const setAsSelectedButton = () => {
@@ -98,6 +112,9 @@ function ButtonDois({ id }) {
     setSelectedWidgetBorderColor(buttonBorderColor);
     setSelectedWidgetHoverBackgroundColor(buttonHoverBackgroundColor);
     setSelectedWidgetHoverBorderColor(buttonHoverBorderColor);
+    // valores de checkbox de opções opcionais
+    setIsActiveSelectedWidgetHoverBackgroundColor(isActiveHoverBackgroundColor);
+    setIsActiveSelectedWidgetHoverBorderColor(isActiveHoverBorderColor);
   };
 
   // função para atualizar as coordenadas no contexto CanvasContext

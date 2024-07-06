@@ -1,14 +1,12 @@
 // Importando as dependências necessárias
 import React, { createContext, useState } from "react";
-// Importando o componente Button
-import Button from "./widgets/button";
 
 // Criação do contexto CanvasContext
 export const CanvasContext = React.createContext();
 
 // Função que fornece os valores para o CanvasContext
 export function CanvasProvider({ children }) {
-  // Estado para armazenar os objetos no canvas. Inicialmente, contém um Button
+  // Estado para armazenar os objetos no canvas. 
   const [objetosCanvas, setObjetosCanvas] = useState([]);
 
   // Estado para armazenar o ID do widget selecionado
@@ -16,9 +14,6 @@ export function CanvasProvider({ children }) {
 
   // Estado para armazenar o próximo ID disponível
   const [nextId, setNextId] = useState(1);
-
-  // Estado para armazenar o estilo do widget selecionado. Inicialmente, é nulo
-  const [selectedButton, setSelectedButton] = useState(null);
 
   // Estado para estilos
   // coords
@@ -36,6 +31,10 @@ export function CanvasProvider({ children }) {
   //hover
   const [selectedWidgetHoverBorderColor, setSelectedWidgetHoverBorderColor] = useState(null);
   const [selectedWidgetHoverBackgroundColor, setSelectedWidgetHoverBackgroundColor] = useState(null);
+
+  // Estados para opções opcionais	
+  const [isActiveSelectedWidgetHoverBorderColor, setIsActiveSelectedWidgetHoverBorderColor] = useState(true);
+  const [isActiveSelectedWidgetHoverBackgroundColor, setIsActiveSelectedWidgetHoverBackgroundColor] = useState(true);
 
   // Função para adicionar um novo objeto ao canvas
   const addObjeto = (objeto) => {
@@ -55,8 +54,6 @@ export function CanvasProvider({ children }) {
         setSelectedWidgetID,
         selectedWidgetContent,
         setSelectedWidgetContent,
-        selectedButton,
-        setSelectedButton,
         selectedWidgetHeight,
         setSelectedWidgetHeight,
         selectedWidgetWidth,
@@ -75,6 +72,10 @@ export function CanvasProvider({ children }) {
         setSelectedWidgetHoverBackgroundColor,
         selectedWidgetHoverBorderColor,
         setSelectedWidgetHoverBorderColor,
+        isActiveSelectedWidgetHoverBackgroundColor,
+        setIsActiveSelectedWidgetHoverBackgroundColor,
+        isActiveSelectedWidgetHoverBorderColor,
+        setIsActiveSelectedWidgetHoverBorderColor
       }}
     >
       {children}

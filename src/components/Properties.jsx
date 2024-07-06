@@ -5,8 +5,6 @@ function Properties() {
   const {
     selectedWidgetContent,
     setSelectedWidgetContent,
-    selectedButton,
-    setSelectedButton,
     selectedWidgetHeight,
     setSelectedWidgetHeight,
     selectedWidgetWidth,
@@ -25,12 +23,11 @@ function Properties() {
     setSelectedWidgetHoverBackgroundColor,
     selectedWidgetHoverBorderColor,
     setSelectedWidgetHoverBorderColor,
+    isActiveSelectedWidgetHoverBackgroundColor,
+    setIsActiveSelectedWidgetHoverBackgroundColor,
+    isActiveSelectedWidgetHoverBorderColor,
+    setIsActiveSelectedWidgetHoverBorderColor
   } = useContext(CanvasContext);
-
-  // estados para checkboxes de propriedades opicionais
-  const [showHoverBackgroundColor, setShowHoverBackgroundColor] =
-    useState(true);
-  const [showHoverBorderColor, setShowHoverBorderColor] = useState(true);
 
   const handleStyleChange = (event, propriedade) => {
     if (propriedade === "content") {
@@ -75,18 +72,20 @@ function Properties() {
   };
 
   useEffect(() => {
-    // caso o hover background color esteja desabilitado, a cor de hover é setada para a mesma cor que o background color
-    if (showHoverBackgroundColor === false) {
-      setSelectedWidgetHoverBackgroundColor(selectedWidgetBackgroundColor);
+    // caso o hover background color esteja desabilitado, a cor de hover é setada para none
+    if (isActiveSelectedWidgetHoverBackgroundColor === false) {
+      setSelectedWidgetHoverBackgroundColor('none');
+      console.log("isActiveSelectedWidgetHoverBackgroundColor");
     }
 
-    // caso o hover border color esteja desabilitado, a cor de hover é setada para a mesma cor que o border color
-    if (showHoverBorderColor === false) {
+    // caso o hover border color esteja desabilitado, a cor de hover é setada para none
+    if (isActiveSelectedWidgetHoverBorderColor === false) {
       setSelectedWidgetHoverBorderColor(selectedWidgetBorderColor);
+      console.log("isActiveSelectedWidgetHoverBorderColor");
     }
 
-  }, [showHoverBackgroundColor], [showHoverBorderColor]);
-
+  }, [isActiveSelectedWidgetHoverBackgroundColor, isActiveSelectedWidgetHoverBorderColor]);
+ 
   return (
     <div className="bg-slate-800 w-3/12  max-h-svh overflow-scroll">
       <div className="p-4 pb-20 pl-6 max-h-100 mt-8">
@@ -250,14 +249,17 @@ function Properties() {
         </div>
 
         <div className="border-b border-corsecundaria my-6 mt-10" />
+        <h4 className="text-md font-inter font-semibold mb-2 text-center text-corprimaria">
+          Hover:
+        </h4>
 
         {/* Enable Hover Background color checkbox */}
         <div>
           <div className="flex flex-row items-center mb-4">
             <input
               type="checkbox"
-              checked={showHoverBackgroundColor}
-              onChange={(e) => setShowHoverBackgroundColor(e.target.checked)}
+              checked={isActiveSelectedWidgetHoverBackgroundColor}
+              onChange={(e) => setIsActiveSelectedWidgetHoverBackgroundColor(e.target.checked)}
               className="mr-2"
             />
             <label className="text-md font-inter font-semibold">
@@ -266,7 +268,7 @@ function Properties() {
           </div>
 
           {/* somente aparece caso showHoverBackgroundColor seja True */}
-          {showHoverBackgroundColor && (
+          {isActiveSelectedWidgetHoverBackgroundColor && (
             <div className="flex flex-col">
               <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
                 Hover - Background Color:
@@ -285,13 +287,13 @@ function Properties() {
           )}
         </div>
 
-        {/* Enable Hover border color checkbox */}
+        {/* Enable Hover Border Color checkbox */}
         <div>
           <div className="flex flex-row items-center mb-4">
             <input
               type="checkbox"
-              checked={showHoverBorderColor}
-              onChange={(e) => setShowHoverBorderColor(e.target.checked)}
+              checked={isActiveSelectedWidgetHoverBorderColor}
+              onChange={(e) => setIsActiveSelectedWidgetHoverBorderColor(e.target.checked)}
               className="mr-2"
             />
             <label className="text-md font-inter font-semibold">
@@ -299,9 +301,9 @@ function Properties() {
             </label>
           </div>
 
-          {/* somente aparece caso showHoverBorderColor seja True */}
-          {showHoverBorderColor && (
-            <div className="flex flex-col pt-6">
+          {/* somente aparece caso showHoverBackgroundColor seja True */}
+          {isActiveSelectedWidgetHoverBorderColor && (
+            <div className="flex flex-col">
               <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
                 Hover - Border Color:
               </label>
@@ -318,6 +320,10 @@ function Properties() {
             </div>
           )}
         </div>
+
+
+
+
       </div>
     </div>
   );
