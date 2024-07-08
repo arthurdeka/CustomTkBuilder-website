@@ -24,6 +24,7 @@ export function CanvasProvider({ children }) {
   // estilo
   const [selectedWidgetBorder, setSelectedWidgetBorder] = useState(null);
   const [selectedWidgetBorderColor, setSelectedWidgetBorderColor] = useState(null);
+  const [selectedWidgetBorderRadius, setSelectedWidgetBorderRadius] = useState(null);
   const [selectedWidgetBackgroundColor, setSelectedWidgetBackgroundColor] = useState(null);
   // texto
   const [selectedWidgetContent, setSelectedWidgetContent] = useState(null);
@@ -86,6 +87,8 @@ export function CanvasProvider({ children }) {
         setSelectedWidgetHoverFontColor,
         isActiveSelectedWidgetHoverFontColor,
         setIsActiveSelectedWidgetHoverFontColor,
+        selectedWidgetBorderRadius,
+        setSelectedWidgetBorderRadius,
       }}
     >
       {children}

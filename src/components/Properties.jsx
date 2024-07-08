@@ -33,6 +33,8 @@ function Properties() {
     setSelectedWidgetHoverFontColor,
     isActiveSelectedWidgetHoverFontColor,
     setIsActiveSelectedWidgetHoverFontColor,
+    selectedWidgetBorderRadius,
+    setSelectedWidgetBorderRadius,
   } = useContext(CanvasContext);
 
   const handleStyleChange = (event, propriedade) => {
@@ -83,6 +85,12 @@ function Properties() {
     if (propriedade === "hoverFontColor") {
       setSelectedWidgetHoverFontColor(event.target.value);
     }
+
+    if (propriedade === "border-radius") {
+      let value = event.target.value.toString();
+      setSelectedWidgetBorderRadius(`${value}px`);
+    }
+
   };
 
   useEffect(() => {
@@ -123,6 +131,7 @@ function Properties() {
           <input
             className="input-properties bg-gray-300"
             type="number"
+            min="0"
             name="x_coord"
             value={selectedWidgetPosition.x}
             disabled
@@ -140,6 +149,7 @@ function Properties() {
           <input
             className="input-properties bg-gray-300"
             type="number"
+            min="0"
             name="y_coord"
             value={selectedWidgetPosition.y}
             disabled
@@ -160,6 +170,7 @@ function Properties() {
           <input
             className="input-properties"
             type="number"
+            min="5"
             name="height"
             value={parseInt(selectedWidgetHeight)}
             onChange={(event) => handleStyleChange(event, "height")}
@@ -177,6 +188,7 @@ function Properties() {
           <input
             className="input-properties"
             type="number"
+            min="5"
             name="width"
             value={parseInt(selectedWidgetWidth)}
             onChange={(event) => handleStyleChange(event, "width")}
@@ -211,9 +223,26 @@ function Properties() {
           <input
             className="input-properties"
             type="number"
+            min="1"
             name="border-width"
             value={parseInt(selectedWidgetBorder)}
             onChange={(event) => handleStyleChange(event, "border-width")}
+          />
+          <label className="text-properties-h3">Px</label>
+          <br />
+        </div>
+
+        <div className="flex flew-row items-end pt-4">
+          <label className="text-properties-h2 whitespace-nowrap">
+            Border Radius:
+          </label>
+          <input
+            className="input-properties"
+            type="number"
+            min="1"
+            name="border-radius"
+            value={parseInt(selectedWidgetBorderRadius)}
+            onChange={(event) => handleStyleChange(event, "border-radius")}
           />
           <label className="text-properties-h3">Px</label>
           <br />
@@ -259,6 +288,7 @@ function Properties() {
           <input
             className="input-properties"
             type="number"
+            min="1"
             name="fontSize"
             value={parseInt(selectedWidgetFontSize)}
             onChange={(event) => handleStyleChange(event, "fontSize")}

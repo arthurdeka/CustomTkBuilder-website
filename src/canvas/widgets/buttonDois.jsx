@@ -6,7 +6,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Draggable from "react-draggable";
 import { CanvasContext } from "../CanvasContext";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 // Estilizando o botão usando styled-components
 const StyledButton = styled.div`
@@ -14,28 +14,27 @@ const StyledButton = styled.div`
   cursor: grab;
   top: 0;
   left: 0;
-  height: ${props => props.height};
-  width: ${props => props.width};
-  background-color: ${props => props.backgroundColor};
-  color: ${props => props.fontColor};
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: ${props => props.fontSize};
+  height: ${(props) => props.height};
+  width: ${(props) => props.width};
+  background-color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.fontColor};
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: ${(props) => props.fontSize};
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: ${props => props.border};
-  border-color: ${props => props.borderColor};
-  border-radius: 5px;
+  border: ${(props) => props.border};
+  border-color: ${(props) => props.borderColor};
+  border-radius: ${(props) => props.borderRadius};
   &:hover {
-    background-color: ${props => props.hoverBackgroundColor};
-    border-color: ${props => props.hoverBorderColor};
-    color: ${props => props.hoverFontColor};
+    background-color: ${(props) => props.hoverBackgroundColor};
+    border-color: ${(props) => props.hoverBorderColor};
+    color: ${(props) => props.hoverFontColor};
   }
 `;
 
 function ButtonDois({ id }) {
-  
   // Usando o contexto para obter as funções e estados necessários
   const {
     selectedWidgetID,
@@ -70,6 +69,8 @@ function ButtonDois({ id }) {
     setSelectedWidgetHoverFontColor,
     isActiveSelectedWidgetHoverFontColor,
     setIsActiveSelectedWidgetHoverFontColor,
+    selectedWidgetBorderRadius,
+    setSelectedWidgetBorderRadius,
   } = useContext(CanvasContext);
 
   // Estados para propriedades do botão
@@ -79,9 +80,10 @@ function ButtonDois({ id }) {
   const [buttonWidth, setButtonWidth] = useState("95px");
   const [buttonBorder, setButtonBorder] = useState("2px solid");
   const [buttonBorderColor, setButtonBorderColor] = useState("#000000");
+  const [buttonBorderRadius, setButtonBorderRadius] = useState("5px");
   const [buttonBackgroundColor, setButtonBackgroundColor] = useState("#F0F0F0");
   const [buttonFontSize, setButtonFontSize] = useState("14px");
-  const [buttonFontColor, setButtonFontColor] = useState("#000000")
+  const [buttonFontColor, setButtonFontColor] = useState("#000000");
 
   // hover
   const [buttonHoverBackgroundColor, setButtonHoverBackgroundColor] = useState("#79A0FF");
@@ -101,19 +103,37 @@ function ButtonDois({ id }) {
       setButtonWidth(selectedWidgetWidth);
       setButtonBorder(selectedWidgetBorder);
       setButtonBorderColor(selectedWidgetBorderColor);
+      setButtonBorderRadius(selectedWidgetBorderRadius);
       setButtonBackgroundColor(selectedWidgetBackgroundColor);
       setButtonFontSize(selectedWidgetFontSize);
       setButtonFontColor(selectedWidgetFontColor);
       // hover
-      setButtonHoverBackgroundColor(selectedWidgetHoverBackgroundColor)
-      setButtonHoverBorderColor(selectedWidgetHoverBorderColor)
-      setButtonHoverFontColor(selectedWidgetHoverFontColor)
+      setButtonHoverBackgroundColor(selectedWidgetHoverBackgroundColor);
+      setButtonHoverBorderColor(selectedWidgetHoverBorderColor);
+      setButtonHoverFontColor(selectedWidgetHoverFontColor);
       // valores de checkbox de opções opcionais
-      setIsActiveHoverBackgroundColor(isActiveSelectedWidgetHoverBackgroundColor)
-      setIsActiveHoverBorderColor(isActiveSelectedWidgetHoverBorderColor)
-      setIsActiveHoverFontColor(isActiveSelectedWidgetHoverFontColor)
+      setIsActiveHoverBackgroundColor(isActiveSelectedWidgetHoverBackgroundColor);
+      setIsActiveHoverBorderColor(isActiveSelectedWidgetHoverBorderColor);
+      setIsActiveHoverFontColor(isActiveSelectedWidgetHoverFontColor);
     }
-  }, [selectedWidgetID, selectedWidgetContent, selectedWidgetHeight, selectedWidgetWidth, selectedWidgetBorder, selectedWidgetBorderColor, selectedWidgetBackgroundColor, selectedWidgetFontSize, selectedWidgetFontColor, selectedWidgetHoverBackgroundColor, selectedWidgetHoverBorderColor, isActiveSelectedWidgetHoverBackgroundColor, isActiveSelectedWidgetHoverBorderColor, selectedWidgetHoverFontColor, isActiveSelectedWidgetHoverFontColor]);
+  }, [
+    selectedWidgetID,
+    selectedWidgetContent,
+    selectedWidgetHeight,
+    selectedWidgetWidth,
+    selectedWidgetBorder,
+    selectedWidgetBorderColor,
+    selectedWidgetBackgroundColor,
+    selectedWidgetFontSize,
+    selectedWidgetFontColor,
+    selectedWidgetHoverBackgroundColor,
+    selectedWidgetHoverBorderColor,
+    isActiveSelectedWidgetHoverBackgroundColor,
+    isActiveSelectedWidgetHoverBorderColor,
+    selectedWidgetHoverFontColor,
+    isActiveSelectedWidgetHoverFontColor,
+    selectedWidgetBorderRadius,
+  ]);
 
   // Função para definir este botão como o botão selecionado
   const setAsSelectedButton = () => {
@@ -127,6 +147,7 @@ function ButtonDois({ id }) {
     setSelectedWidgetFontColor(buttonFontColor);
     setSelectedWidgetBorder(buttonBorder);
     setSelectedWidgetBorderColor(buttonBorderColor);
+    setSelectedWidgetBorderRadius(buttonBorderRadius);
     // hover
     setSelectedWidgetHoverBackgroundColor(buttonHoverBackgroundColor);
     setSelectedWidgetHoverBorderColor(buttonHoverBorderColor);
@@ -144,7 +165,11 @@ function ButtonDois({ id }) {
 
   // Renderizando o botão
   return (
-    <Draggable bounds="parent" position={buttonPosition} onStop={updateButtonPosition}>
+    <Draggable
+      bounds="parent"
+      position={buttonPosition}
+      onStop={updateButtonPosition}
+    >
       <StyledButton
         onClick={setAsSelectedButton}
         height={buttonHeight}
@@ -154,6 +179,7 @@ function ButtonDois({ id }) {
         fontColor={buttonFontColor}
         border={buttonBorder}
         borderColor={buttonBorderColor}
+        borderRadius={buttonBorderRadius}
         // hover
         hoverBackgroundColor={buttonHoverBackgroundColor}
         hoverBorderColor={buttonHoverBorderColor}
