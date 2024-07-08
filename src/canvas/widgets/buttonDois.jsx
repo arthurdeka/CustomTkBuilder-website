@@ -30,6 +30,7 @@ const StyledButton = styled.div`
   &:hover {
     background-color: ${props => props.hoverBackgroundColor};
     border-color: ${props => props.hoverBorderColor};
+    color: ${props => props.hoverFontColor};
   }
 `;
 
@@ -65,6 +66,10 @@ function ButtonDois({ id }) {
     setIsActiveSelectedWidgetHoverBorderColor,
     selectedWidgetFontColor,
     setSelectedWidgetFontColor,
+    selectedWidgetHoverFontColor,
+    setSelectedWidgetHoverFontColor,
+    isActiveSelectedWidgetHoverFontColor,
+    setIsActiveSelectedWidgetHoverFontColor,
   } = useContext(CanvasContext);
 
   // Estados para propriedades do botão
@@ -76,13 +81,17 @@ function ButtonDois({ id }) {
   const [buttonBorderColor, setButtonBorderColor] = useState("#000000");
   const [buttonBackgroundColor, setButtonBackgroundColor] = useState("#F0F0F0");
   const [buttonFontSize, setButtonFontSize] = useState("14px");
-  const [buttonFontColor, setButtonFontColor] = useState("#000000");
+  const [buttonFontColor, setButtonFontColor] = useState("#000000")
+
+  // hover
   const [buttonHoverBackgroundColor, setButtonHoverBackgroundColor] = useState("#79A0FF");
   const [buttonHoverBorderColor, setButtonHoverBorderColor] = useState("#004AFF");
+  const [buttonHoverFontColor, setButtonHoverFontColor] = useState("#004AFF");
 
   // is active checkbox para opções opicionais
   const [isActiveHoverBackgroundColor, setIsActiveHoverBackgroundColor] = useState(true);
   const [isActiveHoverBorderColor, setIsActiveHoverBorderColor] = useState(true);
+  const [isActiveHoverFontColor, setIsActiveHoverFontColor] = useState(true);
 
   // Atualizando o conteúdo do botão quando o ID do botão selecionado tem match com o ID deste botão
   useEffect(() => {
@@ -94,14 +103,17 @@ function ButtonDois({ id }) {
       setButtonBorderColor(selectedWidgetBorderColor);
       setButtonBackgroundColor(selectedWidgetBackgroundColor);
       setButtonFontSize(selectedWidgetFontSize);
+      setButtonFontColor(selectedWidgetFontColor);
+      // hover
       setButtonHoverBackgroundColor(selectedWidgetHoverBackgroundColor)
       setButtonHoverBorderColor(selectedWidgetHoverBorderColor)
-      setButtonFontColor(selectedWidgetFontColor);
+      setButtonHoverFontColor(selectedWidgetHoverFontColor)
       // valores de checkbox de opções opcionais
       setIsActiveHoverBackgroundColor(isActiveSelectedWidgetHoverBackgroundColor)
       setIsActiveHoverBorderColor(isActiveSelectedWidgetHoverBorderColor)
+      setIsActiveHoverFontColor(isActiveSelectedWidgetHoverFontColor)
     }
-  }, [selectedWidgetID, selectedWidgetContent, selectedWidgetHeight, selectedWidgetWidth, selectedWidgetBorder, selectedWidgetBorderColor, selectedWidgetBackgroundColor, selectedWidgetFontSize, selectedWidgetFontColor, selectedWidgetHoverBackgroundColor, selectedWidgetHoverBorderColor, isActiveSelectedWidgetHoverBackgroundColor, isActiveSelectedWidgetHoverBorderColor]);
+  }, [selectedWidgetID, selectedWidgetContent, selectedWidgetHeight, selectedWidgetWidth, selectedWidgetBorder, selectedWidgetBorderColor, selectedWidgetBackgroundColor, selectedWidgetFontSize, selectedWidgetFontColor, selectedWidgetHoverBackgroundColor, selectedWidgetHoverBorderColor, isActiveSelectedWidgetHoverBackgroundColor, isActiveSelectedWidgetHoverBorderColor, selectedWidgetHoverFontColor, isActiveSelectedWidgetHoverFontColor]);
 
   // Função para definir este botão como o botão selecionado
   const setAsSelectedButton = () => {
@@ -115,11 +127,14 @@ function ButtonDois({ id }) {
     setSelectedWidgetFontColor(buttonFontColor);
     setSelectedWidgetBorder(buttonBorder);
     setSelectedWidgetBorderColor(buttonBorderColor);
+    // hover
     setSelectedWidgetHoverBackgroundColor(buttonHoverBackgroundColor);
     setSelectedWidgetHoverBorderColor(buttonHoverBorderColor);
+    setSelectedWidgetHoverFontColor(buttonHoverFontColor);
     // valores de checkbox de opções opcionais
     setIsActiveSelectedWidgetHoverBackgroundColor(isActiveHoverBackgroundColor);
     setIsActiveSelectedWidgetHoverBorderColor(isActiveHoverBorderColor);
+    setIsActiveSelectedWidgetHoverFontColor(isActiveHoverFontColor);
   };
 
   // função para atualizar as coordenadas no contexto CanvasContext
@@ -139,8 +154,10 @@ function ButtonDois({ id }) {
         fontColor={buttonFontColor}
         border={buttonBorder}
         borderColor={buttonBorderColor}
+        // hover
         hoverBackgroundColor={buttonHoverBackgroundColor}
         hoverBorderColor={buttonHoverBorderColor}
+        hoverFontColor={buttonHoverFontColor}
       >
         {buttonContent}
       </StyledButton>

@@ -29,6 +29,10 @@ function Properties() {
     setIsActiveSelectedWidgetHoverBorderColor,
     selectedWidgetFontColor,
     setSelectedWidgetFontColor,
+    selectedWidgetHoverFontColor,
+    setSelectedWidgetHoverFontColor,
+    isActiveSelectedWidgetHoverFontColor,
+    setIsActiveSelectedWidgetHoverFontColor,
   } = useContext(CanvasContext);
 
   const handleStyleChange = (event, propriedade) => {
@@ -75,23 +79,32 @@ function Properties() {
     if (propriedade === "hoverBorderColor") {
       setSelectedWidgetHoverBorderColor(event.target.value);
     }
+
+    if (propriedade === "hoverFontColor") {
+      setSelectedWidgetHoverFontColor(event.target.value);
+    }
   };
 
   useEffect(() => {
     // caso o hover background color esteja desabilitado, a cor de hover é setada para none
     if (isActiveSelectedWidgetHoverBackgroundColor === false) {
-      setSelectedWidgetHoverBackgroundColor('none');
-
+      setSelectedWidgetHoverBackgroundColor("none");
     }
 
     // caso o hover border color esteja desabilitado, a cor de hover é setada para none
     if (isActiveSelectedWidgetHoverBorderColor === false) {
-      setSelectedWidgetHoverBorderColor('none');
-
+      setSelectedWidgetHoverBorderColor("none");
     }
 
-  }, [isActiveSelectedWidgetHoverBackgroundColor, isActiveSelectedWidgetHoverBorderColor]);
- 
+    if (isActiveSelectedWidgetHoverFontColor === false) {
+      setSelectedWidgetHoverFontColor("none");
+    }
+  }, [
+    isActiveSelectedWidgetHoverBackgroundColor,
+    isActiveSelectedWidgetHoverBorderColor,
+    isActiveSelectedWidgetHoverFontColor,
+  ]);
+
   return (
     <div className="bg-slate-800 w-3/12  max-h-svh overflow-scroll">
       <div className="p-4 pb-20 pl-6 max-h-100 mt-8">
@@ -279,7 +292,9 @@ function Properties() {
             <input
               type="checkbox"
               checked={isActiveSelectedWidgetHoverBackgroundColor}
-              onChange={(e) => setIsActiveSelectedWidgetHoverBackgroundColor(e.target.checked)}
+              onChange={(e) =>
+                setIsActiveSelectedWidgetHoverBackgroundColor(e.target.checked)
+              }
               className="mr-2"
             />
             <label className="text-md font-inter font-semibold">
@@ -287,7 +302,7 @@ function Properties() {
             </label>
           </div>
 
-          {/* somente aparece caso showHoverBackgroundColor seja True */}
+          {/* somente aparece caso isActiveSelectedWidgetHoverBackgroundColor seja True */}
           {isActiveSelectedWidgetHoverBackgroundColor && (
             <div className="flex flex-col">
               <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
@@ -313,7 +328,9 @@ function Properties() {
             <input
               type="checkbox"
               checked={isActiveSelectedWidgetHoverBorderColor}
-              onChange={(e) => setIsActiveSelectedWidgetHoverBorderColor(e.target.checked)}
+              onChange={(e) =>
+                setIsActiveSelectedWidgetHoverBorderColor(e.target.checked)
+              }
               className="mr-2"
             />
             <label className="text-md font-inter font-semibold">
@@ -321,7 +338,7 @@ function Properties() {
             </label>
           </div>
 
-          {/* somente aparece caso showHoverBackgroundColor seja True */}
+          {/* somente aparece caso isActiveSelectedWidgetHoverBorderColor seja True */}
           {isActiveSelectedWidgetHoverBorderColor && (
             <div className="flex flex-col">
               <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
@@ -341,9 +358,41 @@ function Properties() {
           )}
         </div>
 
+        {/* Enable Hover Font Color checkbox */}
+        <div>
+          <div className="flex flex-row items-center mb-4">
+            <input
+              type="checkbox"
+              checked={isActiveSelectedWidgetHoverFontColor}
+              onChange={(e) =>
+                setIsActiveSelectedWidgetHoverFontColor(e.target.checked)
+              }
+              className="mr-2"
+            />
+            <label className="text-md font-inter font-semibold">
+              Enable Hover - Font Color
+            </label>
+          </div>
 
-
-
+          {/* somente aparece caso isActiveSelectedWidgetHoverFontColor seja True */}
+          {isActiveSelectedWidgetHoverFontColor && (
+            <div className="flex flex-col">
+              <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+                Hover - Font Color:
+              </label>
+              <input
+                className="rounded-sm py-1 w-full pl-2 text-md bg-gray-300"
+                type="color"
+                name="hoverFontColor"
+                value={selectedWidgetHoverFontColor}
+                onChange={(event) =>
+                  handleStyleChange(event, "hoverFontColor")
+                }
+              />
+              <div className="py-1" />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
