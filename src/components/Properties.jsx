@@ -113,7 +113,7 @@ function Properties() {
         </h2>
         <br />
 
-        <h4 className="text-md font-inter font-semibold mb-2 text-center text-corprimaria">
+        <h4 className="text-properties-h1">
           Coords:
         </h4>
         <div className="flex flex-row items-end">
@@ -121,13 +121,13 @@ function Properties() {
             X:
           </label>
           <input
-            className="rounded-sm py-1 w-full pl-2 text-md bg-gray-300"
+            className="input-properties bg-gray-300"
             type="number"
             name="x_coord"
             value={selectedWidgetPosition.x}
             disabled
           />
-          <label className="text-corsecundaria pl-2 font-inter pr-2">Px</label>
+          <label className="text-properties-h3">Px</label>
           <br />
         </div>
 
@@ -138,64 +138,64 @@ function Properties() {
             Y:
           </label>
           <input
-            className="rounded-sm py-1 w-full pl-2 text-md bg-gray-300"
+            className="input-properties bg-gray-300"
             type="number"
             name="y_coord"
             value={selectedWidgetPosition.y}
             disabled
           />
-          <label className="text-corsecundaria pl-2 font-inter pr-2">Px</label>
+          <label className="text-properties-h3">Px</label>
           <br />
         </div>
 
         <div className="border-b border-corsecundaria my-6 mt-10" />
 
-        <h4 className="text-md font-inter font-semibold mb-2 text-center text-corprimaria">
+        <h4 className="text-properties-h1">
           Size:
         </h4>
         <div className="flex flex-row items-end">
-          <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+          <label className="text-properties-h2">
             Height:
           </label>
           <input
-            className="rounded-sm py-1 w-full pl-2 text-md"
+            className="input-properties"
             type="number"
             name="height"
             value={parseInt(selectedWidgetHeight)}
             onChange={(event) => handleStyleChange(event, "height")}
           />
-          <label className="text-corsecundaria pl-2 font-inter pr-2">Px</label>
+          <label className="text-properties-h3">Px</label>
           <br />
         </div>
 
         <div className="p-1" />
 
         <div className="flex flex-row items-end">
-          <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+          <label className="text-properties-h2">
             Width:
           </label>
           <input
-            className="rounded-sm py-1 w-full pl-2 text-md"
+            className="input-properties"
             type="number"
             name="width"
             value={parseInt(selectedWidgetWidth)}
             onChange={(event) => handleStyleChange(event, "width")}
           />
-          <label className="text-corsecundaria pl-2 font-inter pr-2">Px</label>
+          <label className="text-properties-h3">Px</label>
           <br />
         </div>
 
         <div className="border-b border-corsecundaria my-6 mt-10" />
 
-        <h4 className="text-md font-inter font-semibold mb-2 text-center text-corprimaria">
+        <h4 className="text-properties-h1">
           Content:
         </h4>
         <div className="flex flex-col">
-          <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+          <label className="text-properties-h2">
             Background Color:
           </label>
           <input
-            className="w-full my-2"
+            className="input-properties-color"
             type="color"
             name="backgroundColor"
             value={selectedWidgetBackgroundColor}
@@ -205,26 +205,26 @@ function Properties() {
         </div>
 
         <div className="flex flew-row items-end pt-4">
-          <label className="text-corsecundaria text-md font-inter font-semibold pr-2 whitespace-nowrap">
+          <label className="text-properties-h2 whitespace-nowrap">
             Border width:
           </label>
           <input
-            className="rounded-sm py-1 w-full pl-2 text-md"
+            className="input-properties"
             type="number"
             name="border-width"
             value={parseInt(selectedWidgetBorder)}
             onChange={(event) => handleStyleChange(event, "border-width")}
           />
-          <label className="text-corsecundaria pl-2 font-inter pr-2">Px</label>
+          <label className="text-properties-h3">Px</label>
           <br />
         </div>
 
         <div className="flex flex-col pt-6">
-          <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+          <label className="text-properties-h2">
             Border Color:
           </label>
           <input
-            className="w-full my-2"
+            className="input-properties-color"
             type="color"
             name="borderColor"
             value={selectedWidgetBorderColor}
@@ -235,15 +235,15 @@ function Properties() {
 
         <div className="border-b border-corsecundaria my-6 mt-10" />
 
-        <h4 className="text-md font-inter font-semibold mb-2 text-center text-corprimaria">
+        <h4 className="text-properties-h1">
           Text:
         </h4>
         <div className="flex flex-row items-end pb-4">
-          <label className="text-corsecundaria text-md font-inter font-semibold pr-2 whitespace-nowrap">
+          <label className="text-properties-h2 whitespace-nowrap">
             Text content:
           </label>
           <input
-            className="rounded-sm py-1 w-full pl-2 text-md"
+            className="input-properties"
             type="text"
             name="fontSize"
             value={selectedWidgetContent}
@@ -253,26 +253,26 @@ function Properties() {
         </div>
 
         <div className="flex flex-row items-end">
-          <label className="text-corsecundaria text-md font-inter font-semibold pr-2 whitespace-nowrap">
+          <label className="text-properties-h2 whitespace-nowrap">
             Font size:
           </label>
           <input
-            className="rounded-sm py-1 w-full pl-2 text-md"
+            className="input-properties"
             type="number"
             name="fontSize"
             value={parseInt(selectedWidgetFontSize)}
             onChange={(event) => handleStyleChange(event, "fontSize")}
           />
-          <label className="text-corsecundaria pl-2 font-inter pr-2">Px</label>
+          <label className="text-properties-h3">Px</label>
           <br />
         </div>
 
         <div className="flex flex-col pt-6">
-          <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+          <label className="text-properties-h2">
             Font Color:
           </label>
           <input
-            className="w-full my-2"
+            className="input-properties-color"
             type="color"
             name="fontColor"
             value={selectedWidgetFontColor}
@@ -282,7 +282,7 @@ function Properties() {
         </div>
 
         <div className="border-b border-corsecundaria my-6 mt-10" />
-        <h4 className="text-md font-inter font-semibold mb-2 text-center text-corprimaria">
+        <h4 className="text-properties-h1">
           Hover:
         </h4>
 
@@ -305,11 +305,11 @@ function Properties() {
           {/* somente aparece caso isActiveSelectedWidgetHoverBackgroundColor seja True */}
           {isActiveSelectedWidgetHoverBackgroundColor && (
             <div className="flex flex-col">
-              <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+              <label className="text-properties-h2">
                 Hover - Background Color:
               </label>
               <input
-                className="rounded-sm py-1 w-full pl-2 text-md bg-gray-300"
+                className="input-properties-color"
                 type="color"
                 name="hoverBackgroundColor"
                 value={selectedWidgetHoverBackgroundColor}
@@ -341,11 +341,11 @@ function Properties() {
           {/* somente aparece caso isActiveSelectedWidgetHoverBorderColor seja True */}
           {isActiveSelectedWidgetHoverBorderColor && (
             <div className="flex flex-col">
-              <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+              <label className="text-properties-h2">
                 Hover - Border Color:
               </label>
               <input
-                className="rounded-sm py-1 w-full pl-2 text-md bg-gray-300"
+                className="input-properties-color"
                 type="color"
                 name="hoverBorderColor"
                 value={selectedWidgetHoverBorderColor}
@@ -377,11 +377,11 @@ function Properties() {
           {/* somente aparece caso isActiveSelectedWidgetHoverFontColor seja True */}
           {isActiveSelectedWidgetHoverFontColor && (
             <div className="flex flex-col">
-              <label className="text-corsecundaria text-md font-inter font-semibold pr-2">
+              <label className="text-properties-h2">
                 Hover - Font Color:
               </label>
               <input
-                className="rounded-sm py-1 w-full pl-2 text-md bg-gray-300"
+                className="input-properties-color"
                 type="color"
                 name="hoverFontColor"
                 value={selectedWidgetHoverFontColor}
