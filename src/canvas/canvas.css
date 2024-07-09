@@ -16,3 +16,19 @@
     -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
+
+#window-configs {
+    margin: 20px;
+    padding: 10px;
+
+    border-radius: 5px;
+
+    width: 20%;
+
+    background-color: rgb(172, 172, 172);
+    
+}
+
+#window-configs-button {
+    font-weight: bold;
+}
