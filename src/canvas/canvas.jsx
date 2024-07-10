@@ -9,14 +9,17 @@ function Canvas() {
   // Adiciona estados para width, height e visibilidade da configuração
   const [canvasWidth, setCanvasWidth] = useState(800); // Valor inicial para width
   const [canvasHeight, setCanvasHeight] = useState(350); // Valor inicial para height
+  const [canvasBackgroundColor, setCanvasBackgroundColor] = useState("#FFFFFF");
   const [WindowName, setWindowName] = useState("Tkinter"); // Valor inicial para height
-  const [showConfigs, setShowConfigs] = useState(false); // Estado para controlar a visibilidade da configuração
+
+  // estado para mostrar a janela de configurações
+  const [showConfigs, setShowConfigs] = useState(false); 
 
   return (
     <div id="canvas-env">
       <div
         id="canvas"
-        style={{ width: `${canvasWidth}px`, height: `${canvasHeight}px` }}
+        style={{ width: `${canvasWidth}px`, height: `${canvasHeight}px`, backgroundColor: `${canvasBackgroundColor}`}}
       >
         {/* renderiza os objetos armazenados na lista objetosCanvas */}
         {objetosCanvas.map((objeto, index) => (
@@ -39,6 +42,13 @@ function Canvas() {
               type="text"
               value={WindowName}
               onChange={(e) => setWindowName(e.target.value)}
+            />
+
+            <h5>Background Color:</h5>
+            <input
+              type="color"
+              value={canvasBackgroundColor}
+              onChange={(e) => setCanvasBackgroundColor(e.target.value)}
             />
 
             <h1>Window Size:</h1>
