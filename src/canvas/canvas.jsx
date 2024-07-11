@@ -1,25 +1,31 @@
 import "./canvas.css";
-import React, { useContext, useState, Fragment } from "react";
+import React, { useContext, useState, Fragment, useEffect } from "react";
 import { CanvasContext } from "./CanvasContext";
 
 function Canvas() {
   // importa a lista de objetosCanvas do contexto
-  const { objetosCanvas } = useContext(CanvasContext);
+  const { objetosCanvas, setCanvasBackgroundColor } = useContext(CanvasContext);
 
   // Adiciona estados para width, height e visibilidade da configuração
   const [canvasWidth, setCanvasWidth] = useState(800); // Valor inicial para width
   const [canvasHeight, setCanvasHeight] = useState(350); // Valor inicial para height
-  const [canvasBackgroundColor, setCanvasBackgroundColor] = useState("#FFFFFF");
+  const [canvasLocalBackgroundColor, setCanvasLocalBackgroundColor] = useState("#FFFFFF");
   const [WindowName, setWindowName] = useState("Tkinter"); // Valor inicial para height
 
   // estado para mostrar a janela de configurações
   const [showConfigs, setShowConfigs] = useState(false); 
 
+  useEffect(() => {
+    // caso o a cor do canvas mude, a nova cor é enviada ao CanvasContext
+    setCanvasBackgroundColor(canvasLocalBackgroundColor)
+
+  }, [canvasLocalBackgroundColor]);
+
   return (
     <div id="canvas-env">
       <div
         id="canvas"
-        style={{ width: `${canvasWidth}px`, height: `${canvasHeight}px`, backgroundColor: `${canvasBackgroundColor}`}}
+        style={{ width: `${canvasWidth}px`, height: `${canvasHeight}px`, backgroundColor: `${canvasLocalBackgroundColor}`}}
       >
         {/* renderiza os objetos armazenados na lista objetosCanvas */}
         {objetosCanvas.map((objeto, index) => (
@@ -47,8 +53,8 @@ function Canvas() {
             <h5>Background Color:</h5>
             <input
               type="color"
-              value={canvasBackgroundColor}
-              onChange={(e) => setCanvasBackgroundColor(e.target.value)}
+              value={canvasLocalBackgroundColor}
+              onChange={(e) => setCanvasLocalBackgroundColor(e.target.value)}
             />
 
             <h1>Window Size:</h1>

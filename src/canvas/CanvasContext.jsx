@@ -9,6 +9,9 @@ export function CanvasProvider({ children }) {
   // Estado para armazenar os objetos no canvas. 
   const [objetosCanvas, setObjetosCanvas] = useState([]);
 
+  // Estado para armazenar a cor atual do canvas
+  const [canvasBackgroundColor, setCanvasBackgroundColor] = useState("#FFFFFF");
+
   // Estado para armazenar o ID do widget selecionado
   const [selectedWidgetID, setSelectedWidgetID] = useState(null);
 
@@ -26,6 +29,7 @@ export function CanvasProvider({ children }) {
   const [selectedWidgetBorderColor, setSelectedWidgetBorderColor] = useState(null);
   const [selectedWidgetBorderRadius, setSelectedWidgetBorderRadius] = useState(null);
   const [selectedWidgetBackgroundColor, setSelectedWidgetBackgroundColor] = useState(null);
+  const [selectedWidgetOutsideBackgroundColor, setSelectedWidgetOutsideBackgroundColor] = useState(null);
   // texto
   const [selectedWidgetContent, setSelectedWidgetContent] = useState(null);
   const [selectedWidgetFontSize, setSelectedWidgetFontSize] = useState(null);
@@ -40,6 +44,8 @@ export function CanvasProvider({ children }) {
   const [isActiveSelectedWidgetHoverBorderColor, setIsActiveSelectedWidgetHoverBorderColor] = useState(true);
   const [isActiveSelectedWidgetHoverBackgroundColor, setIsActiveSelectedWidgetHoverBackgroundColor] = useState(true);
   const [isActiveSelectedWidgetHoverFontColor, setIsActiveSelectedWidgetHoverFontColor] = useState(true);
+  const [selectionOutsideBackgroundColor_SameAsCanvas, setSelectionOutsideBackgroundColor_SameAsCanvas] = useState(true);
+
 
   // Função para adicionar um novo objeto ao canvas
   const addObjeto = (objeto) => {
@@ -48,13 +54,14 @@ export function CanvasProvider({ children }) {
     setNextId(nextId + 1);
   };
 
-
   // Retorna o provedor do contexto CanvasContext, que fornece os valores para os componentes filhos
   return (
     <CanvasContext.Provider
       value={{
         objetosCanvas,
         addObjeto,
+        canvasBackgroundColor,
+        setCanvasBackgroundColor,
         selectedWidgetID,
         setSelectedWidgetID,
         selectedWidgetContent,
@@ -89,6 +96,10 @@ export function CanvasProvider({ children }) {
         setIsActiveSelectedWidgetHoverFontColor,
         selectedWidgetBorderRadius,
         setSelectedWidgetBorderRadius,
+        selectedWidgetOutsideBackgroundColor,
+        setSelectedWidgetOutsideBackgroundColor,
+        selectionOutsideBackgroundColor_SameAsCanvas,
+        setSelectionOutsideBackgroundColor_SameAsCanvas,
       }}
     >
       {children}

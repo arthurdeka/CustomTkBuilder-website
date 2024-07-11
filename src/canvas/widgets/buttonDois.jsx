@@ -12,8 +12,6 @@ import styled from "styled-components";
 const StyledButton = styled.div`
   position: absolute;
   cursor: grab;
-  top: 0;
-  left: 0;
   height: ${(props) => props.height};
   width: ${(props) => props.width};
   background-color: ${(props) => props.backgroundColor};
@@ -32,6 +30,14 @@ const StyledButton = styled.div`
     border-color: ${(props) => props.hoverBorderColor};
     color: ${(props) => props.hoverFontColor};
   }
+`;
+
+// div para representar o background color além das rounded borders
+const OutsideBackgroundColor = styled.div`
+  position: absolute;
+  height: ${(props) => props.height};
+  width: ${(props) => props.width};
+  background-color: ${(props) => props.outsideBackgroundColor};
 `;
 
 function ButtonDois({ id }) {
@@ -71,6 +77,11 @@ function ButtonDois({ id }) {
     setIsActiveSelectedWidgetHoverFontColor,
     selectedWidgetBorderRadius,
     setSelectedWidgetBorderRadius,
+    selectedWidgetOutsideBackgroundColor,
+    setSelectedWidgetOutsideBackgroundColor,
+    canvasBackgroundColor,
+    selectionOutsideBackgroundColor_SameAsCanvas,
+    setSelectionOutsideBackgroundColor_SameAsCanvas,
   } = useContext(CanvasContext);
 
   // Estados para propriedades do botão
@@ -80,8 +91,9 @@ function ButtonDois({ id }) {
   const [buttonWidth, setButtonWidth] = useState("95px");
   const [buttonBorder, setButtonBorder] = useState("2px solid");
   const [buttonBorderColor, setButtonBorderColor] = useState("#000000");
-  const [buttonBorderRadius, setButtonBorderRadius] = useState("5px");
+  const [buttonBorderRadius, setButtonBorderRadius] = useState("15px");
   const [buttonBackgroundColor, setButtonBackgroundColor] = useState("#F0F0F0");
+  const [buttonOutsideBackgroundColor, setButtonOutsideBackgroundColor] = useState(canvasBackgroundColor);
   const [buttonFontSize, setButtonFontSize] = useState("14px");
   const [buttonFontColor, setButtonFontColor] = useState("#000000");
 
@@ -94,6 +106,8 @@ function ButtonDois({ id }) {
   const [isActiveHoverBackgroundColor, setIsActiveHoverBackgroundColor] = useState(true);
   const [isActiveHoverBorderColor, setIsActiveHoverBorderColor] = useState(true);
   const [isActiveHoverFontColor, setIsActiveHoverFontColor] = useState(true);
+  const [buttonOutsideBackgroundColor_SameAsCanvas, setButtonOutsideBackgroundColor_SameAsCanvas] = useState(true);
+
 
   // Atualizando o conteúdo do botão quando o ID do botão selecionado tem match com o ID deste botão
   useEffect(() => {
@@ -105,6 +119,7 @@ function ButtonDois({ id }) {
       setButtonBorderColor(selectedWidgetBorderColor);
       setButtonBorderRadius(selectedWidgetBorderRadius);
       setButtonBackgroundColor(selectedWidgetBackgroundColor);
+      setButtonOutsideBackgroundColor(selectedWidgetOutsideBackgroundColor);
       setButtonFontSize(selectedWidgetFontSize);
       setButtonFontColor(selectedWidgetFontColor);
       // hover
@@ -115,6 +130,7 @@ function ButtonDois({ id }) {
       setIsActiveHoverBackgroundColor(isActiveSelectedWidgetHoverBackgroundColor);
       setIsActiveHoverBorderColor(isActiveSelectedWidgetHoverBorderColor);
       setIsActiveHoverFontColor(isActiveSelectedWidgetHoverFontColor);
+      setButtonOutsideBackgroundColor_SameAsCanvas(selectionOutsideBackgroundColor_SameAsCanvas)
     }
   }, [
     selectedWidgetID,
@@ -124,6 +140,7 @@ function ButtonDois({ id }) {
     selectedWidgetBorder,
     selectedWidgetBorderColor,
     selectedWidgetBackgroundColor,
+    selectedWidgetOutsideBackgroundColor,
     selectedWidgetFontSize,
     selectedWidgetFontColor,
     selectedWidgetHoverBackgroundColor,
@@ -133,7 +150,16 @@ function ButtonDois({ id }) {
     selectedWidgetHoverFontColor,
     isActiveSelectedWidgetHoverFontColor,
     selectedWidgetBorderRadius,
+    selectionOutsideBackgroundColor_SameAsCanvas,
   ]);
+
+  useEffect(() => {
+    // caso a cor do canvas mude, e a opção de manter a cor do botão igual a do canvas esteja ativa, a cor do outside background é atualizada
+    if (buttonOutsideBackgroundColor_SameAsCanvas == true) {
+      setButtonOutsideBackgroundColor(canvasBackgroundColor)
+    }
+    
+  }, [canvasBackgroundColor]);
 
   // Função para definir este botão como o botão selecionado
   const setAsSelectedButton = () => {
@@ -143,6 +169,7 @@ function ButtonDois({ id }) {
     setSelectedWidgetHeight(buttonHeight);
     setSelectedWidgetWidth(buttonWidth);
     setSelectedWidgetBackgroundColor(buttonBackgroundColor);
+    setSelectedWidgetOutsideBackgroundColor(buttonOutsideBackgroundColor);
     setSelectedWidgetFontSize(buttonFontSize);
     setSelectedWidgetFontColor(buttonFontColor);
     setSelectedWidgetBorder(buttonBorder);
@@ -156,6 +183,7 @@ function ButtonDois({ id }) {
     setIsActiveSelectedWidgetHoverBackgroundColor(isActiveHoverBackgroundColor);
     setIsActiveSelectedWidgetHoverBorderColor(isActiveHoverBorderColor);
     setIsActiveSelectedWidgetHoverFontColor(isActiveHoverFontColor);
+    setSelectionOutsideBackgroundColor_SameAsCanvas(buttonOutsideBackgroundColor_SameAsCanvas)
   };
 
   // função para atualizar as coordenadas no contexto CanvasContext
@@ -170,23 +198,26 @@ function ButtonDois({ id }) {
       position={buttonPosition}
       onStop={updateButtonPosition}
     >
-      <StyledButton
-        onClick={setAsSelectedButton}
-        height={buttonHeight}
-        width={buttonWidth}
-        backgroundColor={buttonBackgroundColor}
-        fontSize={buttonFontSize}
-        fontColor={buttonFontColor}
-        border={buttonBorder}
-        borderColor={buttonBorderColor}
-        borderRadius={buttonBorderRadius}
-        // hover
-        hoverBackgroundColor={buttonHoverBackgroundColor}
-        hoverBorderColor={buttonHoverBorderColor}
-        hoverFontColor={buttonHoverFontColor}
-      >
-        {buttonContent}
-      </StyledButton>
+      <OutsideBackgroundColor outsideBackgroundColor={buttonOutsideBackgroundColor} height={buttonHeight} width={buttonWidth} >
+        <StyledButton
+          onClick={setAsSelectedButton}
+          height={buttonHeight}
+          width={buttonWidth}
+          backgroundColor={buttonBackgroundColor}
+          fontSize={buttonFontSize}
+          fontColor={buttonFontColor}
+          border={buttonBorder}
+          borderColor={buttonBorderColor}
+          borderRadius={buttonBorderRadius}
+          // hover
+          hoverBackgroundColor={buttonHoverBackgroundColor}
+          hoverBorderColor={buttonHoverBorderColor}
+          hoverFontColor={buttonHoverFontColor}
+        >
+          {buttonContent}
+        </StyledButton>
+      </OutsideBackgroundColor>
+
     </Draggable>
   );
 }

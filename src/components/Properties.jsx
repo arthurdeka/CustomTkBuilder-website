@@ -3,6 +3,8 @@ import { CanvasContext } from "../canvas/CanvasContext";
 
 function Properties() {
   const {
+    canvasBackgroundColor,
+    setCanvasBackgroundColor,
     selectedWidgetContent,
     setSelectedWidgetContent,
     selectedWidgetHeight,
@@ -35,6 +37,10 @@ function Properties() {
     setIsActiveSelectedWidgetHoverFontColor,
     selectedWidgetBorderRadius,
     setSelectedWidgetBorderRadius,
+    selectedWidgetOutsideBackgroundColor,
+    setSelectedWidgetOutsideBackgroundColor,
+    selectionOutsideBackgroundColor_SameAsCanvas,
+    setSelectionOutsideBackgroundColor_SameAsCanvas,
   } = useContext(CanvasContext);
 
   const handleStyleChange = (event, propriedade) => {
@@ -63,6 +69,21 @@ function Properties() {
 
     if (propriedade === "backgroundColor") {
       setSelectedWidgetBackgroundColor(event.target.value);
+    }
+
+    if (propriedade === "outsideBackgroundColor_SameAsCanvas") {
+      if (event.target.value === "sameAsCanvas") {
+        setSelectionOutsideBackgroundColor_SameAsCanvas(true)
+        setSelectedWidgetOutsideBackgroundColor(canvasBackgroundColor);
+      }
+      if (event.target.value === "customColor") {
+        setSelectionOutsideBackgroundColor_SameAsCanvas(false)
+      }
+    }
+
+    if (propriedade === "outsideBackgroundColor_CustomColor") {
+      setSelectionOutsideBackgroundColor_SameAsCanvas(false)
+      setSelectedWidgetOutsideBackgroundColor(event.target.value);
     }
 
     if (propriedade === "fontSize") {
@@ -213,6 +234,30 @@ function Properties() {
             value={selectedWidgetBackgroundColor}
             onChange={(event) => handleStyleChange(event, "backgroundColor")}
           />
+          <div className="py-1" />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-properties-h2">
+            Beyond Rounded Borders Background Color:
+          </label>
+          <select 
+            value={selectionOutsideBackgroundColor_SameAsCanvas ? "sameAsCanvas" : "customColor"} 
+            onChange={(event) => handleStyleChange(event, "outsideBackgroundColor_SameAsCanvas")}
+          >
+            <option value="sameAsCanvas">Same as Canvas Color</option>
+            <option value="customColor">Custom Color</option>
+          </select>
+
+          { !selectionOutsideBackgroundColor_SameAsCanvas && (
+            <input
+              className="input-properties-color"
+              type="color"
+              name="outsideBackgroundColor"
+              value={selectedWidgetOutsideBackgroundColor}
+              onChange={(event) => handleStyleChange(event, "outsideBackgroundColor_CustomColor")}
+            />
+          )}
           <div className="py-1" />
         </div>
 
