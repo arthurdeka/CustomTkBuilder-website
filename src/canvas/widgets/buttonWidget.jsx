@@ -40,7 +40,7 @@ const OutsideBackgroundColor = styled.div`
   background-color: ${(props) => props.outsideBackgroundColor};
 `;
 
-function ButtonDois({ id }) {
+function ButtonWidget({ id }) {
   // Usando o contexto para obter as funções e estados necessários
   const {
     selectedWidgetID,
@@ -91,7 +91,7 @@ function ButtonDois({ id }) {
   const [buttonWidth, setButtonWidth] = useState("95px");
   const [buttonBorder, setButtonBorder] = useState("2px solid");
   const [buttonBorderColor, setButtonBorderColor] = useState("#000000");
-  const [buttonBorderRadius, setButtonBorderRadius] = useState("15px");
+  const [buttonBorderRadius, setButtonBorderRadius] = useState("6px");
   const [buttonBackgroundColor, setButtonBackgroundColor] = useState("#F0F0F0");
   const [buttonOutsideBackgroundColor, setButtonOutsideBackgroundColor] = useState(canvasBackgroundColor);
   const [buttonFontSize, setButtonFontSize] = useState("14px");
@@ -222,4 +222,4 @@ function ButtonDois({ id }) {
   );
 }
 
-export default ButtonDois;
+export default ButtonWidget;
