@@ -6,7 +6,7 @@ export const CanvasContext = React.createContext();
 
 // Função que fornece os valores para o CanvasContext
 export function CanvasProvider({ children }) {
-  // Estado para armazenar os objetos no canvas. 
+  // Estado para armazenar os objetos no canvas.
   const [objetosCanvas, setObjetosCanvas] = useState([]);
 
   // Estado para armazenar a cor atual do canvas
@@ -16,7 +16,7 @@ export function CanvasProvider({ children }) {
   const [selectedWidgetID, setSelectedWidgetID] = useState(null);
   // Estado para armazenar o tipo do widget selecionado
   const [selectedWidgetType, setSelectedWidgetType] = useState(null);
-  
+
   // Estado para armazenar o próximo ID disponível
   const [nextId, setNextId] = useState(1);
 
@@ -39,18 +39,17 @@ export function CanvasProvider({ children }) {
   //input
   const [selectedWidgetPlaceholderFontColor, setSelectedWidgetPlaceholderFontColor] = useState(null);
 
-
   //hover
   const [selectedWidgetHoverBorderColor, setSelectedWidgetHoverBorderColor] = useState(null);
   const [selectedWidgetHoverBackgroundColor, setSelectedWidgetHoverBackgroundColor] = useState(null);
   const [selectedWidgetHoverFontColor, setSelectedWidgetHoverFontColor] = useState(null);
 
-  // Estados para opções opcionais	
+  // Estados para opções opcionais
   const [isActiveSelectedWidgetHoverBorderColor, setIsActiveSelectedWidgetHoverBorderColor] = useState(true);
   const [isActiveSelectedWidgetHoverBackgroundColor, setIsActiveSelectedWidgetHoverBackgroundColor] = useState(true);
   const [isActiveSelectedWidgetHoverFontColor, setIsActiveSelectedWidgetHoverFontColor] = useState(true);
   const [selectionOutsideBackgroundColor_SameAsCanvas, setSelectionOutsideBackgroundColor_SameAsCanvas] = useState(true);
-  
+  const [selectionBackgroundColor_SameAsCanvas, setSelectionBackgroundColor_SameAsCanvas] = useState(true);
 
   // Função para adicionar um novo objeto ao canvas
   const addObjeto = (objeto) => {
@@ -109,6 +108,8 @@ export function CanvasProvider({ children }) {
         setSelectedWidgetType,
         selectedWidgetPlaceholderFontColor,
         setSelectedWidgetPlaceholderFontColor,
+        selectionBackgroundColor_SameAsCanvas,
+        setSelectionBackgroundColor_SameAsCanvas,
       }}
     >
       {children}
