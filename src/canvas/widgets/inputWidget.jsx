@@ -19,6 +19,9 @@ const StyledInput = styled.div`
     border: ${(props) => props.border};
     border-color: ${(props) => props.borderColor};
     border-radius: ${(props) => props.borderRadius};
+    ::placeholder {
+        color: ${(props) => props.placeholderFontColor};
+    }
 `;
 
 // div para representar o background color além das rounded borders
@@ -71,6 +74,9 @@ function InputWidget({ id }) {
         canvasBackgroundColor,
         selectionOutsideBackgroundColor_SameAsCanvas,
         setSelectionOutsideBackgroundColor_SameAsCanvas,
+        setSelectedWidgetType,
+        selectedWidgetPlaceholderFontColor,
+        setSelectedWidgetPlaceholderFontColor,
     } = useContext(CanvasContext);
 
     const [inputContent, setInputContent] = useState("");
@@ -85,11 +91,12 @@ function InputWidget({ id }) {
     const [inputOutsideBackgroundColor, setInputOutsideBackgroundColor] = useState(canvasBackgroundColor);
     const [inputFontSize, setInputFontSize] = useState("14px");
     const [inputFontColor, setInputFontColor] = useState("#000000");
+    const [inputPlaceholderFontColor, setInputPlaceholderFontColor] = useState("#000000");
 
-    // hover
-    const [inputHoverBackgroundColor, setInputHoverBackgroundColor] = useState("#79A0FF");
+    // hover - DISABLED PORQUE O CUSTOMTKINTER NÃO SUPORTA HOVER PARA INPUTS/ENTRYS
+    /* const [inputHoverBackgroundColor, setInputHoverBackgroundColor] = useState("#F0F0F0");
     const [inputHoverBorderColor, setInputHoverBorderColor] = useState("#004AFF");
-    const [inputHoverFontColor, setInputHoverFontColor] = useState("#004AFF");
+    const [inputHoverFontColor, setInputHoverFontColor] = useState("#004AFF"); */
 
     // is active checkbox para opções opicionais
     const [isActiveHoverBackgroundColor, setIsActiveHoverBackgroundColor] = useState(true);
@@ -110,14 +117,17 @@ function InputWidget({ id }) {
             setInputOutsideBackgroundColor(selectedWidgetOutsideBackgroundColor);
             setInputFontSize(selectedWidgetFontSize);
             setInputFontColor(selectedWidgetFontColor);
+            setInputPlaceholderFontColor(selectedWidgetPlaceholderFontColor)
+
             // hover
-            setInputHoverBackgroundColor(selectedWidgetHoverBackgroundColor);
-            setInputHoverBorderColor(selectedWidgetHoverBorderColor);
-            setInputHoverFontColor(selectedWidgetHoverFontColor);
+            // setInputHoverBackgroundColor(selectedWidgetHoverBackgroundColor);
+            // setInputHoverBorderColor(selectedWidgetHoverBorderColor);
+            // setInputHoverFontColor(selectedWidgetHoverFontColor);
+
             // valores de checkbox de opções opcionais
-            setIsActiveHoverBackgroundColor(isActiveSelectedWidgetHoverBackgroundColor);
-            setIsActiveHoverBorderColor(isActiveSelectedWidgetHoverBorderColor);
-            setIsActiveHoverFontColor(isActiveSelectedWidgetHoverFontColor);
+            // setIsActiveHoverBackgroundColor(isActiveSelectedWidgetHoverBackgroundColor);
+            // setIsActiveHoverBorderColor(isActiveSelectedWidgetHoverBorderColor);
+            // setIsActiveHoverFontColor(isActiveSelectedWidgetHoverFontColor);
             setInputOutsideBackgroundColor_SameAsCanvas(selectionOutsideBackgroundColor_SameAsCanvas);
         }
     }, [
@@ -131,13 +141,14 @@ function InputWidget({ id }) {
         selectedWidgetOutsideBackgroundColor,
         selectedWidgetFontSize,
         selectedWidgetFontColor,
-        selectedWidgetHoverBackgroundColor,
-        selectedWidgetHoverBorderColor,
-        isActiveSelectedWidgetHoverBackgroundColor,
-        isActiveSelectedWidgetHoverBorderColor,
-        selectedWidgetHoverFontColor,
-        isActiveSelectedWidgetHoverFontColor,
+        selectedWidgetPlaceholderFontColor,
         selectedWidgetBorderRadius,
+        //selectedWidgetHoverBackgroundColor,
+        //selectedWidgetHoverBorderColor,
+        //selectedWidgetHoverFontColor,
+        //isActiveSelectedWidgetHoverBackgroundColor,
+        //isActiveSelectedWidgetHoverBorderColor,
+        //isActiveSelectedWidgetHoverFontColor,
         selectionOutsideBackgroundColor_SameAsCanvas,
     ]);
 
@@ -150,6 +161,7 @@ function InputWidget({ id }) {
 
     // Função para definir este botão como o botão selecionado
     const setAsSelectedWidget = () => {
+        setSelectedWidgetType("input");
         setSelectedWidgetID(id);
         setSelectedWidgetContent(inputPlaceholder);
         setSelectedWidgetPosition(inputPosition);
@@ -159,17 +171,20 @@ function InputWidget({ id }) {
         setSelectedWidgetOutsideBackgroundColor(inputOutsideBackgroundColor);
         setSelectedWidgetFontSize(inputFontSize);
         setSelectedWidgetFontColor(inputFontColor);
+        setSelectedWidgetPlaceholderFontColor(inputPlaceholderFontColor)
         setSelectedWidgetBorder(inputBorder);
         setSelectedWidgetBorderColor(inputBorderColor);
         setSelectedWidgetBorderRadius(inputBorderRadius);
+
         // hover
-        setSelectedWidgetHoverBackgroundColor(inputHoverBackgroundColor);
-        setSelectedWidgetHoverBorderColor(inputHoverBorderColor);
-        setSelectedWidgetHoverFontColor(inputHoverFontColor);
+        //setSelectedWidgetHoverBackgroundColor(inputHoverBackgroundColor);
+        //setSelectedWidgetHoverBorderColor(inputHoverBorderColor);
+        //setSelectedWidgetHoverFontColor(inputHoverFontColor);
+
         // valores de checkbox de opções opcionais
-        setIsActiveSelectedWidgetHoverBackgroundColor(isActiveHoverBackgroundColor);
-        setIsActiveSelectedWidgetHoverBorderColor(isActiveHoverBorderColor);
-        setIsActiveSelectedWidgetHoverFontColor(isActiveHoverFontColor);
+        //setIsActiveSelectedWidgetHoverBackgroundColor(isActiveHoverBackgroundColor);
+        //setIsActiveSelectedWidgetHoverBorderColor(isActiveHoverBorderColor);
+        //setIsActiveSelectedWidgetHoverFontColor(isActiveHoverFontColor);
         setSelectionOutsideBackgroundColor_SameAsCanvas(inputOutsideBackgroundColor_SameAsCanvas);
     };
 
@@ -185,7 +200,7 @@ function InputWidget({ id }) {
 
     return (
         <Draggable bounds="parent" position={inputPosition} onStop={updateInputPosition}>
-            <OutsideBackgroundColor outsideBackgroundColor={inputOutsideBackgroundColor} height={inputHeight} width={inputWidth} >
+            <OutsideBackgroundColor outsideBackgroundColor={inputOutsideBackgroundColor} height={inputHeight} width={inputWidth}>
                 <StyledInput
                     height={inputHeight}
                     width={inputWidth}
@@ -196,6 +211,11 @@ function InputWidget({ id }) {
                     borderColor={inputBorderColor}
                     borderRadius={inputBorderRadius}
                     onClick={setAsSelectedWidget}
+                    placeholderFontColor={inputPlaceholderFontColor}
+                    // hover
+                    // hoverBackgroundColor={inputHoverBackgroundColor}
+                    // hoverBorderColor={inputHoverBorderColor}
+                    // hoverFontColor={inputHoverFontColor}
                 >
                     <input
                         type="text"

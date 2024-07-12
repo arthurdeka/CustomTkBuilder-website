@@ -14,7 +14,9 @@ export function CanvasProvider({ children }) {
 
   // Estado para armazenar o ID do widget selecionado
   const [selectedWidgetID, setSelectedWidgetID] = useState(null);
-
+  // Estado para armazenar o tipo do widget selecionado
+  const [selectedWidgetType, setSelectedWidgetType] = useState(null);
+  
   // Estado para armazenar o próximo ID disponível
   const [nextId, setNextId] = useState(1);
 
@@ -34,6 +36,9 @@ export function CanvasProvider({ children }) {
   const [selectedWidgetContent, setSelectedWidgetContent] = useState(null);
   const [selectedWidgetFontSize, setSelectedWidgetFontSize] = useState(null);
   const [selectedWidgetFontColor, setSelectedWidgetFontColor] = useState(null);
+  //input
+  const [selectedWidgetPlaceholderFontColor, setSelectedWidgetPlaceholderFontColor] = useState(null);
+
 
   //hover
   const [selectedWidgetHoverBorderColor, setSelectedWidgetHoverBorderColor] = useState(null);
@@ -45,7 +50,7 @@ export function CanvasProvider({ children }) {
   const [isActiveSelectedWidgetHoverBackgroundColor, setIsActiveSelectedWidgetHoverBackgroundColor] = useState(true);
   const [isActiveSelectedWidgetHoverFontColor, setIsActiveSelectedWidgetHoverFontColor] = useState(true);
   const [selectionOutsideBackgroundColor_SameAsCanvas, setSelectionOutsideBackgroundColor_SameAsCanvas] = useState(true);
-
+  
 
   // Função para adicionar um novo objeto ao canvas
   const addObjeto = (objeto) => {
@@ -100,6 +105,10 @@ export function CanvasProvider({ children }) {
         setSelectedWidgetOutsideBackgroundColor,
         selectionOutsideBackgroundColor_SameAsCanvas,
         setSelectionOutsideBackgroundColor_SameAsCanvas,
+        selectedWidgetType,
+        setSelectedWidgetType,
+        selectedWidgetPlaceholderFontColor,
+        setSelectedWidgetPlaceholderFontColor,
       }}
     >
       {children}

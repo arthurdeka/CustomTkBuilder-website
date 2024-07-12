@@ -82,6 +82,7 @@ function ButtonWidget({ id }) {
     canvasBackgroundColor,
     selectionOutsideBackgroundColor_SameAsCanvas,
     setSelectionOutsideBackgroundColor_SameAsCanvas,
+    setSelectedWidgetType,
   } = useContext(CanvasContext);
 
   // Estados para propriedades do botão
@@ -164,6 +165,7 @@ function ButtonWidget({ id }) {
   // Função para definir este botão como o botão selecionado
   const setAsSelectedButton = () => {
     setSelectedWidgetID(id);
+    setSelectedWidgetType("button");
     setSelectedWidgetContent(buttonContent);
     setSelectedWidgetPosition(buttonPosition);
     setSelectedWidgetHeight(buttonHeight);

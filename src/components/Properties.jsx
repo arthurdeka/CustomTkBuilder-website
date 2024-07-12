@@ -41,6 +41,9 @@ function Properties() {
     setSelectedWidgetOutsideBackgroundColor,
     selectionOutsideBackgroundColor_SameAsCanvas,
     setSelectionOutsideBackgroundColor_SameAsCanvas,
+    selectedWidgetType,
+    selectedWidgetPlaceholderFontColor,
+    setSelectedWidgetPlaceholderFontColor,
   } = useContext(CanvasContext);
 
   const handleStyleChange = (event, propriedade) => {
@@ -93,6 +96,10 @@ function Properties() {
 
     if (propriedade === "fontColor") {
       setSelectedWidgetFontColor(event.target.value);
+    }
+
+    if (propriedade === "placeholderFontColor") {
+      setSelectedWidgetPlaceholderFontColor(event.target.value)
     }
 
     if (propriedade === "hoverBackgroundColor") {
@@ -181,6 +188,7 @@ function Properties() {
 
         <div className="horizontal-line" />
 
+        {selectedWidgetType === "button" && <>
         <h4 className="text-properties-h1">
           Size:
         </h4>
@@ -469,6 +477,205 @@ function Properties() {
             </div>
           )}
         </div>
+        
+        </>}
+          
+        {/* ====================================== */}
+        {/* AQUI COMEÇA OS PROPERTIES DO INPUT */}
+        {/* ====================================== */}
+        
+        {selectedWidgetType === "input" && <>
+        <h4 className="text-properties-h1">
+          Size:
+        </h4>
+        <div className="flex flex-row items-end">
+          <label className="text-properties-h2">
+            Height:
+          </label>
+          <input
+            className="input-properties"
+            type="number"
+            min="5"
+            name="height"
+            value={parseInt(selectedWidgetHeight)}
+            onChange={(event) => handleStyleChange(event, "height")}
+          />
+          <label className="text-properties-h3">Px</label>
+          <br />
+        </div>
+
+        <div className="p-1" />
+
+        <div className="flex flex-row items-end">
+          <label className="text-properties-h2">
+            Width:
+          </label>
+          <input
+            className="input-properties"
+            type="number"
+            min="5"
+            name="width"
+            value={parseInt(selectedWidgetWidth)}
+            onChange={(event) => handleStyleChange(event, "width")}
+          />
+          <label className="text-properties-h3">Px</label>
+          <br />
+        </div>
+
+        <div className="horizontal-line" />
+        
+        <h4 className="text-properties-h1">
+          Content:
+        </h4>
+        <div className="flex flex-col">
+          <label className="text-properties-h2">
+            Background Color:
+          </label>
+          <input
+            className="input-properties-color"
+            type="color"
+            name="backgroundColor"
+            value={selectedWidgetBackgroundColor}
+            onChange={(event) => handleStyleChange(event, "backgroundColor")}
+          />
+          <div className="py-1" />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-properties-h2">
+            Beyond Rounded Borders Background Color:
+          </label>
+          <select 
+            className="input-properties-select"
+            value={selectionOutsideBackgroundColor_SameAsCanvas ? "sameAsCanvas" : "customColor"} 
+            onChange={(event) => handleStyleChange(event, "outsideBackgroundColor_SameAsCanvas")}
+          >
+            <option value="sameAsCanvas">Same as Canvas Color</option>
+            <option value="customColor">Custom Color</option>
+          </select>
+
+          { !selectionOutsideBackgroundColor_SameAsCanvas && (
+            <input
+              className="input-properties-color"
+              type="color"
+              name="outsideBackgroundColor"
+              value={selectedWidgetOutsideBackgroundColor}
+              onChange={(event) => handleStyleChange(event, "outsideBackgroundColor_CustomColor")}
+            />
+          )}
+          <div className="py-1" />
+        </div>
+
+        <div className="flex flew-row items-end pt-4">
+          <label className="text-properties-h2 whitespace-nowrap">
+            Border width:
+          </label>
+          <input
+            className="input-properties"
+            type="number"
+            min="1"
+            name="border-width"
+            value={parseInt(selectedWidgetBorder)}
+            onChange={(event) => handleStyleChange(event, "border-width")}
+          />
+          <label className="text-properties-h3">Px</label>
+          <br />
+        </div>
+        
+        <div className="flex flew-row items-end pt-4">
+          <label className="text-properties-h2 whitespace-nowrap">
+            Border Radius:
+          </label>
+          <input
+            className="input-properties"
+            type="number"
+            min="1"
+            name="border-radius"
+            value={parseInt(selectedWidgetBorderRadius)}
+            onChange={(event) => handleStyleChange(event, "border-radius")}
+          />
+          <label className="text-properties-h3">Px</label>
+          <br />
+        </div>
+
+        <div className="flex flex-col pt-6">
+          <label className="text-properties-h2">
+            Border Color:
+          </label>
+          <input
+            className="input-properties-color"
+            type="color"
+            name="borderColor"
+            value={selectedWidgetBorderColor}
+            onChange={(event) => handleStyleChange(event, "borderColor")}
+          />
+          <div className="py-1" />
+        </div>
+
+        <div className="horizontal-line" />
+        
+        <h4 className="text-properties-h1">
+          Text:
+        </h4>
+        <div className="flex flex-row items-end pb-4">
+          <label className="text-properties-h2 whitespace-nowrap">
+            Placeholder text:
+          </label>
+          <input
+            className="input-properties"
+            type="text"
+            name="fontSize"
+            value={selectedWidgetContent}
+            onChange={(event) => handleStyleChange(event, "content")}
+          />
+          <br />
+        </div>
+
+        <div className="flex flex-row items-end">
+          <label className="text-properties-h2 whitespace-nowrap">
+            Font size:
+          </label>
+          <input
+            className="input-properties"
+            type="number"
+            min="1"
+            name="fontSize"
+            value={parseInt(selectedWidgetFontSize)}
+            onChange={(event) => handleStyleChange(event, "fontSize")}
+          />
+          <label className="text-properties-h3">Px</label>
+          <br />
+        </div>
+
+        <div className="flex flex-col pt-6">
+          <label className="text-properties-h2">
+            Placeholder Font Color:
+          </label>
+          <input
+            className="input-properties-color"
+            type="color"
+            name="placeholderFontColor"
+            value={selectedWidgetPlaceholderFontColor}
+            onChange={(event) => handleStyleChange(event, "placeholderFontColor")}
+          />
+        </div>
+
+        <div className="flex flex-col pt-6">
+          <label className="text-properties-h2">
+            Font Color:
+          </label>
+          <input
+            className="input-properties-color"
+            type="color"
+            name="fontColor"
+            value={selectedWidgetFontColor}
+            onChange={(event) => handleStyleChange(event, "fontColor")}
+          />
+          <div className="py-1" />
+        </div>
+
+        </>}
+        
       </div>
     </div>
   );
