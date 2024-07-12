@@ -3,7 +3,7 @@ import React, { useContext, useState, Fragment, useEffect } from "react";
 import { CanvasContext } from "./CanvasContext";
 
 function Canvas() {
-  // importa a lista de objetosCanvas do contexto
+    // importa a lista de objetosCanvas do contexto
   const { objetosCanvas, setCanvasBackgroundColor } = useContext(CanvasContext);
 
   // Adiciona estados para width, height e visibilidade da configuração

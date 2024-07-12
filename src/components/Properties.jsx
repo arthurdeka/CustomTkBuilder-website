@@ -179,7 +179,7 @@ function Properties() {
           <br />
         </div>
 
-        <div className="border-b border-corsecundaria my-6 mt-10" />
+        <div className="horizontal-line" />
 
         <h4 className="text-properties-h1">
           Size:
@@ -218,7 +218,7 @@ function Properties() {
           <br />
         </div>
 
-        <div className="border-b border-corsecundaria my-6 mt-10" />
+        <div className="horizontal-line" />
 
         <h4 className="text-properties-h1">
           Content:
@@ -242,6 +242,7 @@ function Properties() {
             Beyond Rounded Borders Background Color:
           </label>
           <select 
+            className="input-properties-select"
             value={selectionOutsideBackgroundColor_SameAsCanvas ? "sameAsCanvas" : "customColor"} 
             onChange={(event) => handleStyleChange(event, "outsideBackgroundColor_SameAsCanvas")}
           >
@@ -307,7 +308,7 @@ function Properties() {
           <div className="py-1" />
         </div>
 
-        <div className="border-b border-corsecundaria my-6 mt-10" />
+        <div className="horizontal-line" />
 
         <h4 className="text-properties-h1">
           Text:
@@ -356,7 +357,7 @@ function Properties() {
           <div className="py-1" />
         </div>
 
-        <div className="border-b border-corsecundaria my-6 mt-10" />
+        <div className="horizontal-line" />
         <h4 className="text-properties-h1">
           Hover:
         </h4>

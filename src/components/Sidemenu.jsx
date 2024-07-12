@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { CanvasContext } from "../canvas/CanvasContext";
 import ButtonWidget from "../canvas/widgets/buttonWidget";
+import InputWidget from "../canvas/widgets/inputWidget";
 
 function Sidemenu() {
   const { objetosCanvas, addObjeto } = useContext(CanvasContext);
@@ -18,6 +19,7 @@ function Sidemenu() {
         <h2 className="text-md font-inter font-bold text-corprimaria">Widgets</h2>
 
         <button className="bg-red-500 mt-2 border-2 px-4 text-white w-full rounded-md border-black" onClick={() => handleClick(<ButtonWidget />)}>Button</button>
+        <button className="bg-red-500 mt-2 border-2 px-4 text-white w-full rounded-md border-black" onClick={() => handleClick(<InputWidget />)}>Input</button>
       
       </div>
     </div>
