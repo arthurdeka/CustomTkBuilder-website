@@ -155,7 +155,7 @@ function InputWidget({ id }) {
     // caso a cor do canvas mude, e a opção de manter a cor do botão igual a do canvas esteja ativa, a cor do outside background é atualizada
     useEffect(() => {
         if (inputOutsideBackgroundColor_SameAsCanvas == true) {
-            setInputOutsideBackgroundColor_SameAsCanvas(canvasBackgroundColor);
+            setInputOutsideBackgroundColor(canvasBackgroundColor);
         }
     }, [canvasBackgroundColor]);
 
