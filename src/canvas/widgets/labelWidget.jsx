@@ -81,7 +81,7 @@ function LabelWidget({ id }) {
   const [labelHeight, setLabelHeight] = useState("30px");
   const [labelWidth, setLabelWidth] = useState("95px");
   const [labelBorderRadius, setLabelBorderRadius] = useState("0px");
-  const [labelBackgroundColor, setLabelBackgroundColor] = useState("#F0F0F0");
+  const [labelBackgroundColor, setLabelBackgroundColor] = useState(canvasBackgroundColor);
   const [labelOutsideBackgroundColor, setLabelOutsideBackgroundColor] = useState(canvasBackgroundColor);
   const [labelFontSize, setLabelFontSize] = useState("14px");
   const [labelFontColor, setLabelFontColor] = useState("#000000");
@@ -120,13 +120,13 @@ function LabelWidget({ id }) {
 
   // caso a cor do canvas mude, e a opção de manter a cor do botão igual a do canvas esteja ativa, a cor do outside background é atualizada
   useEffect(() => {
-    if (labelOutsideBackgroundColor_SameAsCanvas == true) {
-      setLabelOutsideBackgroundColor(canvasBackgroundColor);
-    }
     if (labelBackgroundColor_SameAsCanvas == true) {
       setLabelBackgroundColor(canvasBackgroundColor);
     }
-  }, [canvasBackgroundColor]);
+    if (labelOutsideBackgroundColor_SameAsCanvas == true) {
+      setLabelOutsideBackgroundColor(canvasBackgroundColor);
+    }
+  }, [canvasBackgroundColor, labelBackgroundColor]);
 
   // Função para definir este botão como o botão selecionado
   const setAsSelectedWidget = () => {
@@ -156,10 +156,10 @@ function LabelWidget({ id }) {
         <StyledInput
           height={labelHeight}
           width={labelWidth}
-          backgroundColor={labelBackgroundColor}
           fontSize={labelFontSize}
           fontColor={labelFontColor}
           borderRadius={labelBorderRadius}
+          backgroundColor={labelBackgroundColor}
           onClick={setAsSelectedWidget}
         >
           {labelContent}
