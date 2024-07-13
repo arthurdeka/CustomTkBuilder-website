@@ -143,10 +143,10 @@ function Properties() {
       if (event.target.value === "Arial") {
         setSelectedWidgetFontFamily("Arial");
       }
-      if (event.target.value === "ComicSansMS") {
+      if (event.target.value === "Comic Sans MS") {
         setSelectedWidgetFontFamily("Comic Sans MS");
       }
-      if (event.target.value === "CourierNew") {
+      if (event.target.value === "Courier New") {
         setSelectedWidgetFontFamily("Courier New");
       }
       if (event.target.value === "Impact") {
@@ -158,7 +158,7 @@ function Properties() {
       if (event.target.value === "Lexend") {
         setSelectedWidgetFontFamily("Lexend");
       }
-      if (event.target.value === "MSGothic") {
+      if (event.target.value === "MS Gothic") {
         setSelectedWidgetFontFamily("MS Gothic");
       }
     }
@@ -727,14 +727,14 @@ function Properties() {
 
             <div className="flex flex-col">
               <label className="text-properties-h2">Font Family:</label>
-              <select className="input-properties-select" onChange={(event) => handleStyleChange(event, "fontFamily")}>
+              <select value={selectedWidgetFontFamily} className="input-properties-select" onChange={(event) => handleStyleChange(event, "fontFamily")}>
                 <option value="Arial">Arial</option>
-                <option value="ComicSansMS">Comic Sans MS</option>
-                <option value="CourierNew">Courier New</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+                <option value="Courier New">Courier New</option>
                 <option value="Impact">Impact</option>
                 <option value="Georgia">Georgia</option>
                 <option value="Lexend">Lexend</option>
-                <option value="MSGothic">MS Gothic</option>
+                <option value="MS Gothic">MS Gothic</option>
               </select>
             </div>
 
