@@ -38,6 +38,8 @@ export function CanvasProvider({ children }) {
   const [selectedWidgetFontColor, setSelectedWidgetFontColor] = useState(null);
   //input
   const [selectedWidgetPlaceholderFontColor, setSelectedWidgetPlaceholderFontColor] = useState(null);
+  // label
+  const [selectedWidgetFontFamily, setSelectedWidgetFontFamily] = useState(null);
 
   //hover
   const [selectedWidgetHoverBorderColor, setSelectedWidgetHoverBorderColor] = useState(null);
@@ -110,6 +112,8 @@ export function CanvasProvider({ children }) {
         setSelectedWidgetPlaceholderFontColor,
         selectionBackgroundColor_SameAsCanvas,
         setSelectionBackgroundColor_SameAsCanvas,
+        selectedWidgetFontFamily,
+        setSelectedWidgetFontFamily,
       }}
     >
       {children}

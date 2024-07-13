@@ -46,6 +46,8 @@ function Properties() {
     setSelectedWidgetPlaceholderFontColor,
     selectionBackgroundColor_SameAsCanvas,
     setSelectionBackgroundColor_SameAsCanvas,
+    selectedWidgetFontFamily,
+    setSelectedWidgetFontFamily,
   } = useContext(CanvasContext);
 
   const handleStyleChange = (event, propriedade) => {
@@ -135,6 +137,31 @@ function Properties() {
     if (propriedade === "border-radius") {
       let value = event.target.value.toString();
       setSelectedWidgetBorderRadius(`${value}px`);
+    }
+
+    if (propriedade === "fontFamily") {
+      if (event.target.value === "Arial") {
+        setSelectedWidgetFontFamily("Arial");
+      }
+      if (event.target.value === "ComicSansMS") {
+        setSelectedWidgetFontFamily("Comic Sans MS");
+      }
+      if (event.target.value === "CourierNew") {
+        setSelectedWidgetFontFamily("Courier New");
+      }
+      if (event.target.value === "Impact") {
+        setSelectedWidgetFontFamily("Impact");
+      }
+      if (event.target.value === "Georgia") {
+        setSelectedWidgetFontFamily("Georgia");
+      }
+      if (event.target.value === "Lexend") {
+        setSelectedWidgetFontFamily("Lexend");
+      }
+      if (event.target.value === "MSGothic") {
+        setSelectedWidgetFontFamily("MS Gothic");
+      }
+
     }
   };
 
@@ -693,6 +720,23 @@ function Properties() {
             <div className="horizontal-line" />
 
             <h4 className="text-properties-h1">Text:</h4>
+
+            <div className="flex flex-col">
+              <label className="text-properties-h2">Font Family:</label>
+              <select
+                className="input-properties-select"
+                onChange={(event) => handleStyleChange(event, "fontFamily")}
+              >
+                <option value="Arial">Arial</option>
+                <option value="ComicSansMS">Comic Sans MS</option>
+                <option value="CourierNew">Courier New</option>
+                <option value="Impact">Impact</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Lexend">Lexend</option>
+                <option value="MSGothic">MS Gothic</option>
+              </select>
+            </div>
+
             <div className="flex flex-row items-end pb-4">
               <label className="text-properties-h2 whitespace-nowrap">Text:</label>
               <input

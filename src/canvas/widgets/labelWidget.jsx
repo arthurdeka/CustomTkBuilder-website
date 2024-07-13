@@ -10,7 +10,7 @@ const StyledInput = styled.div`
   width: ${(props) => props.width};
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.fontColor};
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: ${(props) => props.fontFamily};
   font-size: ${(props) => props.fontSize};
   display: flex;
   align-items: center;
@@ -74,6 +74,8 @@ function LabelWidget({ id }) {
     setSelectedWidgetPlaceholderFontColor,
     selectionBackgroundColor_SameAsCanvas,
     setSelectionBackgroundColor_SameAsCanvas,
+    selectedWidgetFontFamily,
+    setSelectedWidgetFontFamily,
   } = useContext(CanvasContext);
 
   const [labelContent, setLabelContent] = useState("Label" + id);
@@ -84,6 +86,7 @@ function LabelWidget({ id }) {
   const [labelBackgroundColor, setLabelBackgroundColor] = useState(canvasBackgroundColor);
   const [labelOutsideBackgroundColor, setLabelOutsideBackgroundColor] = useState(canvasBackgroundColor);
   const [labelFontSize, setLabelFontSize] = useState("14px");
+  const [labelFontFamily, setLabelFontFamily] = useState("Arial");
   const [labelFontColor, setLabelFontColor] = useState("#000000");
 
   // is active para opções opicionais
@@ -100,6 +103,7 @@ function LabelWidget({ id }) {
       setLabelBackgroundColor(selectedWidgetBackgroundColor);
       setLabelOutsideBackgroundColor(selectedWidgetOutsideBackgroundColor);
       setLabelFontSize(selectedWidgetFontSize);
+      setLabelFontFamily(selectedWidgetFontFamily);
       setLabelFontColor(selectedWidgetFontColor);
       setLabelOutsideBackgroundColor_SameAsCanvas(selectionOutsideBackgroundColor_SameAsCanvas);
       setLabelBackgroundColor_SameAsCanvas(selectionBackgroundColor_SameAsCanvas);
@@ -112,6 +116,7 @@ function LabelWidget({ id }) {
     selectedWidgetBackgroundColor,
     selectedWidgetOutsideBackgroundColor,
     selectedWidgetFontSize,
+    selectedWidgetFontFamily,
     selectedWidgetFontColor,
     selectedWidgetBorderRadius,
     selectionOutsideBackgroundColor_SameAsCanvas,
@@ -139,6 +144,7 @@ function LabelWidget({ id }) {
     setSelectedWidgetBackgroundColor(labelBackgroundColor);
     setSelectedWidgetOutsideBackgroundColor(labelOutsideBackgroundColor);
     setSelectedWidgetFontSize(labelFontSize);
+    setSelectedWidgetFontFamily(labelFontFamily);
     setSelectedWidgetFontColor(labelFontColor);
     setSelectedWidgetBorderRadius(labelBorderRadius);
     setSelectionOutsideBackgroundColor_SameAsCanvas(labelOutsideBackgroundColor_SameAsCanvas);
@@ -158,6 +164,7 @@ function LabelWidget({ id }) {
           width={labelWidth}
           fontSize={labelFontSize}
           fontColor={labelFontColor}
+          fontFamily={labelFontFamily}
           borderRadius={labelBorderRadius}
           backgroundColor={labelBackgroundColor}
           onClick={setAsSelectedWidget}
