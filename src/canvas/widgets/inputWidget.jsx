@@ -51,22 +51,9 @@ function InputWidget({ id }) {
         setSelectedWidgetBorderColor,
         selectedWidgetBackgroundColor,
         setSelectedWidgetBackgroundColor,
-        selectedWidgetPosition,
         setSelectedWidgetPosition,
-        selectedWidgetHoverBackgroundColor,
-        setSelectedWidgetHoverBackgroundColor,
-        selectedWidgetHoverBorderColor,
-        setSelectedWidgetHoverBorderColor,
-        isActiveSelectedWidgetHoverBackgroundColor,
-        setIsActiveSelectedWidgetHoverBackgroundColor,
-        isActiveSelectedWidgetHoverBorderColor,
-        setIsActiveSelectedWidgetHoverBorderColor,
         selectedWidgetFontColor,
         setSelectedWidgetFontColor,
-        selectedWidgetHoverFontColor,
-        setSelectedWidgetHoverFontColor,
-        isActiveSelectedWidgetHoverFontColor,
-        setIsActiveSelectedWidgetHoverFontColor,
         selectedWidgetBorderRadius,
         setSelectedWidgetBorderRadius,
         selectedWidgetOutsideBackgroundColor,
@@ -93,15 +80,7 @@ function InputWidget({ id }) {
     const [inputFontColor, setInputFontColor] = useState("#000000");
     const [inputPlaceholderFontColor, setInputPlaceholderFontColor] = useState("#000000");
 
-    // hover - DISABLED PORQUE O CUSTOMTKINTER NÃO SUPORTA HOVER PARA INPUTS/ENTRYS
-    /* const [inputHoverBackgroundColor, setInputHoverBackgroundColor] = useState("#F0F0F0");
-    const [inputHoverBorderColor, setInputHoverBorderColor] = useState("#004AFF");
-    const [inputHoverFontColor, setInputHoverFontColor] = useState("#004AFF"); */
-
     // is active checkbox para opções opicionais
-    const [isActiveHoverBackgroundColor, setIsActiveHoverBackgroundColor] = useState(true);
-    const [isActiveHoverBorderColor, setIsActiveHoverBorderColor] = useState(true);
-    const [isActiveHoverFontColor, setIsActiveHoverFontColor] = useState(true);
     const [inputOutsideBackgroundColor_SameAsCanvas, setInputOutsideBackgroundColor_SameAsCanvas] = useState(true);
 
     // Atualizando o conteúdo do input quando o ID do widget selecionado tem match com o ID deste input
@@ -119,15 +98,7 @@ function InputWidget({ id }) {
             setInputFontColor(selectedWidgetFontColor);
             setInputPlaceholderFontColor(selectedWidgetPlaceholderFontColor)
 
-            // hover
-            // setInputHoverBackgroundColor(selectedWidgetHoverBackgroundColor);
-            // setInputHoverBorderColor(selectedWidgetHoverBorderColor);
-            // setInputHoverFontColor(selectedWidgetHoverFontColor);
-
             // valores de checkbox de opções opcionais
-            // setIsActiveHoverBackgroundColor(isActiveSelectedWidgetHoverBackgroundColor);
-            // setIsActiveHoverBorderColor(isActiveSelectedWidgetHoverBorderColor);
-            // setIsActiveHoverFontColor(isActiveSelectedWidgetHoverFontColor);
             setInputOutsideBackgroundColor_SameAsCanvas(selectionOutsideBackgroundColor_SameAsCanvas);
         }
     }, [
@@ -143,12 +114,6 @@ function InputWidget({ id }) {
         selectedWidgetFontColor,
         selectedWidgetPlaceholderFontColor,
         selectedWidgetBorderRadius,
-        //selectedWidgetHoverBackgroundColor,
-        //selectedWidgetHoverBorderColor,
-        //selectedWidgetHoverFontColor,
-        //isActiveSelectedWidgetHoverBackgroundColor,
-        //isActiveSelectedWidgetHoverBorderColor,
-        //isActiveSelectedWidgetHoverFontColor,
         selectionOutsideBackgroundColor_SameAsCanvas,
     ]);
 
@@ -176,15 +141,7 @@ function InputWidget({ id }) {
         setSelectedWidgetBorderColor(inputBorderColor);
         setSelectedWidgetBorderRadius(inputBorderRadius);
 
-        // hover
-        //setSelectedWidgetHoverBackgroundColor(inputHoverBackgroundColor);
-        //setSelectedWidgetHoverBorderColor(inputHoverBorderColor);
-        //setSelectedWidgetHoverFontColor(inputHoverFontColor);
-
         // valores de checkbox de opções opcionais
-        //setIsActiveSelectedWidgetHoverBackgroundColor(isActiveHoverBackgroundColor);
-        //setIsActiveSelectedWidgetHoverBorderColor(isActiveHoverBorderColor);
-        //setIsActiveSelectedWidgetHoverFontColor(isActiveHoverFontColor);
         setSelectionOutsideBackgroundColor_SameAsCanvas(inputOutsideBackgroundColor_SameAsCanvas);
     };
 
@@ -212,10 +169,6 @@ function InputWidget({ id }) {
                     borderRadius={inputBorderRadius}
                     onClick={setAsSelectedWidget}
                     placeholderFontColor={inputPlaceholderFontColor}
-                    // hover
-                    // hoverBackgroundColor={inputHoverBackgroundColor}
-                    // hoverBorderColor={inputHoverBorderColor}
-                    // hoverFontColor={inputHoverFontColor}
                 >
                     <input
                         type="text"

@@ -4,7 +4,6 @@ import { CanvasContext } from "../canvas/CanvasContext";
 function Properties() {
   const {
     canvasBackgroundColor,
-    setCanvasBackgroundColor,
     selectedWidgetContent,
     setSelectedWidgetContent,
     selectedWidgetHeight,
@@ -20,7 +19,6 @@ function Properties() {
     selectedWidgetBackgroundColor,
     setSelectedWidgetBackgroundColor,
     selectedWidgetPosition,
-    setSelectedWidgetPosition,
     selectedWidgetHoverBackgroundColor,
     setSelectedWidgetHoverBackgroundColor,
     selectedWidgetHoverBorderColor,
@@ -78,37 +76,6 @@ function Properties() {
       setSelectedWidgetBackgroundColor(event.target.value);
     }
 
-    if (propriedade === "outsideBackgroundColor_SameAsCanvas") {
-      if (event.target.value === "sameAsCanvas") {
-        setSelectionOutsideBackgroundColor_SameAsCanvas(true);
-        setSelectedWidgetOutsideBackgroundColor(canvasBackgroundColor);
-      }
-      if (event.target.value === "customColor") {
-        setSelectionOutsideBackgroundColor_SameAsCanvas(false);
-      }
-    }
-
-    if (propriedade === "outsideBackgroundColor_CustomColor") {
-      setSelectionOutsideBackgroundColor_SameAsCanvas(false);
-      setSelectedWidgetOutsideBackgroundColor(event.target.value);
-    }
-
-    /* label */
-    if (propriedade === "BackgroundColor_SameAsCanvas") {
-      if (event.target.value === "sameAsCanvas") {
-        setSelectionBackgroundColor_SameAsCanvas(true);
-        setSelectedWidgetBackgroundColor(canvasBackgroundColor);
-      }
-      if (event.target.value === "customColor") {
-        setSelectionBackgroundColor_SameAsCanvas(false);
-      }
-    }
-
-    if (propriedade === "BackgroundColor_CustomColor") {
-      setSelectionBackgroundColor_SameAsCanvas(false);
-      setSelectedWidgetBackgroundColor(event.target.value);
-    }
-
     if (propriedade === "fontSize") {
       let value = event.target.value.toString();
       setSelectedWidgetFontSize(`${value}px`);
@@ -139,6 +106,39 @@ function Properties() {
       setSelectedWidgetBorderRadius(`${value}px`);
     }
 
+    /* SELECTION - button outside background color  */
+    if (propriedade === "outsideBackgroundColor_SameAsCanvas") {
+      if (event.target.value === "sameAsCanvas") {
+        setSelectionOutsideBackgroundColor_SameAsCanvas(true);
+        setSelectedWidgetOutsideBackgroundColor(canvasBackgroundColor);
+      }
+      if (event.target.value === "customColor") {
+        setSelectionOutsideBackgroundColor_SameAsCanvas(false);
+      }
+    }
+
+    if (propriedade === "outsideBackgroundColor_CustomColor") {
+      setSelectionOutsideBackgroundColor_SameAsCanvas(false);
+      setSelectedWidgetOutsideBackgroundColor(event.target.value);
+    }
+
+    /* SELECTION - label background color*/
+    if (propriedade === "BackgroundColor_SameAsCanvas") {
+      if (event.target.value === "sameAsCanvas") {
+        setSelectionBackgroundColor_SameAsCanvas(true);
+        setSelectedWidgetBackgroundColor(canvasBackgroundColor);
+      }
+      if (event.target.value === "customColor") {
+        setSelectionBackgroundColor_SameAsCanvas(false);
+      }
+    }
+
+    if (propriedade === "BackgroundColor_CustomColor") {
+      setSelectionBackgroundColor_SameAsCanvas(false);
+      setSelectedWidgetBackgroundColor(event.target.value);
+    }
+
+    /* SELECTION - label font family */
     if (propriedade === "fontFamily") {
       if (event.target.value === "Arial") {
         setSelectedWidgetFontFamily("Arial");
@@ -161,7 +161,6 @@ function Properties() {
       if (event.target.value === "MSGothic") {
         setSelectedWidgetFontFamily("MS Gothic");
       }
-
     }
   };
 
@@ -176,6 +175,7 @@ function Properties() {
       setSelectedWidgetHoverBorderColor("none");
     }
 
+    // caso o hover font color esteja desabilitado, a cor de hover é setada para none
     if (isActiveSelectedWidgetHoverFontColor === false) {
       setSelectedWidgetHoverFontColor("none");
     }
@@ -205,6 +205,10 @@ function Properties() {
         </div>
 
         <div className="horizontal-line" />
+
+        {/* ====================================== */}
+        {/* AQUI COMEÇA OS PROPERTIES DO BUTTON */}
+        {/* ====================================== */}
 
         {selectedWidgetType === "button" && (
           <>
@@ -723,10 +727,7 @@ function Properties() {
 
             <div className="flex flex-col">
               <label className="text-properties-h2">Font Family:</label>
-              <select
-                className="input-properties-select"
-                onChange={(event) => handleStyleChange(event, "fontFamily")}
-              >
+              <select className="input-properties-select" onChange={(event) => handleStyleChange(event, "fontFamily")}>
                 <option value="Arial">Arial</option>
                 <option value="ComicSansMS">Comic Sans MS</option>
                 <option value="CourierNew">Courier New</option>
