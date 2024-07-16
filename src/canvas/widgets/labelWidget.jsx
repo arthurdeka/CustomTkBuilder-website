@@ -7,25 +7,25 @@ import styled, { StyleSheetManager } from "styled-components";
 const StyledInput = styled.div`
   position: absolute;
   cursor: grab;
-  height: ${(props) => props.height};
-  width: ${(props) => props.width};
-  background-color: ${(props) => props.backgroundColor};
-  color: ${(props) => props.fontColor};
-  font-family: ${(props) => props.fontFamily};
-  font-size: ${(props) => props.fontSize};
+  height: ${(props) => props.$height};
+  width: ${(props) => props.$width};
+  background-color: ${(props) => props.$backgroundColor};
+  color: ${(props) => props.$fontColor};
+  font-family: ${(props) => props.$fontFamily};
+  font-size: ${(props) => props.$fontSize};
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-radius: ${(props) => props.borderRadius};
+  border-radius: ${(props) => props.$borderRadius};
 `;
 
 // div para representar o background color além das rounded borders
 const OutsideBackgroundColor = styled.div`
   position: absolute;
-  height: ${(props) => props.height};
-  width: ${(props) => props.width};
-  background-color: ${(props) => props.outsideBackgroundColor};
+  height: ${(props) => props.$height};
+  width: ${(props) => props.$width};
+  background-color: ${(props) => props.$outsideBackgroundColor};
 `;
 
 function LabelWidget({ id }) {
@@ -141,15 +141,15 @@ function LabelWidget({ id }) {
   return (
     <StyleSheetManager shouldForwardProp={() => true}>
       <Draggable bounds="parent" position={labelPosition} onStop={updateLabelPosition}>
-        <OutsideBackgroundColor outsideBackgroundColor={labelOutsideBackgroundColor} height={labelHeight} width={labelWidth}>
+        <OutsideBackgroundColor $outsideBackgroundColor={labelOutsideBackgroundColor} $height={labelHeight} $width={labelWidth}>
           <StyledInput
-            height={labelHeight}
-            width={labelWidth}
-            fontSize={labelFontSize}
-            fontColor={labelFontColor}
-            fontFamily={labelFontFamily}
-            borderRadius={labelBorderRadius}
-            backgroundColor={labelBackgroundColor}
+            $height={labelHeight}
+            $width={labelWidth}
+            $fontSize={labelFontSize}
+            $fontColor={labelFontColor}
+            $fontFamily={labelFontFamily}
+            $borderRadius={labelBorderRadius}
+            $backgroundColor={labelBackgroundColor}
             onClick={setAsSelectedWidget}
           >
             {labelContent}

@@ -13,32 +13,32 @@ import styled, { StyleSheetManager } from "styled-components";
 const StyledButton = styled.div`
   position: absolute;
   cursor: grab;
-  height: ${(props) => props.height};
-  width: ${(props) => props.width};
-  background-color: ${(props) => props.backgroundColor};
-  color: ${(props) => props.fontColor};
+  height: ${(props) => props.$height};
+  width: ${(props) => props.$width};
+  background-color: ${(props) => props.$backgroundColor};
+  color: ${(props) => props.$fontColor};
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: ${(props) => props.fontSize};
+  font-size: ${(props) => props.$fontSize};
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: ${(props) => props.border};
-  border-color: ${(props) => props.borderColor};
-  border-radius: ${(props) => props.borderRadius};
+  border: ${(props) => props.$border};
+  border-color: ${(props) => props.$borderColor};
+  border-radius: ${(props) => props.$borderRadius};
   &:hover {
-    background-color: ${(props) => props.hoverBackgroundColor};
-    border-color: ${(props) => props.hoverBorderColor};
-    color: ${(props) => props.hoverFontColor};
+    background-color: ${(props) => props.$hoverBackgroundColor};
+    border-color: ${(props) => props.$hoverBorderColor};
+    color: ${(props) => props.$hoverFontColor};
   }
 `;
 
 // div para representar o background color além das rounded borders
 const OutsideBackgroundColor = styled.div`
   position: absolute;
-  height: ${(props) => props.height};
-  width: ${(props) => props.width};
-  background-color: ${(props) => props.outsideBackgroundColor};
+  height: ${(props) => props.$height};
+  width: ${(props) => props.$width};
+  background-color: ${(props) => props.$outsideBackgroundColor};
 `;
 
 function ButtonWidget({ id }) {
@@ -202,22 +202,22 @@ function ButtonWidget({ id }) {
         position={buttonPosition}
         onStop={updateButtonPosition}
       >
-          <OutsideBackgroundColor outsideBackgroundColor={buttonOutsideBackgroundColor} height={buttonHeight} width={buttonWidth} >
+          <OutsideBackgroundColor $outsideBackgroundColor={buttonOutsideBackgroundColor} $height={buttonHeight} $width={buttonWidth} >
             <StyledButton
               
               onClick={setAsSelectedButton}
-              height={buttonHeight}
-              width={buttonWidth}
-              backgroundColor={buttonBackgroundColor}
-              fontSize={buttonFontSize}
-              fontColor={buttonFontColor}
-              border={buttonBorder}
-              borderColor={buttonBorderColor}
-              borderRadius={buttonBorderRadius}
+              $height={buttonHeight}
+              $width={buttonWidth}
+              $backgroundColor={buttonBackgroundColor}
+              $fontSize={buttonFontSize}
+              $fontColor={buttonFontColor}
+              $border={buttonBorder}
+              $borderColor={buttonBorderColor}
+              $borderRadius={buttonBorderRadius}
               // hover
-              hoverBackgroundColor={buttonHoverBackgroundColor}
-              hoverBorderColor={buttonHoverBorderColor}
-              hoverFontColor={buttonHoverFontColor}
+              $hoverBackgroundColor={buttonHoverBackgroundColor}
+              $hoverBorderColor={buttonHoverBorderColor}
+              $hoverFontColor={buttonHoverFontColor}
             >
               {buttonContent}
             </StyledButton>

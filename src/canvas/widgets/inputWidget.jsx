@@ -7,30 +7,30 @@ import styled, { StyleSheetManager } from "styled-components";
 const StyledInput = styled.div`
     position: absolute;
     cursor: grab;
-    height: ${(props) => props.height};
-    width: ${(props) => props.width};
-    background-color: ${(props) => props.backgroundColor};
-    color: ${(props) => props.fontColor};
+    height: ${(props) => props.$height};
+    width: ${(props) => props.$width};
+    background-color: ${(props) => props.$backgroundColor};
+    color: ${(props) => props.$fontColor};
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    font-size: ${(props) => props.fontSize};
+    font-size: ${(props) => props.$fontSize};
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    border: ${(props) => props.border};
-    border-color: ${(props) => props.borderColor};
-    border-radius: ${(props) => props.borderRadius};
+    border: ${(props) => props.$border};
+    border-color: ${(props) => props.$borderColor};
+    border-radius: ${(props) => props.$borderRadius};
     ::placeholder {
-        color: ${(props) => props.placeholderFontColor};
+        color: ${(props) => props.$placeholderFontColor};
     }
 `;
 
 // div para representar o background color além das rounded borders
 const OutsideBackgroundColor = styled.div`
     position: absolute;
-    height: ${(props) => props.height};
-    width: ${(props) => props.width};
-    background-color: ${(props) => props.outsideBackgroundColor};
+    height: ${(props) => props.$height};
+    width: ${(props) => props.$width};
+    background-color: ${(props) => props.$outsideBackgroundColor};
 `;
 
 function InputWidget({ id }) {
@@ -159,18 +159,18 @@ function InputWidget({ id }) {
     return (
         <StyleSheetManager shouldForwardProp={() => true}>
             <Draggable bounds="parent" position={inputPosition} onStop={updateInputPosition}>
-                <OutsideBackgroundColor outsideBackgroundColor={inputOutsideBackgroundColor} height={inputHeight} width={inputWidth}>
+                <OutsideBackgroundColor $outsideBackgroundColor={inputOutsideBackgroundColor} $height={inputHeight} $width={inputWidth}>
                     <StyledInput
-                        height={inputHeight}
-                        width={inputWidth}
-                        backgroundColor={inputBackgroundColor}
-                        fontSize={inputFontSize}
-                        fontColor={inputFontColor}
-                        border={inputBorder}
-                        borderColor={inputBorderColor}
-                        borderRadius={inputBorderRadius}
+                        $height={inputHeight}
+                        $width={inputWidth}
+                        $backgroundColor={inputBackgroundColor}
+                        $fontSize={inputFontSize}
+                        $fontColor={inputFontColor}
+                        $border={inputBorder}
+                        $borderColor={inputBorderColor}
+                        $borderRadius={inputBorderRadius}
                         onClick={setAsSelectedWidget}
-                        placeholderFontColor={inputPlaceholderFontColor}
+                        $placeholderFontColor={inputPlaceholderFontColor}
                     >
                         <input
                             type="text"
