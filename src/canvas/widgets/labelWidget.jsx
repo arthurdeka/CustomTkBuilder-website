@@ -161,7 +161,7 @@ function LabelWidget({ id }) {
     const labelStateString = JSON.stringify(labelState);
 
     // Grava a string JSON no localStorage usando o ID do widget como chave
-    localStorage.setItem(`labelWidgetState-${id}`, labelStateString);
+    localStorage.setItem(`WidgetState-${id}`, labelStateString);
 
   }
 

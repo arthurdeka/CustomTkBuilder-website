@@ -101,6 +101,9 @@ function InputWidget({ id }) {
 
             // valores de checkbox de opções opcionais
             setInputOutsideBackgroundColor_SameAsCanvas(selectionOutsideBackgroundColor_SameAsCanvas);
+
+            // armazenar o componente no localStorage
+            storageSerializedComponent();
         }
     }, [
         selectedWidgetID,
@@ -155,6 +158,32 @@ function InputWidget({ id }) {
     const updateInputPosition = (e, data) => {
         setInputPosition({ x: data.x, y: data.y });
     };
+
+    const storageSerializedComponent = () => {
+        // Cria um objeto com todas as propriedades e seus valores atuais
+        const inputState = {
+            inputContent,
+            inputPosition,
+            inputHeight,
+            inputWidth,
+            inputBorder,
+            inputBorderColor,
+            inputBorderRadius,
+            inputBackgroundColor,
+            inputOutsideBackgroundColor,
+            inputFontSize,
+            inputFontColor,
+            inputPlaceholderFontColor,
+            inputOutsideBackgroundColor_SameAsCanvas,
+        };
+    
+        // Converte o objeto de estado para uma string JSON
+        const inputStateString = JSON.stringify(inputState);
+    
+        // Grava a string JSON no localStorage usando o ID do widget como chave
+        localStorage.setItem(`WidgetState-${id}`, inputStateString);
+    
+      }
 
     return (
         <StyleSheetManager shouldForwardProp={() => true}>

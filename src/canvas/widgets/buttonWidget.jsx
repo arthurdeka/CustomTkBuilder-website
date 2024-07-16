@@ -133,6 +133,9 @@ function ButtonWidget({ id }) {
       setIsActiveHoverBorderColor(isActiveSelectedWidgetHoverBorderColor);
       setIsActiveHoverFontColor(isActiveSelectedWidgetHoverFontColor);
       setButtonOutsideBackgroundColor_SameAsCanvas(selectionOutsideBackgroundColor_SameAsCanvas)
+
+      // armazenar o componente no localStorage
+      storageSerializedComponent();
     }
   }, [
     selectedWidgetID,
@@ -193,6 +196,34 @@ function ButtonWidget({ id }) {
   const updateButtonPosition = (e, data) => {
     setButtonPosition({ x: data.x, y: data.y });
   };
+
+  const storageSerializedComponent = () => {
+    // Cria um objeto com todas as propriedades e seus valores atuais
+    const buttonState = {
+      buttonContent,
+      buttonPosition,
+      buttonHeight,
+      buttonWidth,
+      buttonBorderRadius,
+      buttonBackgroundColor,
+      buttonOutsideBackgroundColor,
+      buttonFontSize,
+      buttonFontColor,
+      buttonBorderColor,
+      buttonBorder,
+      buttonHoverBackgroundColor,
+      buttonHoverBorderColor,
+      buttonHoverFontColor,
+      buttonOutsideBackgroundColor_SameAsCanvas,
+    };
+
+    // Converte o objeto de estado para uma string JSON
+    const buttonStateString = JSON.stringify(buttonState);
+
+    // Grava a string JSON no localStorage usando o ID do widget como chave
+    localStorage.setItem(`WidgetState-${id}`, buttonStateString);
+
+  }
 
   // Renderizando o botão
   return (
