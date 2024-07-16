@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import Draggable from "react-draggable";
 import { CanvasContext } from "../CanvasContext";
-import styled from "styled-components";
+import styled, { StyleSheetManager } from "styled-components";
+
 
 const StyledInput = styled.div`
   position: absolute;
@@ -138,22 +139,24 @@ function LabelWidget({ id }) {
   };
 
   return (
-    <Draggable bounds="parent" position={labelPosition} onStop={updateLabelPosition}>
-      <OutsideBackgroundColor outsideBackgroundColor={labelOutsideBackgroundColor} height={labelHeight} width={labelWidth}>
-        <StyledInput
-          height={labelHeight}
-          width={labelWidth}
-          fontSize={labelFontSize}
-          fontColor={labelFontColor}
-          fontFamily={labelFontFamily}
-          borderRadius={labelBorderRadius}
-          backgroundColor={labelBackgroundColor}
-          onClick={setAsSelectedWidget}
-        >
-          {labelContent}
-        </StyledInput>
-      </OutsideBackgroundColor>
-    </Draggable>
+    <StyleSheetManager shouldForwardProp={() => true}>
+      <Draggable bounds="parent" position={labelPosition} onStop={updateLabelPosition}>
+        <OutsideBackgroundColor outsideBackgroundColor={labelOutsideBackgroundColor} height={labelHeight} width={labelWidth}>
+          <StyledInput
+            height={labelHeight}
+            width={labelWidth}
+            fontSize={labelFontSize}
+            fontColor={labelFontColor}
+            fontFamily={labelFontFamily}
+            borderRadius={labelBorderRadius}
+            backgroundColor={labelBackgroundColor}
+            onClick={setAsSelectedWidget}
+          >
+            {labelContent}
+          </StyledInput>
+        </OutsideBackgroundColor>
+      </Draggable>
+    </StyleSheetManager>
   );
 }
 

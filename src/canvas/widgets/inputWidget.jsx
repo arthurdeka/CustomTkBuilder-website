@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import Draggable from "react-draggable";
 import { CanvasContext } from "../CanvasContext";
-import styled from "styled-components";
+import styled, { StyleSheetManager } from "styled-components";
+
 
 const StyledInput = styled.div`
     position: absolute;
@@ -156,39 +157,41 @@ function InputWidget({ id }) {
     };
 
     return (
-        <Draggable bounds="parent" position={inputPosition} onStop={updateInputPosition}>
-            <OutsideBackgroundColor outsideBackgroundColor={inputOutsideBackgroundColor} height={inputHeight} width={inputWidth}>
-                <StyledInput
-                    height={inputHeight}
-                    width={inputWidth}
-                    backgroundColor={inputBackgroundColor}
-                    fontSize={inputFontSize}
-                    fontColor={inputFontColor}
-                    border={inputBorder}
-                    borderColor={inputBorderColor}
-                    borderRadius={inputBorderRadius}
-                    onClick={setAsSelectedWidget}
-                    placeholderFontColor={inputPlaceholderFontColor}
-                >
-                    <input
-                        type="text"
-                        placeholder={inputPlaceholder}
-                        value={inputContent}
-                        onBlur={clearInputOnBlur}
-                        onChange={(e) => setInputContent(e.target.value)}
-                        style={{
-                            width: "100%",
-                            height: "100%",
-                            border: "none",
-                            background: "none",
-                            textAlign: "center",
-                            color: inputFontColor,
-                            fontSize: inputFontSize,
-                        }}
-                    />
-                </StyledInput>
-            </OutsideBackgroundColor>
-        </Draggable>
+        <StyleSheetManager shouldForwardProp={() => true}>
+            <Draggable bounds="parent" position={inputPosition} onStop={updateInputPosition}>
+                <OutsideBackgroundColor outsideBackgroundColor={inputOutsideBackgroundColor} height={inputHeight} width={inputWidth}>
+                    <StyledInput
+                        height={inputHeight}
+                        width={inputWidth}
+                        backgroundColor={inputBackgroundColor}
+                        fontSize={inputFontSize}
+                        fontColor={inputFontColor}
+                        border={inputBorder}
+                        borderColor={inputBorderColor}
+                        borderRadius={inputBorderRadius}
+                        onClick={setAsSelectedWidget}
+                        placeholderFontColor={inputPlaceholderFontColor}
+                    >
+                        <input
+                            type="text"
+                            placeholder={inputPlaceholder}
+                            value={inputContent}
+                            onBlur={clearInputOnBlur}
+                            onChange={(e) => setInputContent(e.target.value)}
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                border: "none",
+                                background: "none",
+                                textAlign: "center",
+                                color: inputFontColor,
+                                fontSize: inputFontSize,
+                            }}
+                        />
+                    </StyledInput>
+                </OutsideBackgroundColor>
+            </Draggable>
+        </StyleSheetManager>
     );
 }
 

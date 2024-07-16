@@ -6,7 +6,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import Draggable from "react-draggable";
 import { CanvasContext } from "../CanvasContext";
-import styled from "styled-components";
+import styled, { StyleSheetManager } from "styled-components";
+
 
 // Estilizando o botão usando styled-components
 const StyledButton = styled.div`
@@ -195,32 +196,35 @@ function ButtonWidget({ id }) {
 
   // Renderizando o botão
   return (
-    <Draggable
-      bounds="parent"
-      position={buttonPosition}
-      onStop={updateButtonPosition}
-    >
-      <OutsideBackgroundColor outsideBackgroundColor={buttonOutsideBackgroundColor} height={buttonHeight} width={buttonWidth} >
-        <StyledButton
-          onClick={setAsSelectedButton}
-          height={buttonHeight}
-          width={buttonWidth}
-          backgroundColor={buttonBackgroundColor}
-          fontSize={buttonFontSize}
-          fontColor={buttonFontColor}
-          border={buttonBorder}
-          borderColor={buttonBorderColor}
-          borderRadius={buttonBorderRadius}
-          // hover
-          hoverBackgroundColor={buttonHoverBackgroundColor}
-          hoverBorderColor={buttonHoverBorderColor}
-          hoverFontColor={buttonHoverFontColor}
-        >
-          {buttonContent}
-        </StyledButton>
-      </OutsideBackgroundColor>
+    <StyleSheetManager shouldForwardProp={() => true}>
+      <Draggable
+        bounds="parent"
+        position={buttonPosition}
+        onStop={updateButtonPosition}
+      >
+          <OutsideBackgroundColor outsideBackgroundColor={buttonOutsideBackgroundColor} height={buttonHeight} width={buttonWidth} >
+            <StyledButton
+              
+              onClick={setAsSelectedButton}
+              height={buttonHeight}
+              width={buttonWidth}
+              backgroundColor={buttonBackgroundColor}
+              fontSize={buttonFontSize}
+              fontColor={buttonFontColor}
+              border={buttonBorder}
+              borderColor={buttonBorderColor}
+              borderRadius={buttonBorderRadius}
+              // hover
+              hoverBackgroundColor={buttonHoverBackgroundColor}
+              hoverBorderColor={buttonHoverBorderColor}
+              hoverFontColor={buttonHoverFontColor}
+            >
+              {buttonContent}
+            </StyledButton>
+          </OutsideBackgroundColor>
+      </Draggable>
+    </StyleSheetManager>
 
-    </Draggable>
   );
 }
 
