@@ -5,6 +5,10 @@ function Properties() {
   const {
     canvasBackgroundColor,
     selectedWidgetContent,
+    objetosCanvas,
+    setObjetosCanvas,
+    selectedWidgetID,
+    setSelectedWidgetType,
     setSelectedWidgetContent,
     selectedWidgetHeight,
     setSelectedWidgetHeight,
@@ -162,6 +166,14 @@ function Properties() {
         setSelectedWidgetFontFamily("MS Gothic");
       }
     }
+  }; 
+
+  // Função para deletar o widget selecionado
+  const deleteSelectedWidget = () => {
+    // Filtra a lista de objetos, removendo o objeto com o ID correspondente
+    const novaLista = objetosCanvas.filter(objeto => objeto.props.id !== selectedWidgetID);
+    setSelectedWidgetType(null)
+    setObjetosCanvas(novaLista);
   };
 
   useEffect(() => {
@@ -209,7 +221,6 @@ function Properties() {
         {/* ====================================== */}
         {/* AQUI COMEÇA OS PROPERTIES DO BUTTON */}
         {/* ====================================== */}
-
         {selectedWidgetType === "button" && (
           <>
             <h4 className="text-properties-h1">Size:</h4>
@@ -454,7 +465,6 @@ function Properties() {
         {/* ====================================== */}
         {/* AQUI COMEÇA OS PROPERTIES DO INPUT */}
         {/* ====================================== */}
-
         {selectedWidgetType === "input" && (
           <>
             <h4 className="text-properties-h1">Size:</h4>
@@ -623,7 +633,6 @@ function Properties() {
         {/* ====================================== */}
         {/* AQUI COMEÇA OS PROPERTIES DO LABEL */}
         {/* ====================================== */}
-
         {selectedWidgetType === "label" && (
           <>
             <h4 className="text-properties-h1">Size:</h4>
@@ -777,6 +786,16 @@ function Properties() {
             </div>
           </>
         )}
+
+        {/* Delete widget button */}
+        {selectedWidgetType === "label" || selectedWidgetType === "input" || selectedWidgetType === "button" ? (
+          <>
+            <button onClick={deleteSelectedWidget} className="bg-red-600 text-sm w-full rounded-sm text-center">Delete widget</button>
+          </>
+        ) : null} 
+
+        <button className="bg-amber-500 text-sm w-full rounded-sm text-center" onClick={() => (console.log(objetosCanvas))}>Log Objetos Canvas</button>
+
       </div>
     </div>
   );

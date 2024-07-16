@@ -65,6 +65,7 @@ export function CanvasProvider({ children }) {
     <CanvasContext.Provider
       value={{
         objetosCanvas,
+        setObjetosCanvas,
         addObjeto,
         canvasBackgroundColor,
         setCanvasBackgroundColor,

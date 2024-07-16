@@ -89,6 +89,8 @@ function LabelWidget({ id }) {
       setLabelFontColor(selectedWidgetFontColor);
       setLabelOutsideBackgroundColor_SameAsCanvas(selectionOutsideBackgroundColor_SameAsCanvas);
       setLabelBackgroundColor_SameAsCanvas(selectionBackgroundColor_SameAsCanvas);
+      // armazenar o componente no localStorage
+      storageSerializedComponent();
     }
   }, [
     selectedWidgetID,
@@ -137,6 +139,31 @@ function LabelWidget({ id }) {
   const updateLabelPosition = (e, data) => {
     setLabelPosition({ x: data.x, y: data.y });
   };
+
+  const storageSerializedComponent = () => {
+    // Cria um objeto com todas as propriedades e seus valores atuais
+    const labelState = {
+      labelContent,
+      labelPosition,
+      labelHeight,
+      labelWidth,
+      labelBorderRadius,
+      labelBackgroundColor,
+      labelOutsideBackgroundColor,
+      labelFontSize,
+      labelFontFamily,
+      labelFontColor,
+      labelBackgroundColor_SameAsCanvas,
+      labelOutsideBackgroundColor_SameAsCanvas,
+    };
+
+    // Converte o objeto de estado para uma string JSON
+    const labelStateString = JSON.stringify(labelState);
+
+    // Grava a string JSON no localStorage usando o ID do widget como chave
+    localStorage.setItem(`labelWidgetState-${id}`, labelStateString);
+
+  }
 
   return (
     <StyleSheetManager shouldForwardProp={() => true}>
