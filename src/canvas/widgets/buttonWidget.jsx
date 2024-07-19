@@ -189,8 +189,6 @@ function ButtonWidget({ id }) {
       buttonBorder,
       buttonHoverBackgroundColor,
       isActiveHoverBackgroundColor,
-      isActiveHoverBorderColor,
-      isActiveHoverFontColor,
       buttonOutsideBackgroundColor_SameAsCanvas,
     };
 
