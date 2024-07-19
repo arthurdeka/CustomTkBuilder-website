@@ -5,7 +5,6 @@ import Canvas from "./canvas/canvas";
 import { Sidemenu } from "./components/Sidemenu";
 import { CanvasProvider } from "./canvas/CanvasContext";
 import { Properties } from "./components/Properties";
-import { clearStorage } from "./utils/clearStorage";
 
 function App() {
 
