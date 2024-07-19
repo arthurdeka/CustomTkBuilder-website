@@ -28,8 +28,6 @@ const StyledButton = styled.div`
   border-radius: ${(props) => props.$borderRadius};
   &:hover {
     background-color: ${(props) => props.$hoverBackgroundColor};
-    border-color: ${(props) => props.$hoverBorderColor};
-    color: ${(props) => props.$hoverFontColor};
   }
 `;
 
@@ -64,18 +62,10 @@ function ButtonWidget({ id }) {
     setSelectedWidgetPosition,
     selectedWidgetHoverBackgroundColor,
     setSelectedWidgetHoverBackgroundColor,
-    selectedWidgetHoverBorderColor,
-    setSelectedWidgetHoverBorderColor,
     isActiveSelectedWidgetHoverBackgroundColor,
     setIsActiveSelectedWidgetHoverBackgroundColor,
-    isActiveSelectedWidgetHoverBorderColor,
-    setIsActiveSelectedWidgetHoverBorderColor,
     selectedWidgetFontColor,
     setSelectedWidgetFontColor,
-    selectedWidgetHoverFontColor,
-    setSelectedWidgetHoverFontColor,
-    isActiveSelectedWidgetHoverFontColor,
-    setIsActiveSelectedWidgetHoverFontColor,
     selectedWidgetBorderRadius,
     setSelectedWidgetBorderRadius,
     selectedWidgetOutsideBackgroundColor,
@@ -101,13 +91,9 @@ function ButtonWidget({ id }) {
 
   // hover
   const [buttonHoverBackgroundColor, setButtonHoverBackgroundColor] = useState("#79A0FF");
-  const [buttonHoverBorderColor, setButtonHoverBorderColor] = useState("#004AFF");
-  const [buttonHoverFontColor, setButtonHoverFontColor] = useState("#004AFF");
 
   // is active checkbox para opções opicionais
   const [isActiveHoverBackgroundColor, setIsActiveHoverBackgroundColor] = useState(true);
-  const [isActiveHoverBorderColor, setIsActiveHoverBorderColor] = useState(true);
-  const [isActiveHoverFontColor, setIsActiveHoverFontColor] = useState(true);
   const [buttonOutsideBackgroundColor_SameAsCanvas, setButtonOutsideBackgroundColor_SameAsCanvas] = useState(true);
 
 
@@ -126,12 +112,8 @@ function ButtonWidget({ id }) {
       setButtonFontColor(selectedWidgetFontColor);
       // hover
       setButtonHoverBackgroundColor(selectedWidgetHoverBackgroundColor);
-      setButtonHoverBorderColor(selectedWidgetHoverBorderColor);
-      setButtonHoverFontColor(selectedWidgetHoverFontColor);
       // valores de checkbox de opções opcionais
       setIsActiveHoverBackgroundColor(isActiveSelectedWidgetHoverBackgroundColor);
-      setIsActiveHoverBorderColor(isActiveSelectedWidgetHoverBorderColor);
-      setIsActiveHoverFontColor(isActiveSelectedWidgetHoverFontColor);
       setButtonOutsideBackgroundColor_SameAsCanvas(selectionOutsideBackgroundColor_SameAsCanvas)
 
       // armazenar o componente no localStorage
@@ -149,11 +131,7 @@ function ButtonWidget({ id }) {
     selectedWidgetFontSize,
     selectedWidgetFontColor,
     selectedWidgetHoverBackgroundColor,
-    selectedWidgetHoverBorderColor,
     isActiveSelectedWidgetHoverBackgroundColor,
-    isActiveSelectedWidgetHoverBorderColor,
-    selectedWidgetHoverFontColor,
-    isActiveSelectedWidgetHoverFontColor,
     selectedWidgetBorderRadius,
     selectionOutsideBackgroundColor_SameAsCanvas,
   ]);
@@ -183,12 +161,8 @@ function ButtonWidget({ id }) {
     setSelectedWidgetBorderRadius(buttonBorderRadius);
     // hover
     setSelectedWidgetHoverBackgroundColor(buttonHoverBackgroundColor);
-    setSelectedWidgetHoverBorderColor(buttonHoverBorderColor);
-    setSelectedWidgetHoverFontColor(buttonHoverFontColor);
     // valores de checkbox de opções opcionais
     setIsActiveSelectedWidgetHoverBackgroundColor(isActiveHoverBackgroundColor);
-    setIsActiveSelectedWidgetHoverBorderColor(isActiveHoverBorderColor);
-    setIsActiveSelectedWidgetHoverFontColor(isActiveHoverFontColor);
     setSelectionOutsideBackgroundColor_SameAsCanvas(buttonOutsideBackgroundColor_SameAsCanvas)
   };
 
@@ -214,8 +188,6 @@ function ButtonWidget({ id }) {
       buttonBorderColor,
       buttonBorder,
       buttonHoverBackgroundColor,
-      buttonHoverBorderColor,
-      buttonHoverFontColor,
       isActiveHoverBackgroundColor,
       isActiveHoverBorderColor,
       isActiveHoverFontColor,
@@ -252,8 +224,6 @@ function ButtonWidget({ id }) {
               $borderRadius={buttonBorderRadius}
               // hover
               $hoverBackgroundColor={buttonHoverBackgroundColor}
-              $hoverBorderColor={buttonHoverBorderColor}
-              $hoverFontColor={buttonHoverFontColor}
             >
               {buttonContent}
             </StyledButton>

@@ -3,12 +3,11 @@ import { CanvasContext } from "../canvas/CanvasContext";
 
 function Properties() {
   const {
-    canvasBackgroundColor,
-    selectedWidgetContent,
     objetosCanvas,
     setObjetosCanvas,
+    canvasBackgroundColor,
     selectedWidgetID,
-    setSelectedWidgetType,
+    selectedWidgetContent,
     setSelectedWidgetContent,
     selectedWidgetHeight,
     setSelectedWidgetHeight,
@@ -25,18 +24,10 @@ function Properties() {
     selectedWidgetPosition,
     selectedWidgetHoverBackgroundColor,
     setSelectedWidgetHoverBackgroundColor,
-    selectedWidgetHoverBorderColor,
-    setSelectedWidgetHoverBorderColor,
     isActiveSelectedWidgetHoverBackgroundColor,
     setIsActiveSelectedWidgetHoverBackgroundColor,
-    isActiveSelectedWidgetHoverBorderColor,
-    setIsActiveSelectedWidgetHoverBorderColor,
     selectedWidgetFontColor,
     setSelectedWidgetFontColor,
-    selectedWidgetHoverFontColor,
-    setSelectedWidgetHoverFontColor,
-    isActiveSelectedWidgetHoverFontColor,
-    setIsActiveSelectedWidgetHoverFontColor,
     selectedWidgetBorderRadius,
     setSelectedWidgetBorderRadius,
     selectedWidgetOutsideBackgroundColor,
@@ -44,6 +35,7 @@ function Properties() {
     selectionOutsideBackgroundColor_SameAsCanvas,
     setSelectionOutsideBackgroundColor_SameAsCanvas,
     selectedWidgetType,
+    setSelectedWidgetType,
     selectedWidgetPlaceholderFontColor,
     setSelectedWidgetPlaceholderFontColor,
     selectionBackgroundColor_SameAsCanvas,
@@ -95,14 +87,6 @@ function Properties() {
 
     if (propriedade === "hoverBackgroundColor") {
       setSelectedWidgetHoverBackgroundColor(event.target.value);
-    }
-
-    if (propriedade === "hoverBorderColor") {
-      setSelectedWidgetHoverBorderColor(event.target.value);
-    }
-
-    if (propriedade === "hoverFontColor") {
-      setSelectedWidgetHoverFontColor(event.target.value);
     }
 
     if (propriedade === "border-radius") {
@@ -182,16 +166,7 @@ function Properties() {
       setSelectedWidgetHoverBackgroundColor("none");
     }
 
-    // caso o hover border color esteja desabilitado, a cor de hover é setada para none
-    if (isActiveSelectedWidgetHoverBorderColor === false) {
-      setSelectedWidgetHoverBorderColor("none");
-    }
-
-    // caso o hover font color esteja desabilitado, a cor de hover é setada para none
-    if (isActiveSelectedWidgetHoverFontColor === false) {
-      setSelectedWidgetHoverFontColor("none");
-    }
-  }, [isActiveSelectedWidgetHoverBackgroundColor, isActiveSelectedWidgetHoverBorderColor, isActiveSelectedWidgetHoverFontColor]);
+  }, [isActiveSelectedWidgetHoverBackgroundColor]);
 
   return (
     <div className="bg-slate-800 w-3/12  max-h-svh overflow-scroll">
@@ -398,62 +373,6 @@ function Properties() {
                     name="hoverBackgroundColor"
                     value={selectedWidgetHoverBackgroundColor}
                     onChange={(event) => handleStyleChange(event, "hoverBackgroundColor")}
-                  />
-                  <div className="py-1" />
-                </div>
-              )}
-            </div>
-
-            {/* Enable Hover Border Color checkbox */}
-            <div>
-              <div className="flex flex-row items-center mb-4">
-                <input
-                  type="checkbox"
-                  checked={isActiveSelectedWidgetHoverBorderColor}
-                  onChange={(e) => setIsActiveSelectedWidgetHoverBorderColor(e.target.checked)}
-                  className="mr-2"
-                />
-                <label className="text-md font-inter font-semibold">Enable Hover - Border Color</label>
-              </div>
-
-              {/* somente aparece caso isActiveSelectedWidgetHoverBorderColor seja True */}
-              {isActiveSelectedWidgetHoverBorderColor && (
-                <div className="flex flex-col">
-                  <label className="text-properties-h2">Hover - Border Color:</label>
-                  <input
-                    className="input-properties-color"
-                    type="color"
-                    name="hoverBorderColor"
-                    value={selectedWidgetHoverBorderColor}
-                    onChange={(event) => handleStyleChange(event, "hoverBorderColor")}
-                  />
-                  <div className="py-1" />
-                </div>
-              )}
-            </div>
-
-            {/* Enable Hover Font Color checkbox */}
-            <div>
-              <div className="flex flex-row items-center mb-4">
-                <input
-                  type="checkbox"
-                  checked={isActiveSelectedWidgetHoverFontColor}
-                  onChange={(e) => setIsActiveSelectedWidgetHoverFontColor(e.target.checked)}
-                  className="mr-2"
-                />
-                <label className="text-md font-inter font-semibold">Enable Hover - Font Color</label>
-              </div>
-
-              {/* somente aparece caso isActiveSelectedWidgetHoverFontColor seja True */}
-              {isActiveSelectedWidgetHoverFontColor && (
-                <div className="flex flex-col">
-                  <label className="text-properties-h2">Hover - Font Color:</label>
-                  <input
-                    className="input-properties-color"
-                    type="color"
-                    name="hoverFontColor"
-                    value={selectedWidgetHoverFontColor}
-                    onChange={(event) => handleStyleChange(event, "hoverFontColor")}
                   />
                   <div className="py-1" />
                 </div>
@@ -787,7 +706,7 @@ function Properties() {
           </>
         )}
 
-        {/* Delete widget button */}
+        {/* Delete widget */}
         {selectedWidgetType === "label" || selectedWidgetType === "input" || selectedWidgetType === "button" ? (
           <>
             <button onClick={deleteSelectedWidget} className="bg-red-600 text-sm w-full rounded-sm text-center">Delete widget</button>

@@ -42,14 +42,10 @@ export function CanvasProvider({ children }) {
   const [selectedWidgetFontFamily, setSelectedWidgetFontFamily] = useState(null);
 
   //hover
-  const [selectedWidgetHoverBorderColor, setSelectedWidgetHoverBorderColor] = useState(null);
   const [selectedWidgetHoverBackgroundColor, setSelectedWidgetHoverBackgroundColor] = useState(null);
-  const [selectedWidgetHoverFontColor, setSelectedWidgetHoverFontColor] = useState(null);
 
   // Estados para opções opcionais
-  const [isActiveSelectedWidgetHoverBorderColor, setIsActiveSelectedWidgetHoverBorderColor] = useState(true);
   const [isActiveSelectedWidgetHoverBackgroundColor, setIsActiveSelectedWidgetHoverBackgroundColor] = useState(true);
-  const [isActiveSelectedWidgetHoverFontColor, setIsActiveSelectedWidgetHoverFontColor] = useState(true);
   const [selectionOutsideBackgroundColor_SameAsCanvas, setSelectionOutsideBackgroundColor_SameAsCanvas] = useState(true);
   const [selectionBackgroundColor_SameAsCanvas, setSelectionBackgroundColor_SameAsCanvas] = useState(true);
 
@@ -89,18 +85,10 @@ export function CanvasProvider({ children }) {
         setSelectedWidgetPosition,
         selectedWidgetHoverBackgroundColor,
         setSelectedWidgetHoverBackgroundColor,
-        selectedWidgetHoverBorderColor,
-        setSelectedWidgetHoverBorderColor,
         isActiveSelectedWidgetHoverBackgroundColor,
         setIsActiveSelectedWidgetHoverBackgroundColor,
-        isActiveSelectedWidgetHoverBorderColor,
-        setIsActiveSelectedWidgetHoverBorderColor,
         selectedWidgetFontColor,
         setSelectedWidgetFontColor,
-        selectedWidgetHoverFontColor,
-        setSelectedWidgetHoverFontColor,
-        isActiveSelectedWidgetHoverFontColor,
-        setIsActiveSelectedWidgetHoverFontColor,
         selectedWidgetBorderRadius,
         setSelectedWidgetBorderRadius,
         selectedWidgetOutsideBackgroundColor,
