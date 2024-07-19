@@ -9,9 +9,6 @@ import { clearStorage } from "./utils/clearStorage";
 
 function App() {
 
-  // Limpa o localStorage quando o componente é montado
-  clearStorage();
-
   return (
     <div className="App bg-gray-900 max-h-screen overflow-hidden ">
       
