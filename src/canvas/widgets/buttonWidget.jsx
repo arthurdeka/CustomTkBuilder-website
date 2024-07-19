@@ -200,6 +200,8 @@ function ButtonWidget({ id }) {
   const storageSerializedComponent = () => {
     // Cria um objeto com todas as propriedades e seus valores atuais
     const buttonState = {
+      id,
+      widgetType : "button",
       buttonContent,
       buttonPosition,
       buttonHeight,
@@ -214,6 +216,9 @@ function ButtonWidget({ id }) {
       buttonHoverBackgroundColor,
       buttonHoverBorderColor,
       buttonHoverFontColor,
+      isActiveHoverBackgroundColor,
+      isActiveHoverBorderColor,
+      isActiveHoverFontColor,
       buttonOutsideBackgroundColor_SameAsCanvas,
     };
 

@@ -162,6 +162,8 @@ function InputWidget({ id }) {
     const storageSerializedComponent = () => {
         // Cria um objeto com todas as propriedades e seus valores atuais
         const inputState = {
+            id,
+            widgetType : "input",
             inputContent,
             inputPosition,
             inputHeight,
@@ -173,6 +175,7 @@ function InputWidget({ id }) {
             inputOutsideBackgroundColor,
             inputFontSize,
             inputFontColor,
+            inputPlaceholder,
             inputPlaceholderFontColor,
             inputOutsideBackgroundColor_SameAsCanvas,
         };

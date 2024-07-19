@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import Header from "./components/Header";
@@ -8,9 +8,15 @@ import { CanvasProvider } from "./canvas/CanvasContext";
 import { Properties } from "./components/Properties";
 
 function App() {
+  
+  // Limpa o localStorage quando o componente é montado
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
+
   return (
     <div className="App bg-gray-900 max-h-screen overflow-hidden ">
-
+      
       <Header />
       <div className="flex flex-row items-start">
         <CanvasProvider > {/* Envolver o aplicativo com o CanvasProvider */}
@@ -25,6 +31,7 @@ function App() {
     </div>
   );
 }
+
 
 
 export default App;

@@ -143,6 +143,8 @@ function LabelWidget({ id }) {
   const storageSerializedComponent = () => {
     // Cria um objeto com todas as propriedades e seus valores atuais
     const labelState = {
+      id,
+      widgetType : "label",
       labelContent,
       labelPosition,
       labelHeight,
