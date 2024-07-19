@@ -1,8 +1,4 @@
 
-export function funcaoClique() {
-  console.log("teste");
-}
-
 // essa função recolhe os widgets armazenados no local Storage e os transforma em código python
 export function translateWidgetsToCode() {
     // Inicializa um array para armazenar os estados dos widgets
@@ -95,12 +91,8 @@ Entry_id${widgetState.id}.place(x=${widgetState.inputPosition.x}, y=${widgetStat
     console.log(pythonCodeString);
 
   
-    return 1;
+    return pythonCodeString;
   }
 
-// Função para desserializar o estado do componente e reconstruí-lo
-export function desserializarEstadoComponente(estadoSerializado) {
-  return "Deserializado";
-}
 
-export default { funcaoClique, translateWidgetsToCode, desserializarEstadoComponente };
+export default { translateWidgetsToCode };
