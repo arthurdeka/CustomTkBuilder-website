@@ -171,8 +171,8 @@ function Properties() {
   }, [isActiveSelectedWidgetHoverBackgroundColor]);
 
   return (
-    <div className="bg-slate-800 w-3/12  max-h-svh overflow-scroll">
-      <div className="p-4 pb-20 pl-6 max-h-100 mt-8">
+    <div className="bg-slate-800 w-3/12 h-screen overflow-scroll">
+      <div className="p-4 pb-20 pl-6 h-full mt-8">
         <h2 className="text-3xl font-inter text-center text-corprimaria">Properties</h2>
         <br />
 
@@ -203,6 +203,14 @@ function Properties() {
         ) : null} 
 
         <div className="horizontal-line" />
+
+        {/* caso não haja nenhum widget selecionado */}
+        {selectedWidgetType === null && (
+          <>
+            <h2 className="text-2xl font-inter text-center text-corsecundaria">Select a widget to see its properties</h2>
+            <div className=" h-full"></div>
+          </>
+        )}
 
         {/* ====================================== */}
         {/* AQUI COMEÇA OS PROPERTIES DO BUTTON */}
@@ -389,6 +397,7 @@ function Properties() {
                 </div>
               )}
             </div>
+            <br /><br /><br />
           </>
         )}
 
@@ -557,6 +566,7 @@ function Properties() {
               />
               <div className="py-1" />
             </div>
+            <br /><br /><br />
           </>
         )}
 
@@ -714,6 +724,7 @@ function Properties() {
               />
               <div className="py-1" />
             </div>
+            <br /><br /><br />
           </>
         )}
 

@@ -17,7 +17,7 @@ function App() {
 
           <Sidemenu />
           <Canvas />
-          <Properties className="" />
+          <Properties />
           
         </CanvasProvider>
       </div>
