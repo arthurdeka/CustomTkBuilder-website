@@ -87,11 +87,37 @@ Entry_id${widgetState.id}.place(x=${widgetState.inputPosition.x}, y=${widgetStat
     // junta todos os códigos python armazenados na lista em uma string
     const pythonCodeString = widgetPythonCodelist.join("\n"); 
 
+    // atribui a uma constane o valor da key Canvas no localStorage
+    const canvasJSON = JSON.parse(localStorage.getItem("Canvas"));
+
+    // traduz as propriedades do canvas para código python
+    const canvasPythonCode =
+`
+# libraries Import
+from tkinter import *
+import customtkinter
+
+# Main Window Properties
+
+window = Tk()
+window.title("${canvasJSON.WindowName}")
+window.geometry("${canvasJSON.canvasWidth}x${canvasJSON.canvasHeight}")
+window.configure(bg="${canvasJSON.canvasLocalBackgroundColor}")`;
+
+    const runMainLoop = 
+`
+#run the main loop
+window.mainloop()`;
+
+
+    // concatena o código do canvas com o código dos widgets e do loop
+    const finalPythonCode = canvasPythonCode + "\n\n\n" + pythonCodeString + "\n\n\n" + runMainLoop;
+
     // exibe o código python na console
-    console.log(pythonCodeString);
+    console.log(finalPythonCode);
 
   
-    return pythonCodeString;
+    return finalPythonCode;
   }
 
 
