@@ -18,6 +18,7 @@ const StyledInput = styled.div`
   justify-content: center;
   text-align: center;
   border-radius: ${(props) => props.$borderRadius};
+  z-index: 2;
 `;
 
 // div para representar o background color além das rounded borders
@@ -26,6 +27,7 @@ const OutsideBackgroundColor = styled.div`
   height: ${(props) => props.$height};
   width: ${(props) => props.$width};
   background-color: ${(props) => props.$outsideBackgroundColor};
+  z-index: 2;
 `;
 
 function LabelWidget({ id }) {
