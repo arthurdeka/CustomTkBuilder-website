@@ -156,8 +156,10 @@ function Properties() {
   const deleteSelectedWidget = () => {
     // Filtra a lista de objetos, removendo o objeto com o ID correspondente
     const novaLista = objetosCanvas.filter(objeto => objeto.props.id !== selectedWidgetID);
-    setSelectedWidgetType(null)
+    setSelectedWidgetType(null);
     setObjetosCanvas(novaLista);
+    // remove do localstorage com key WidgetState
+    localStorage.removeItem(`WidgetState-${selectedWidgetID}`);
   };
 
   useEffect(() => {
@@ -189,7 +191,16 @@ function Properties() {
           <input className="input-properties bg-gray-300" type="number" min="0" name="y_coord" value={selectedWidgetPosition.y} disabled />
           <label className="text-properties-h3">Px</label>
           <br />
-        </div>
+        </div> 
+
+        <br />
+
+        {/* Delete widget */}
+        {selectedWidgetType === "label" || selectedWidgetType === "input" || selectedWidgetType === "button" ? (
+          <>
+          <button onClick={deleteSelectedWidget} className="bg-red-600 text-sm w-full rounded-sm text-center">Delete widget</button>
+          </>
+        ) : null} 
 
         <div className="horizontal-line" />
 
@@ -705,13 +716,6 @@ function Properties() {
             </div>
           </>
         )}
-
-        {/* Delete widget */}
-        {selectedWidgetType === "label" || selectedWidgetType === "input" || selectedWidgetType === "button" ? (
-          <>
-            <button onClick={deleteSelectedWidget} className="bg-red-600 text-sm w-full rounded-sm text-center">Delete widget</button>
-          </>
-        ) : null} 
 
         <button className="bg-amber-500 text-sm w-full rounded-sm text-center" onClick={() => (console.log(objetosCanvas))}>Log Objetos Canvas</button>
 

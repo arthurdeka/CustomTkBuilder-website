@@ -28,7 +28,6 @@ function Canvas() {
     localStorage.setItem("Canvas", JSON.stringify(canvasJSON));
   };
 
-
   useEffect(() => {
     // caso o a cor do canvas mude, a nova cor é enviada ao CanvasContext
     setCanvasBackgroundColor(canvasLocalBackgroundColor);
@@ -44,13 +43,11 @@ function Canvas() {
 
   }, [WindowName, canvasWidth, canvasHeight, canvasLocalBackgroundColor]);
 
-  
   return (
     <div id="canvas-env">
       <div id="canvas" style={{ width: `${canvasWidth}px`, height: `${canvasHeight}px`, backgroundColor: `${canvasLocalBackgroundColor}` }}>
-        {/* renderiza os objetos armazenados na lista objetosCanvas */}
-        {objetosCanvas.map((objeto, index) => (
-          <Fragment key={index}>{objeto}</Fragment>
+        {objetosCanvas.map((objeto) => (
+          <Fragment key={objeto.props.id}>{objeto}</Fragment>
         ))}
       </div>
 
