@@ -198,7 +198,7 @@ function Properties() {
         {/* Delete widget */}
         {selectedWidgetType === "label" || selectedWidgetType === "input" || selectedWidgetType === "button" ? (
           <>
-          <button onClick={deleteSelectedWidget} className="bg-red-600 text-sm w-full rounded-sm text-center">Delete widget</button>
+          <button onClick={deleteSelectedWidget} className="bg-red-400 text-sm w-full rounded-sm text-center">Delete widget</button>
           </>
         ) : null} 
 
@@ -716,8 +716,6 @@ function Properties() {
             </div>
           </>
         )}
-
-        <button className="bg-amber-500 text-sm w-full rounded-sm text-center" onClick={() => (console.log(objetosCanvas))}>Log Objetos Canvas</button>
 
       </div>
     </div>
