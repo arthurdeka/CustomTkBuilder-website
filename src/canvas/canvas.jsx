@@ -57,18 +57,35 @@ function Canvas() {
         </button>
 
         {showConfigs && (
-          <div id="configs-da-janela">
-            <h1>Window Name:</h1>
-            <input type="text" value={WindowName} onChange={(e) => setWindowName(e.target.value)} />
+          <div id="configs-da-janela" className="flex font-inter">
+            <div className="mx-2 flex flex-col">
+              <div className="pt-4">
+                <h1>Window Name:</h1>
+                <input className="rounded-md px-2 w-full" type="text" value={WindowName} onChange={(e) => setWindowName(e.target.value)} />
+              </div>
 
-            <h5>Background Color:</h5>
-            <input type="color" value={canvasLocalBackgroundColor} onChange={(e) => setCanvasLocalBackgroundColor(e.target.value)} />
+              <div>
+                <h5 >Background Color:</h5>
+                <input className="rounded-md px-2 w-full" type="color" value={canvasLocalBackgroundColor} onChange={(e) => setCanvasLocalBackgroundColor(e.target.value)} />
+              </div>
 
-            <h1>Window Size:</h1>
-            <h5>width:</h5>
-            <input type="number" min="5" value={canvasWidth} onChange={(e) => setCanvasWidth(e.target.value)} />
-            <h5>height:</h5>
-            <input type="number" min="5" value={canvasHeight} onChange={(e) => setCanvasHeight(e.target.value)} />
+            </div>
+
+            <div className="mx-2">
+
+              <h1>Window Size:</h1>
+              <div>
+                <h5 className="text-sm">Width:</h5>
+                <input className="rounded-md px-2 w-full" type="number" min="5" value={canvasWidth} onChange={(e) => setCanvasWidth(e.target.value)} />
+              </div>
+              
+              <div>
+                <h5 className="text-sm">Height:</h5>
+                <input className="rounded-md px-2 w-full" type="number" min="5" value={canvasHeight} onChange={(e) => setCanvasHeight(e.target.value)} />
+              </div>
+
+            </div>
+
           </div>
         )}
       </div>
