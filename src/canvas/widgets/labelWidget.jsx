@@ -96,6 +96,7 @@ function LabelWidget({ id }) {
     }
   }, [
     selectedWidgetID,
+    labelPosition,
     selectedWidgetContent,
     selectedWidgetHeight,
     selectedWidgetWidth,

@@ -107,6 +107,7 @@ function InputWidget({ id }) {
         }
     }, [
         selectedWidgetID,
+        inputPosition,
         selectedWidgetContent,
         selectedWidgetHeight,
         selectedWidgetWidth,

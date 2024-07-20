@@ -121,6 +121,7 @@ function ButtonWidget({ id }) {
     }
   }, [
     selectedWidgetID,
+    buttonPosition,
     selectedWidgetContent,
     selectedWidgetHeight,
     selectedWidgetWidth,
