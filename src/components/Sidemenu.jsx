@@ -3,11 +3,10 @@ import { CanvasContext } from "../canvas/CanvasContext";
 import ButtonWidget from "../canvas/widgets/buttonWidget";
 import InputWidget from "../canvas/widgets/inputWidget";
 import LabelWidget from "../canvas/widgets/labelWidget";
-import { translateWidgetsToCode } from "../utils/translateGUI";
+import TranslateCodeModal from "./TranslateCodeModal";
 import { default as LabelIcon } from "../assets/Label_icon.svg";
 import { default as ButtonIcon } from "../assets/Button_icon.svg";
 import { default as InputIcon } from "../assets/Input_icon.svg";
-import { default as TranslateIcon } from "../assets/Translate_icon.svg";
 
 function Sidemenu() {
   const { objetosCanvas, addObjeto } = useContext(CanvasContext);
@@ -47,12 +46,7 @@ function Sidemenu() {
         
         <br /><br /><br />
 
-        <button className="bg-emerald-500 px-2 mt-2 border-2 py-2 mx-auto text-white w-full rounded-md border-black" onClick={() => translateWidgetsToCode()}>
-          <div className="flex items-center justify-center ">
-            <img className="w-6" src={TranslateIcon} />
-            <h4 className="pl-1 font-semibold" >Translate to Code</h4>
-          </div>
-        </button>
+        <TranslateCodeModal />
 
       </div>
     </div>
