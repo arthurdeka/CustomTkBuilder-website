@@ -18,6 +18,7 @@ const StyledInput = styled.div`
   justify-content: center;
   text-align: center;
   border-radius: ${(props) => props.$borderRadius};
+  whitespace: nowrap;
   z-index: 2;
 `;
 
