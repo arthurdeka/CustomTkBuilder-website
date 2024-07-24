@@ -1,5 +1,3 @@
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import Header from "./components/Header";
 import Canvas from "./canvas/canvas";
 import ReactGA from 'react-ga4';
