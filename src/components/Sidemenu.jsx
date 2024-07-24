@@ -17,7 +17,7 @@ function Sidemenu() {
   };
 
   return (
-    <div className="bg-slate-800 w-2/12 h-screen font-inter">
+    <div className="bg-slate-800 w-2/12 h-screen font-inter flex flex-col justify-between">
       <div className="pl-2 pr-4 mt-8">
 
         <h2 className="text-md font-inter font-bold text-corprimaria">Tkinter</h2>
@@ -48,6 +48,11 @@ function Sidemenu() {
 
         <TranslateCodeModal />
 
+
+      </div>
+      <div className="pt-2 mx-auto pb-24">
+        <h5 className="font-inter font-bold text-corsecundaria">Contact:</h5>
+        <h5 className="font-inter text-corsecundaria">deka.matrix@gmail.com</h5>
       </div>
     </div>
   );
