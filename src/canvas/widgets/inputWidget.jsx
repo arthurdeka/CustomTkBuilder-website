@@ -71,7 +71,7 @@ function InputWidget({ id }) {
     const [inputPlaceholder, setInputPlaceholder] = useState("Placeholder");
     const [inputPosition, setInputPosition] = useState({ x: 0, y: 0 });
     const [inputHeight, setInputHeight] = useState("30px");
-    const [inputWidth, setInputWidth] = useState("95px");
+    const [inputWidth, setInputWidth] = useState("195px");
     const [inputBorder, setInputBorder] = useState("2px solid");
     const [inputBorderColor, setInputBorderColor] = useState("#000000");
     const [inputBorderRadius, setInputBorderRadius] = useState("6px");
@@ -79,7 +79,7 @@ function InputWidget({ id }) {
     const [inputOutsideBackgroundColor, setInputOutsideBackgroundColor] = useState(canvasBackgroundColor);
     const [inputFontSize, setInputFontSize] = useState("14px");
     const [inputFontColor, setInputFontColor] = useState("#000000");
-    const [inputPlaceholderFontColor, setInputPlaceholderFontColor] = useState("#000000");
+    const [inputPlaceholderFontColor, setInputPlaceholderFontColor] = useState("#454545");
 
     // is active checkbox para opções opicionais
     const [inputOutsideBackgroundColor_SameAsCanvas, setInputOutsideBackgroundColor_SameAsCanvas] = useState(true);

@@ -90,7 +90,7 @@ function ButtonWidget({ id }) {
   const [buttonFontColor, setButtonFontColor] = useState("#000000");
 
   // hover
-  const [buttonHoverBackgroundColor, setButtonHoverBackgroundColor] = useState("#79A0FF");
+  const [buttonHoverBackgroundColor, setButtonHoverBackgroundColor] = useState("#949494");
 
   // is active checkbox para opções opicionais
   const [isActiveHoverBackgroundColor, setIsActiveHoverBackgroundColor] = useState(true);
