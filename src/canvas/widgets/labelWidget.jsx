@@ -141,7 +141,10 @@ function LabelWidget({ id }) {
 
   // função para atualizar as coordenadas no contexto CanvasContext
   const updateLabelPosition = (e, data) => {
-    setLabelPosition({ x: data.x, y: data.y });
+    setLabelPosition({ 
+      x: Math.round(data.x / 10) * 10, 
+      y: Math.round(data.y / 10) * 10 
+    });
   };
 
   const storageSerializedComponent = () => {

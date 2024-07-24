@@ -157,7 +157,10 @@ function InputWidget({ id }) {
 
     // função para atualizar as coordenadas no contexto CanvasContext
     const updateInputPosition = (e, data) => {
-        setInputPosition({ x: data.x, y: data.y });
+        setInputPosition({ 
+            x: Math.round(data.x / 10) * 10, 
+            y: Math.round(data.y / 10) * 10 
+          });
     };
 
     const storageSerializedComponent = () => {

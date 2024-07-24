@@ -169,7 +169,10 @@ function ButtonWidget({ id }) {
 
   // função para atualizar as coordenadas no contexto CanvasContext
   const updateButtonPosition = (e, data) => {
-    setButtonPosition({ x: data.x, y: data.y });
+    setButtonPosition({ 
+      x: Math.round(data.x / 10) * 10, 
+      y: Math.round(data.y / 10) * 10 
+    });
   };
 
   const storageSerializedComponent = () => {
