@@ -67,6 +67,7 @@ Label_id${widgetState.id}.place(x=${widgetState.labelPosition.x}, y=${widgetStat
 `Entry_id${widgetState.id} = customtkinter.CTkEntry(
     master=window,
     placeholder_text="${widgetState.inputPlaceholder}",
+    placeholder_text_color="${widgetState.inputPlaceholderFontColor}",
     font=("Arial", ${widgetState.inputFontSize.match(/\d+/)}),
     text_color="${widgetState.inputFontColor}",
     height=${widgetState.inputHeight.match(/\d+/)},

@@ -233,7 +233,8 @@ function InputWidget({ id }) {
                                 height: "100%",
                                 border: "none",
                                 background: "none",
-                                textAlign: "center",
+                                textAlign: "lfet",
+                                paddingLeft: "5px",
                                 color: inputFontColor,
                                 fontSize: inputFontSize,
                             }}
