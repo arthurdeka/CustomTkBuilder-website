@@ -121,7 +121,6 @@ function ButtonWidget({ id }) {
     }
   }, [
     selectedWidgetID,
-    buttonPosition,
     selectedWidgetContent,
     selectedWidgetHeight,
     selectedWidgetWidth,
@@ -135,6 +134,21 @@ function ButtonWidget({ id }) {
     isActiveSelectedWidgetHoverBackgroundColor,
     selectedWidgetBorderRadius,
     selectionOutsideBackgroundColor_SameAsCanvas,
+    // caso qualquer um desses valores mude, o componente é armazenado no localStorage (código necessário para resolver bug)
+    buttonPosition,
+    buttonContent,
+    buttonHeight,
+    buttonWidth,
+    buttonBorder,
+    buttonBorderColor,
+    buttonBorderRadius,
+    buttonBackgroundColor,
+    buttonOutsideBackgroundColor,
+    buttonFontSize,
+    buttonFontColor,
+    buttonHoverBackgroundColor,
+    isActiveHoverBackgroundColor,
+    buttonOutsideBackgroundColor_SameAsCanvas,
   ]);
 
   useEffect(() => {

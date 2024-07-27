@@ -107,7 +107,6 @@ function InputWidget({ id }) {
         }
     }, [
         selectedWidgetID,
-        inputPosition,
         selectedWidgetContent,
         selectedWidgetHeight,
         selectedWidgetWidth,
@@ -120,6 +119,21 @@ function InputWidget({ id }) {
         selectedWidgetPlaceholderFontColor,
         selectedWidgetBorderRadius,
         selectionOutsideBackgroundColor_SameAsCanvas,
+        // caso qualquer um desses valores mude, o componente é armazenado no localStorage (código necessário para resolver bug)
+        inputContent,
+        inputPosition,
+        inputHeight,
+        inputWidth,
+        inputBorder,
+        inputBorderColor,
+        inputBorderRadius,
+        inputBackgroundColor,
+        inputOutsideBackgroundColor,
+        inputFontSize,
+        inputFontColor,
+        inputPlaceholder,
+        inputPlaceholderFontColor,
+        inputOutsideBackgroundColor_SameAsCanvas,
     ]);
 
     // caso a cor do canvas mude, e a opção de manter a cor do botão igual a do canvas esteja ativa, a cor do outside background é atualizada

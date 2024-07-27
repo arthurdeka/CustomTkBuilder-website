@@ -97,7 +97,6 @@ function LabelWidget({ id }) {
     }
   }, [
     selectedWidgetID,
-    labelPosition,
     selectedWidgetContent,
     selectedWidgetHeight,
     selectedWidgetWidth,
@@ -109,6 +108,19 @@ function LabelWidget({ id }) {
     selectedWidgetBorderRadius,
     selectionOutsideBackgroundColor_SameAsCanvas,
     selectionBackgroundColor_SameAsCanvas,
+    // caso qualquer um desses valores mude, o componente é armazenado no localStorage (código necessário para resolver bug)
+    labelPosition,
+    labelContent,
+    labelHeight,
+    labelWidth,
+    labelBorderRadius,
+    labelBackgroundColor,
+    labelOutsideBackgroundColor,
+    labelFontSize,
+    labelFontFamily,
+    labelFontColor,
+    labelBackgroundColor_SameAsCanvas,
+    labelOutsideBackgroundColor_SameAsCanvas,
   ]);
 
   // caso a cor do canvas mude, e a opção de manter a cor do botão igual a do canvas esteja ativa, a cor do outside background é atualizada
