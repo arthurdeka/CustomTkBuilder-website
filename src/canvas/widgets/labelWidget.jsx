@@ -85,13 +85,25 @@ function LabelWidget({ id }) {
       setLabelHeight(selectedWidgetHeight);
       setLabelWidth(selectedWidgetWidth);
       setLabelBorderRadius(selectedWidgetBorderRadius);
-      setLabelBackgroundColor(selectedWidgetBackgroundColor);
-      setLabelOutsideBackgroundColor(selectedWidgetOutsideBackgroundColor);
       setLabelFontSize(selectedWidgetFontSize);
       setLabelFontFamily(selectedWidgetFontFamily);
       setLabelFontColor(selectedWidgetFontColor);
       setLabelOutsideBackgroundColor_SameAsCanvas(selectionOutsideBackgroundColor_SameAsCanvas);
       setLabelBackgroundColor_SameAsCanvas(selectionBackgroundColor_SameAsCanvas);
+      
+      // caso a cor do canvas mude, e a opção de manter a cor do label igual a do canvas esteja ativa, a cor do outside background é atualizada
+      if (labelBackgroundColor_SameAsCanvas == true) {
+        setLabelBackgroundColor(canvasBackgroundColor);
+      } else {
+        setLabelBackgroundColor(selectedWidgetBackgroundColor);
+      }
+
+      if (labelOutsideBackgroundColor_SameAsCanvas == true) {
+        setLabelOutsideBackgroundColor(canvasBackgroundColor);
+      } else {
+        setLabelOutsideBackgroundColor(selectedWidgetOutsideBackgroundColor);
+      }
+      
       // armazenar o componente no localStorage
       storageSerializedComponent();
     }
@@ -131,6 +143,10 @@ function LabelWidget({ id }) {
     if (labelOutsideBackgroundColor_SameAsCanvas == true) {
       setLabelOutsideBackgroundColor(canvasBackgroundColor);
     }
+
+    // armazenar o componente no localStorage
+    storageSerializedComponent();
+    
   }, [canvasBackgroundColor, labelBackgroundColor]);
 
   // Função para definir este botão como o botão selecionado
@@ -169,8 +185,8 @@ function LabelWidget({ id }) {
       labelHeight,
       labelWidth,
       labelBorderRadius,
-      labelBackgroundColor,
-      labelOutsideBackgroundColor,
+      labelBackgroundColor: labelBackgroundColor_SameAsCanvas ? canvasBackgroundColor : labelBackgroundColor,
+      labelOutsideBackgroundColor: labelOutsideBackgroundColor_SameAsCanvas ? canvasBackgroundColor : labelOutsideBackgroundColor,
       labelFontSize,
       labelFontFamily,
       labelFontColor,

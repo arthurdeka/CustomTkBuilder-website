@@ -107,7 +107,6 @@ function ButtonWidget({ id }) {
       setButtonBorderColor(selectedWidgetBorderColor);
       setButtonBorderRadius(selectedWidgetBorderRadius);
       setButtonBackgroundColor(selectedWidgetBackgroundColor);
-      setButtonOutsideBackgroundColor(selectedWidgetOutsideBackgroundColor);
       setButtonFontSize(selectedWidgetFontSize);
       setButtonFontColor(selectedWidgetFontColor);
       // hover
@@ -115,7 +114,14 @@ function ButtonWidget({ id }) {
       // valores de checkbox de opções opcionais
       setIsActiveHoverBackgroundColor(isActiveSelectedWidgetHoverBackgroundColor);
       setButtonOutsideBackgroundColor_SameAsCanvas(selectionOutsideBackgroundColor_SameAsCanvas)
-
+      
+      // caso a cor do canvas mude, e a opção de manter a cor do botão igual a do canvas esteja ativa, a cor do outside background é atualizada
+      if (buttonOutsideBackgroundColor_SameAsCanvas == true) {
+        setButtonOutsideBackgroundColor(canvasBackgroundColor)
+      } else {
+        setButtonOutsideBackgroundColor(selectedWidgetOutsideBackgroundColor);
+      }
+        
       // armazenar o componente no localStorage
       storageSerializedComponent();
     }
@@ -157,6 +163,9 @@ function ButtonWidget({ id }) {
       setButtonOutsideBackgroundColor(canvasBackgroundColor)
     }
     
+    // armazenar o componente no localStorage
+    storageSerializedComponent();
+    
   }, [canvasBackgroundColor]);
 
   // Função para definir este botão como o botão selecionado
@@ -193,14 +202,14 @@ function ButtonWidget({ id }) {
     // Cria um objeto com todas as propriedades e seus valores atuais
     const buttonState = {
       id,
-      widgetType : "button",
+      widgetType: "button",
       buttonContent,
       buttonPosition,
       buttonHeight,
       buttonWidth,
       buttonBorderRadius,
       buttonBackgroundColor,
-      buttonOutsideBackgroundColor,
+      buttonOutsideBackgroundColor: buttonOutsideBackgroundColor_SameAsCanvas ? canvasBackgroundColor : buttonOutsideBackgroundColor,
       buttonFontSize,
       buttonFontColor,
       buttonBorderColor,

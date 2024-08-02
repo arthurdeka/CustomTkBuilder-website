@@ -94,13 +94,19 @@ function InputWidget({ id }) {
             setInputBorderColor(selectedWidgetBorderColor);
             setInputBorderRadius(selectedWidgetBorderRadius);
             setInputBackgroundColor(selectedWidgetBackgroundColor);
-            setInputOutsideBackgroundColor(selectedWidgetOutsideBackgroundColor);
             setInputFontSize(selectedWidgetFontSize);
             setInputFontColor(selectedWidgetFontColor);
             setInputPlaceholderFontColor(selectedWidgetPlaceholderFontColor)
 
             // valores de checkbox de opções opcionais
             setInputOutsideBackgroundColor_SameAsCanvas(selectionOutsideBackgroundColor_SameAsCanvas);
+
+            // caso a cor do canvas mude, e a opção de manter a cor do input igual a do canvas esteja ativa, a cor do outside background é atualizada
+            if (inputOutsideBackgroundColor_SameAsCanvas == true) {
+                setInputOutsideBackgroundColor(canvasBackgroundColor);
+            } else {
+                setInputOutsideBackgroundColor(selectedWidgetOutsideBackgroundColor);
+            }
 
             // armazenar o componente no localStorage
             storageSerializedComponent();
@@ -141,6 +147,10 @@ function InputWidget({ id }) {
         if (inputOutsideBackgroundColor_SameAsCanvas == true) {
             setInputOutsideBackgroundColor(canvasBackgroundColor);
         }
+
+        // armazenar o componente no localStorage
+        storageSerializedComponent();
+        
     }, [canvasBackgroundColor]);
 
     // Função para definir este botão como o botão selecionado
@@ -190,7 +200,7 @@ function InputWidget({ id }) {
             inputBorderColor,
             inputBorderRadius,
             inputBackgroundColor,
-            inputOutsideBackgroundColor,
+            inputOutsideBackgroundColor: inputOutsideBackgroundColor_SameAsCanvas ? canvasBackgroundColor : inputOutsideBackgroundColor,
             inputFontSize,
             inputFontColor,
             inputPlaceholder,
