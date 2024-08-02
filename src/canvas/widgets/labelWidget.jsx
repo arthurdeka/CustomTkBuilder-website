@@ -4,7 +4,8 @@ import { CanvasContext } from "../CanvasContext";
 import styled, { StyleSheetManager } from "styled-components";
 
 
-const StyledInput = styled.div`
+const StyledLabel = styled.div`
+  border: 2px dotted #929292;
   position: absolute;
   cursor: grab;
   height: ${(props) => props.$height};
@@ -15,10 +16,11 @@ const StyledInput = styled.div`
   font-size: ${(props) => props.$fontSize};
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-start;
+  text-align: left;
   border-radius: ${(props) => props.$borderRadius};
-  whitespace: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
   z-index: 2;
 `;
 
@@ -206,7 +208,7 @@ function LabelWidget({ id }) {
     <StyleSheetManager shouldForwardProp={() => true}>
       <Draggable bounds="parent" position={labelPosition} onStop={updateLabelPosition}>
         <OutsideBackgroundColor $outsideBackgroundColor={labelOutsideBackgroundColor} $height={labelHeight} $width={labelWidth}>
-          <StyledInput
+          <StyledLabel
             $height={labelHeight}
             $width={labelWidth}
             $fontSize={labelFontSize}
@@ -217,7 +219,7 @@ function LabelWidget({ id }) {
             onClick={setAsSelectedWidget}
           >
             {labelContent}
-          </StyledInput>
+          </StyledLabel>
         </OutsideBackgroundColor>
       </Draggable>
     </StyleSheetManager>
