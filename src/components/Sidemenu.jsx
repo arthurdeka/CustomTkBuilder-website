@@ -7,6 +7,7 @@ import TranslateCodeModal from "./TranslateCodeModal";
 import { default as LabelIcon } from "../assets/Label_icon.svg";
 import { default as ButtonIcon } from "../assets/Button_icon.svg";
 import { default as InputIcon } from "../assets/Input_icon.svg";
+import CheckBoxWidget from "../canvas/widgets/checkBoxWidget";
 
 function Sidemenu() {
   const { objetosCanvas, addObjeto } = useContext(CanvasContext);
@@ -41,6 +42,13 @@ function Sidemenu() {
           <div className="flex items-center justify-center ">
             <img className="w-6" src={LabelIcon} />
             <h4 className="pl-1 font-semibold" >Label</h4>
+          </div>
+        </button>
+
+        <button className="bg-red-500 mt-2 border-2 py-2 mx-auto text-white w-full rounded-md border-black" onClick={() => handleClick(<CheckBoxWidget />)}>
+          <div className="flex items-center justify-center ">
+            <img className="w-6" src={LabelIcon} />
+            <h4 className="pl-1 font-semibold" >CheckBox</h4>
           </div>
         </button>
         
