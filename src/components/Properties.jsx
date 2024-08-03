@@ -729,9 +729,71 @@ function Properties() {
         )}
 
         {/* ====================================== */}
-        {/* AQUI COMEÇA OS PROPERTIES DO LABEL */}
+        {/* AQUI COMEÇA OS PROPERTIES DO CHECKBOX */}
         {/* ====================================== */}
         {selectedWidgetType === "checkbox" && (
+          <>
+            <h4 className="text-properties-h1">Content:</h4>
+
+            <div className="flex flex-col">
+              <label className="text-properties-h2">Background Color:</label>
+              <input
+                className="input-properties-color"
+                type="color"
+                name="backgroundColor"
+                value={selectedWidgetBackgroundColor}
+                onChange={(event) => handleStyleChange(event, "backgroundColor")}
+              />
+              <div className="py-1" />
+            </div>
+
+            <div className="flex flex-col pt-6">
+              <label className="text-properties-h2">Border Color:</label>
+              <input
+                className="input-properties-color"
+                type="color"
+                name="borderColor"
+                value={selectedWidgetBorderColor}
+                onChange={(event) => handleStyleChange(event, "borderColor")}
+              />
+              <div className="py-1" />
+            </div>
+
+            <div className="horizontal-line" />
+
+            <h4 className="text-properties-h1">Text:</h4>
+
+            <div className="flex flex-row items-end pb-4">
+              <label className="text-properties-h2 whitespace-nowrap">Text:</label>
+              <input
+                className="input-properties"
+                type="text"
+                name="fontSize"
+                value={selectedWidgetContent}
+                onChange={(event) => handleStyleChange(event, "content")}
+              />
+              <br />
+            </div>
+
+            <div className="flex flex-col pt-6">
+              <label className="text-properties-h2">Font Color:</label>
+              <input
+                className="input-properties-color"
+                type="color"
+                name="fontColor"
+                value={selectedWidgetFontColor}
+                onChange={(event) => handleStyleChange(event, "fontColor")}
+              />
+              <div className="py-1" />
+            </div>
+            <br /><br /><br />
+          </>
+        )}
+
+        {/* ====================================== */}
+        {/* AQUI COMEÇA OS PROPERTIES DO RADIO BUTTON */}
+        {/* ====================================== */}
+        {selectedWidgetType === "radio" && (
           <>
             <h4 className="text-properties-h1">Content:</h4>
 
