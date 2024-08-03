@@ -196,7 +196,7 @@ function Properties() {
         <br />
 
         {/* Delete widget */}
-        {selectedWidgetType === "label" || selectedWidgetType === "input" || selectedWidgetType === "button" ? (
+        {selectedWidgetType === "label" || selectedWidgetType === "input" || selectedWidgetType === "button" || selectedWidgetType === "checkbox" || selectedWidgetType === "radio" ? (
           <>
           <button onClick={deleteSelectedWidget} className="bg-red-400 text-sm w-full rounded-sm text-center">Delete widget</button>
           </>

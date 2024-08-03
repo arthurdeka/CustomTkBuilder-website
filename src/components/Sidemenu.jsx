@@ -10,6 +10,7 @@ import { default as LabelIcon } from "../assets/Label_icon.svg";
 import { default as ButtonIcon } from "../assets/Button_icon.svg";
 import { default as InputIcon } from "../assets/Input_icon.svg";
 import { default as CheckBoxIcon } from "../assets/Checkbox_icon.svg";
+import { default as RadioButtonIcon } from "../assets/RadioButton_icon.svg";
 
 import TranslateCodeModal from "./TranslateCodeModal";
 
@@ -58,7 +59,7 @@ function Sidemenu() {
 
         <button className="bg-red-500 mt-2 border-2 py-2 mx-auto text-white w-full rounded-md border-black" onClick={() => handleClick(<RadioButtonWidget />)}>
           <div className="flex items-center justify-center ">
-            <img className="w-6" src={CheckBoxIcon} />
+            <img className="w-6" src={RadioButtonIcon} />
             <h4 className="pl-1 font-semibold" >Radio Button</h4>
           </div>
         </button>

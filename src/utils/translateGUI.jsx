@@ -19,8 +19,19 @@ export function translateWidgetsToCode() {
     // converte todos os itens no array widgetStates de volta para objetos
     const widgetStatesObjects = widgetStates.map((widgetState) => JSON.parse(widgetState));
     
-    // para cada objeto em widgetStatesObjects, é feita a tradução para código python
+    // Inicializa um array para armazenar o código python dos widgets
     const widgetPythonCodelist = [];
+    
+    //verifica se existem RadioButtons no canvas (para a criação de um grupo)
+    if (widgetStatesObjects.some((widgetState) => widgetState.widgetType === "radio")) {
+        // cria um grupo de RadioButtons
+        const radioGroupPythonCode =
+`radio_var = IntVar()
+`
+        widgetPythonCodelist.push(radioGroupPythonCode);
+    }
+
+    // para cada objeto em widgetStatesObjects, é feita a tradução para código python
     widgetStatesObjects.forEach((widgetState) => {
         let pythonCode = "";
         if (widgetState.widgetType === "button") {
@@ -95,6 +106,23 @@ Entry_id${widgetState.id}.place(x=${widgetState.inputPosition.x}, y=${widgetStat
     )
 Checkbox_id${widgetState.id}.place(x=${widgetState.checkboxPosition.x}, y=${widgetState.checkboxPosition.y})`;
         }
+
+        if (widgetState.widgetType === "radio") {
+            pythonCode =
+`RadioButton_id${widgetState.id} = customtkinter.CTkRadioButton(
+    master=window,
+    variable=radio_var,
+    value=${widgetState.id},
+    text="${widgetState.radioContent}",
+    text_color="${widgetState.radioFontColor}",
+    border_color="${widgetState.radioBorderColor}",
+    fg_color="${widgetState.radioBackgroundColor}",
+    hover_color="#2F2F2F",
+    )
+RadioButton_id${widgetState.id}.place(x=${widgetState.radioPosition.x}, y=${widgetState.radioPosition.y})`;
+        }
+
+        
 
 
         widgetPythonCodelist.push(pythonCode);
