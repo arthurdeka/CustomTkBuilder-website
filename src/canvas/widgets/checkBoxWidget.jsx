@@ -89,6 +89,12 @@ function CheckboxWidget({ id }) {
     selectedWidgetBackgroundColor,
     selectedWidgetFontColor,
     selectedWidgetBorderColor,
+    // caso qualquer um desses valores mude, o componente é armazenado no localStorage (código necessário para resolver bug)
+    checkboxPosition,
+    checkboxContent,
+    checkboxBackgroundColor,
+    checkboxFontColor,
+    checkboxBorderColor,
   ]);
 
   const setAsSelectedWidget = () => {
@@ -106,6 +112,8 @@ function CheckboxWidget({ id }) {
       x: Math.round(data.x / 10) * 10,
       y: Math.round(data.y / 10) * 10,
     });
+    // armazenar o componente no localStorage
+    storageSerializedComponent();
   };
 
   const storageSerializedComponent = () => {

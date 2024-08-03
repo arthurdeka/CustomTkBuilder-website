@@ -81,6 +81,21 @@ Label_id${widgetState.id}.place(x=${widgetState.labelPosition.x}, y=${widgetStat
 Entry_id${widgetState.id}.place(x=${widgetState.inputPosition.x}, y=${widgetState.inputPosition.y})`;
         }
 
+        if (widgetState.widgetType === "checkbox") {
+            pythonCode =
+`Checkbox_id${widgetState.id} = customtkinter.CTkCheckBox(
+    master=window,
+    text="${widgetState.checkboxContent}",
+    text_color="${widgetState.checkboxFontColor}",
+    border_color="${widgetState.checkboxBorderColor}",
+    fg_color="${widgetState.checkboxBackgroundColor}",
+    hover_color="#808080",
+    corner_radius=4,
+    border_width=2,
+    )
+Checkbox_id${widgetState.id}.place(x=${widgetState.checkboxPosition.x}, y=${widgetState.checkboxPosition.y})`;
+        }
+
 
         widgetPythonCodelist.push(pythonCode);
     });
