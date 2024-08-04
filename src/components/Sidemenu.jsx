@@ -31,35 +31,35 @@ function Sidemenu() {
 
         <button className="bg-red-500 mt-2 border-2 py-2 mx-auto text-white w-full rounded-md border-black" onClick={() => handleClick(<ButtonWidget />)}>
           <div className="flex items-center justify-center ">
-            <img className="w-6" src={ButtonIcon} />
+            <img width={24} height={24} src={ButtonIcon} alt="Tkinter Button Icon" />
             <h4 className="pl-1 font-semibold" >Button</h4>
           </div>
         </button>
 
         <button className="bg-red-500 mt-2 border-2 py-2 mx-auto text-white w-full rounded-md border-black" onClick={() => handleClick(<InputWidget />)}>
           <div className="flex items-center justify-center ">
-            <img className="w-6" src={InputIcon} />
+            <img width={24} height={24} src={InputIcon} alt="Tkinter Input Icon" />
             <h4 className="pl-1 font-semibold" >Entry</h4>
           </div>
         </button>
 
         <button className="bg-red-500 mt-2 border-2 py-2 mx-auto text-white w-full rounded-md border-black" onClick={() => handleClick(<LabelWidget />)}>
           <div className="flex items-center justify-center ">
-            <img className="w-6" src={LabelIcon} />
+            <img width={24} height={24} src={LabelIcon} alt="Tkinter Label Icon" />
             <h4 className="pl-1 font-semibold" >Label</h4>
           </div>
         </button>
 
         <button className="bg-red-500 mt-2 border-2 py-2 mx-auto text-white w-full rounded-md border-black" onClick={() => handleClick(<CheckBoxWidget />)}>
           <div className="flex items-center justify-center ">
-            <img className="w-6" src={CheckBoxIcon} />
+            <img width={24} height={24} src={CheckBoxIcon} alt="Tkinter CheckBox Icon" />
             <h4 className="pl-1 font-semibold" >CheckBox</h4>
           </div>
         </button>
 
         <button className="bg-red-500 mt-2 border-2 py-2 mx-auto text-white w-full rounded-md border-black" onClick={() => handleClick(<RadioButtonWidget />)}>
           <div className="flex items-center justify-center ">
-            <img className="w-6" src={RadioButtonIcon} />
+            <img width={24} height={24} src={RadioButtonIcon} alt="Tkinter Radio Button Icon" />
             <h4 className="pl-1 font-semibold" >Radio Button</h4>
           </div>
         </button>

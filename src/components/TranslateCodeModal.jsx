@@ -10,7 +10,7 @@ export default function Component() {
       <div>
          <button onClick={() => setIsOpen(true)} className="bg-emerald-500 px-2 mt-2 border-2 py-2 mx-auto text-white w-full rounded-md border-black">
           <div className="flex items-center justify-center ">
-            <img className="w-6" src={TranslateIcon} />
+            <img width={24} height={24} src={TranslateIcon} alt="Translate To Code Icon" />
             <h4 className="pl-1 font-semibold" >Translate to Code</h4>
           </div>
         </button>
