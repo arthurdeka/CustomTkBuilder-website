@@ -13,6 +13,7 @@ import { default as CheckBoxIcon } from "../assets/Checkbox_icon.svg";
 import { default as RadioButtonIcon } from "../assets/RadioButton_icon.svg";
 
 import TranslateCodeModal from "./TranslateCodeModal";
+import VerticalAd from "../utils/verticalAd";
 
 function Sidemenu() {
   const { objetosCanvas, addObjeto } = useContext(CanvasContext);
@@ -67,6 +68,8 @@ function Sidemenu() {
         <br /><br /><br />
 
         <TranslateCodeModal />
+
+        <VerticalAd />
 
 
       </div>
