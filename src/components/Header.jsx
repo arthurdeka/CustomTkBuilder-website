@@ -32,6 +32,9 @@ function Header() {
         <a target="_blank" href="https://ko-fi.com/arthurcodes">
           <img src={CoffeImg} alt="Donate" width={180} height={45} className=" m-2 object-contain rounded-md inline-block" />
         </a>
+        <a className="" href="/about">
+          <h1 className="inline-block font-inter underline font-semibold">About</h1>
+        </a>
       </div>
     </header>
   );

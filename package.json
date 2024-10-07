@@ -15,6 +15,7 @@
     "react-draggable": "^4.4.6",
     "react-ga4": "^2.1.0",
     "react-minimal-modal": "^2.1.0",
+    "react-router-dom": "^6.26.2",
     "styled-components": "^6.1.11"
   },
   "devDependencies": {

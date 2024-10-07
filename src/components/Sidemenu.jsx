@@ -74,10 +74,6 @@ function Sidemenu() {
 
 
       </div>
-      <div className="pt-2 mx-auto pb-24">
-        <h5 className="font-inter font-bold text-corsecundaria">Contact:</h5>
-        <h5 className="font-inter text-corsecundaria">deka.matrix@gmail.com</h5>
-      </div>
     </div>
   );
 }

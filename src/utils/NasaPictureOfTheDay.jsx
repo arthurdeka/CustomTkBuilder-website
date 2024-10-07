@@ -47,7 +47,7 @@ const NasaPictureOfTheDay = () => {
         <img
           src={imageData.url}
           alt={imageData.title}
-          className="w-full max-w-2xl rounded-sm border-2 border-emerald-500  mb-1"
+          className="w-full max-w-2xl rounded-md border-2 border-emerald-500  mb-1"
         />
       ) : (
         <iframe
@@ -56,7 +56,7 @@ const NasaPictureOfTheDay = () => {
           frameBorder="0"
           allow="autoplay; encrypted-media"
           allowFullScreen
-          className="w-full max-w-2xl border-2 border-emerald-500 rounded-sm mb-1"
+          className="w-full max-w-2xl border-2 border-emerald-500 rounded-md mb-1"
           style={{ height: '500px' }}
         />
       )}
