@@ -25,7 +25,7 @@ function Sidemenu() {
   };
 
   return (
-    <div className="bg-slate-800 w-2/12 h-screen font-inter flex flex-col justify-between">
+    <div className="bg-slate-800 w-2/12 h-screen font-inter flex flex-col justify-between overflow-y-scroll no-scrollbar">
       <div className="pl-2 pr-4 mt-8">
 
         <h2 className="text-md font-inter font-bold text-corprimaria">Tkinter</h2>
