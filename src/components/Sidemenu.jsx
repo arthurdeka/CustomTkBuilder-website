@@ -14,6 +14,7 @@ import { default as RadioButtonIcon } from "../assets/RadioButton_icon.svg";
 
 import TranslateCodeModal from "./TranslateCodeModal";
 import VerticalAd from "../utils/verticalAd";
+import NasaPictureOfTheDay from "../utils/NasaPictureOfTheDay";
 
 function Sidemenu() {
   const { objetosCanvas, addObjeto } = useContext(CanvasContext);
@@ -68,7 +69,7 @@ function Sidemenu() {
         <br /><br /><br />
 
         <TranslateCodeModal />
-
+        <NasaPictureOfTheDay />
         <VerticalAd />
 
 
