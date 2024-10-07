@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from "./components/Header";
 import Canvas from "./canvas/canvas";
 import ReactGA from 'react-ga4';
