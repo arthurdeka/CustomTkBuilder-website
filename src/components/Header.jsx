@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+
 import { default as CoffeImg } from "../assets/Coffe.png";
 import { default as GithubImg } from "../assets/Github.png";
 import { default as YoutubeImg } from "../assets/Youtube.png";
@@ -32,9 +34,9 @@ function Header() {
         <a target="_blank" href="https://ko-fi.com/arthurcodes">
           <img src={CoffeImg} alt="Donate" width={180} height={45} className=" m-2 object-contain rounded-md inline-block" />
         </a>
-        <a className="" href="/about">
+        <Link to="/about" className="">
           <h1 className="inline-block font-inter underline font-semibold">About</h1>
-        </a>
+        </Link>
       </div>
     </header>
   );
