@@ -28,10 +28,10 @@
   </p>
 </div>
 
-# About The Project
+## About The Project
 
 <div align="left">
-   <img src="https://github.com/user-attachments/assets/320bfd2b-f951-4c6d-b575-0aa44c50d8a9" alt="Banner" height="320">
+   <img src="https://github.com/user-attachments/assets/320bfd2b-f951-4c6d-b575-0aa44c50d8a9" alt="Banner" height="220">
 </div>
 
 * Uses CustomTkinter
