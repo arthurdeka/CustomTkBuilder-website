@@ -13,7 +13,7 @@ function Header() {
         <h2 className="pb-2 my-auto text-xs font-bold font-inter">Toolkit</h2>
       </a>
       <div>
-        <a target="_blank" href="https://github.com/arthurdeka/CustomTkinter-Templates">
+        <a target="_blank" href="https://github.com/arthurdeka/CustomTkBuilder-website">
           <img
             src={GithubImg}
             alt="GitHub Repository"
