@@ -13,20 +13,11 @@ function Header() {
         <h2 className="pb-2 my-auto text-xs font-bold font-inter">Toolkit</h2>
       </a>
       <div>
-        <a target="_blank" href="https://www.youtube.com/@arthurcodes/featured">
-          <img
-            src={YoutubeImg}
-            alt="Youtube Tutorials"
-            width={178}
-            height={48}
-            className=" m-2 object-contain rounded-md inline-block border-slate-600 border-2"
-          />
-        </a>
         <a target="_blank" href="https://github.com/arthurdeka/CustomTkinter-Templates">
           <img
             src={GithubImg}
             alt="GitHub Repository"
-            width={178}
+            width={400}
             height={48}
             className=" m-2 object-contain rounded-md inline-block border-violet-500 border-2"
           />
